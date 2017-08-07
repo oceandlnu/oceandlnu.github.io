@@ -42,6 +42,7 @@ git push origin hexo  //push到Github项目的hexo分支上
 ![](/uploads/2017-03-06/1.png)
 
 完成之后的效果图为：
+
 ![](/uploads/2017-03-06/2.png)
 
 这样你的github项目中就会多出一个Hexo分支，这个就是用于多终端同步关键的部分。
