@@ -58,7 +58,8 @@ hexo new post "new blog name"   //新建一个.md文件，并编辑完成自己�
 git add source  //经测试每次只要更新sorcerer中的文件到Github中即可，因为只是新建了一篇新博客
 git commit -m "XX"
 git push -u origin hexo  //更新分支
-hexo d -g   //push更新完分支之后将自己写的博客对接到自己搭的博客网站上，同时同步了Github中的master
+#这一步注意，先将themes文件夹里面的主题压缩包解压，不然后面hexo g -d是没有页面效果的，一片空白
+hexo g -d   //push更新完分支之后将自己写的博客对接到自己搭的博客网站上，同时同步了Github中的master
 ```
 
 4.不同终端间愉快地玩耍
