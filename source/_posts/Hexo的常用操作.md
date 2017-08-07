@@ -122,7 +122,7 @@ GitHub Pages 自定义404页面非常容易，直接在根目录下创建自己�
 
 A电脑备份博客内容到github
 
-配置.gitignore文件。进入博客根目录下的\themes\next文件夹下，找到此文件，用sublime text 打开，在最后增加两行内容/.deploy_git和/public
+配置.gitignore文件。在博客根目录下，找到此文件，用sublime text 打开，在最后增加两行内容/.deploy_git和/public（如果没有就加上，有的话就不用了）
 
 初始化仓库。
 
