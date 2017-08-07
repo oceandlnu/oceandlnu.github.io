@@ -49,7 +49,7 @@ git push origin hexo  //push到Github项目的hexo分支上
 
 3.另一终端完成clone和push更新
 
-此时在另一终端更新博客，只需要将Github的hexo分支clone下来，进行初次的相关配置
+此时在另一终端更新博客，只需要将Github的hexo分支clone下来，进行初次的相关配置，详细配置点击[GitHub+Hexo博客多终端同步[准备工作]](https://oceandlnu.github.io/2017/04/05/GitHub+Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%90%8C%E6%AD%A5[%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C]/)
 
 ```bash
 git clone -b hexo git@github.com:yourname/yourname.github.io.git  //将Github中hexo分支clone到本地
