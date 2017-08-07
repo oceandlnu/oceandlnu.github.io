@@ -1,21 +1,21 @@
 ---
 layout: post
-title: 如何解决github+Hexo的博客多终端同步问题
-date: 2017-03-06 19:23:08
+title: 如何解决GitHub+Hexo博客多终端同步问题
+date: 2017-04-05 19:23:08
 tags:
  - GitHub
  - Git
  - Hexo
 categories:
  - 基本操作
-description: 如何解决github+Hexo的博客多终端同步问题
+description: 如何解决GitHub+Hexo博客多终端同步问题
 ---
 
 我们发现用Github+Hexo搭建了自己的博客，但是回到宿舍打开电脑时遇到了一个问题，我想在不同的终端进行github+Hexo的博客发布更新该如何进行呢，在Google中搜了一些教程，并自身进行了简化与实践！
 
 主体的思路是__将博文内容相关文件放在Github项目中master中，将Hexo配置写博客用的相关文件放在Github项目的hexo分支上__，这个是关键，多终端的同步只需要对分支hexo进行操作。下面是详细的步骤讲解：
 
-1. 准备条件
+1.准备条件
 
 安装Node.js,Git,Hexo环境，完成Github与本地Hexo的对接。
 
@@ -25,48 +25,43 @@ description: 如何解决github+Hexo的博客多终端同步问题
 
 在利用Github+Hexo搭建自己的博客时，新建了一个Hexo的文件夹，并进行相关的配置，这部分主要是将这些配置的文件托管到Github项目的分支上，其中只托管部分用于多终端的同步的文件：
 
-__注意：themes文件夹里面的主题是不会add的，所以可以先将主题压缩，然后add，之后同步到本地之后再解压，目前还没有找到别的办法__
+__注意：themes文件夹里面的主题是不会add的，所以可以先将主题文件压缩（如我的是next.zip），然后add，之后同步到本地之后再解压，目前还没有找到别的办法__
 
 ```bash
 git init  //初始化本地仓库
-git add source //将必要的文件依次添加，有些文件夹如npm install产生的node_modules由于路径过长不好处理，所以这里没有用`git add .`命令了，而是依次添加必要文件，如下图所示
-或者
-git add . //如果要用'git add .'此时应该删除.deploy_git和public文件夹，如下图
+git add . //将目录下的所有文件添加到本地仓库
 git commit -m "Blog Source Hexo"
 git branch hexo  //新建hexo分支
 git checkout hexo  //切换到hexo分支上
-git remote add origin git@github.com:yourname/yourname.github.io.git  //将本地与Github项目对接
+git remote add origin git@github.com:oceandlnu/oceandlnu.github.io.git  //将本地与Github项目对接
 git push origin hexo  //push到Github项目的hexo分支上
 ```
 
-![](/uploads/2017-03-06/1.png)
-
 完成之后的效果图为：
 
-![](/uploads/2017-03-06/2.png)
+![](/uploads/2017-04-05/1.png)
 
 这样你的github项目中就会多出一个Hexo分支，这个就是用于多终端同步关键的部分。
 
 3.另一终端完成clone和push更新
 
-此时在另一终端更新博客，只需要将Github的hexo分支clone下来，进行初次的相关配置，详细配置点击[GitHub+Hexo博客多终端同步[准备工作]](https://oceandlnu.github.io/2017/04/05/GitHub+Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%90%8C%E6%AD%A5[%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C]/)
+此时在另一终端更新博客，只需要将Github的hexo分支clone下来，进行初次的相关配置，详细配置点击[GitHub+Hexo博客多终端同步[准备工作]](https://oceandlnu.github.io/2017/03/06/GitHub+Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%90%8C%E6%AD%A5[%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C]/)
 
 ```bash
-git clone -b hexo git@github.com:yourname/yourname.github.io.git  //将Github中hexo分支clone到本地
-cd  yourname.github.io  //切换到刚刚clone的文件夹内
-npm install    //注意，这里一定要切换到刚刚clone的文件夹内执行，安装必要的所需组件，不用再init
+git clone -b hexo git@github.com:oceandlnu/oceandlnu.github.io.git  //将Github中hexo分支clone到本地
+cd  oceandlnu.github.io  //切换到刚刚clone的文件夹内
+npm install    //注意，这里一定要切换到刚刚clone的文件夹内执行，安装必要的所需组件，不用再hexo init
 hexo new post "new blog name"   //新建一个.md文件，并编辑完成自己的博客内容
 git add source  //经测试每次只要更新sorcerer中的文件到Github中即可，因为只是新建了一篇新博客
 git commit -m "XX"
 git push -u origin hexo  //更新分支
-#这一步注意，先将themes文件夹里面的主题压缩包解压，不然后面hexo g -d是没有页面效果的，一片空白
+#这一步注意，先将themes文件夹里面的主题压缩包（例如我的是next.zip）解压，不然后面hexo g -d是没有页面效果的
 hexo g -d   //push更新完分支之后将自己写的博客对接到自己搭的博客网站上，同时同步了Github中的master
 ```
 
 4.不同终端间愉快地玩耍
 
-在不同的终端已经做完配置，就可以愉快的分享自己更新的博客 
-进入自己相应的文件夹
+在不同的终端已经做完配置，就可以愉快的分享自己更新的博客，进入自己相应的文件夹
 
 ```bash
 git pull origin hexo  //先pull完成本地与远端的融合
@@ -74,7 +69,7 @@ hexo new post " new blog name"
 git add source
 git commit -m "XX"
 git push origin hexo
-hexo d -g
+hexo g -d
 ```
 
 关于Github不熟悉的强烈推荐张哥的Github系列教程[我的书籍出版了](http://stormzhang.com/2017/01/20/learn-github-from-zero-pdf/)
