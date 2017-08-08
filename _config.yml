@@ -117,3 +117,10 @@ live2d:
   model: wanko
 #  model: hijiki
   bottom: -30
+
+#algolia:
+#  applicationID: '0DLK1DIXBT'
+#  apiKey: 'bb8e81c19831630e5c0d526e3f6e06ba'
+#  adminApiKey: '15798cf31684728b94b178822e61d8c5'
+#  indexName: 'oceandlnu'
+#  chunkSize: 5000
