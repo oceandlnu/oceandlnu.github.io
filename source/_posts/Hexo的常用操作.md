@@ -8,6 +8,7 @@ tags:
 categories:
  - 基本操作
 description: Hexo的常用操作
+copyright: true
 ---
 
 新建一个网站
@@ -70,10 +71,10 @@ tags:
 添加 sitemap 和 feed 插件
 
 切换到你本地的 $ hexo 目录 CIA ，在git窗口，输入以下命令
-
-  npm install $ hexo-generator-feed -save
-  npm install $ hexo-generator-sitemap -save
-
+```
+npm install $ hexo-generator-feed --save
+npm install $ hexo-generator-sitemap --save
+```
 修改 _config.yml，增加以下内容
 
 ```bash

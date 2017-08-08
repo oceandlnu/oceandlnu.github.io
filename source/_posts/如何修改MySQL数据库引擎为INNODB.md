@@ -7,6 +7,7 @@ tags:
 categories:
  - SQL
 description: 如何修改MySQL数据库引擎为INNODB
+copyright: true
 ---
 对于MySQL数据库，如果你要使用事务以及行级锁就必须使用INNODB引擎。如果你要使用全文索引，那必须使用myisam。 INNODB的实用性，安全性，稳定性更高但是效率比MYISAM稍差，但是有的功能是MYISAM没有的。修改MySQL的引擎为INNODB，可以使用外键，事务等功能，性能高。本文主要介绍如何修改MySQL数据库引擎为INNODB，接下来我们开始介绍。
 

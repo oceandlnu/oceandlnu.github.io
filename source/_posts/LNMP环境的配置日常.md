@@ -10,6 +10,7 @@ tags:
 categories:
  - 基本操作
 description: LNMP环境的配置日常
+copyright: true
 ---
 在搭建好的lnmp环境中使用配置，使环境易于管理。
 

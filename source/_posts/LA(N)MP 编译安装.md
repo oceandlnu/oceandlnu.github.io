@@ -10,6 +10,7 @@ tags:
 categories:
  - 配置
 description: LA(N)MP 编译安装
+copyright: true
 ---
 
 + 注意：使用 su 或者 sudo 超级管理员权限

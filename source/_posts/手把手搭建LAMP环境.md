@@ -10,6 +10,7 @@ tags:
 categories:
  - 配置
 description: 手把手搭建LAMP环境
+copyright: true
 ---
 
 经过很多天的研究，LAMP环境总算顺利搭建完成，之前走过很多弯路，遇到过很多问题！下面讲下我亲身搭建lamp 的经验

@@ -8,6 +8,7 @@ tags:
 categories:
  - 基本操作
 description: Git常用操作
+copyright: true
 ---
 把这个目录变成Git可以管理的仓库
 

@@ -8,6 +8,7 @@ tags:
 categories:
  - 基本操作
 description: Git的简单使用
+copyright: true
 ---
 第一步 下载[Git](https://git-scm.com/)
 1. 在官网点击Download，下载对应的exe文件，注意你的操作系统是32位还是64位。

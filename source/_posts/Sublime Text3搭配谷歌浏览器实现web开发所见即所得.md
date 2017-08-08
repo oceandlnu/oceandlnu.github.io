@@ -8,6 +8,7 @@ tags:
 categories:
  - web
 description: Sublime Text3搭配谷歌浏览器实现web开发所见即所得
+copyright: true
 ---
 1.选择LiveReload for Sublime text3.zip，将解压的文件夹放在Packages文件夹（Preference>Browse Packags）重启ST3。
 2.Preference>Package Settings>LiveReload>Settings User

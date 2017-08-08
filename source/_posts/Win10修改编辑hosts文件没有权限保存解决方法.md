@@ -7,6 +7,7 @@ tags:
 categories:
  - windows10
 description: Win10修改编辑hosts文件没有权限保存解决方法
+copyright: true
 ---
 Win10无法修改编辑保存hosts文件怎么办?Win10系统默认是没有权限去编辑保存系统里的文件，这也是权限不够才导致修改编辑hosts后无法保存的原因，解决的办法就是把自己的帐户权限给提高就行了。
 

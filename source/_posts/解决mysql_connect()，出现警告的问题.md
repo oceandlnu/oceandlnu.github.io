@@ -7,6 +7,7 @@ tags:
 categories:
  - php
 description: 解决mysql_connect()，出现警告的问题
+copyright: true
 ---
 
 PHP 5个版本,5.2、5.3、5.4、5.5，怕跟不上时代，新的服务器直接上5.5，但是程序出现如下错误：

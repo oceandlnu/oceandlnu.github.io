@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 如何解决GitHub+Hexo博客多终端同步问题
+title: GitHub+Hexo博客多终端同步（密码：ocean）
 date: 2017-04-05 19:23:08
 tags:
  - GitHub
@@ -8,7 +8,9 @@ tags:
  - Hexo
 categories:
  - 基本操作
-description: 如何解决GitHub+Hexo博客多终端同步问题
+description: GitHub+Hexo博客多终端同步（密码：ocean）
+copyright: true
+password: ocean
 ---
 
 我们发现用Github+Hexo搭建了自己的博客，但是回到宿舍打开电脑时遇到了一个问题，我想在不同的终端进行github+Hexo的博客发布更新该如何进行呢，在Google中搜了一些教程，并自身进行了简化与实践！

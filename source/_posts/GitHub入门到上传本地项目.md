@@ -8,6 +8,7 @@ tags:
 categories:
  - 基本操作
 description: GitHub入门到上传本地项目
+copyright: true
 ---
 GitHub是基于Git实现的代码托管。git是目前最好用的版本控制系统了，非常受欢迎，比之svn更好。
 

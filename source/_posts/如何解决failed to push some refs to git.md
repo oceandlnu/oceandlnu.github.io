@@ -8,6 +8,7 @@ tags:
 categories:
  - 基本操作
 description: 如何解决failed to push some refs to git
+copyright: true
 ---
 
 在使用git 对源代码进行push到gitHub时可能会出错，信息如下

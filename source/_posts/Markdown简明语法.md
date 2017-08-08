@@ -8,6 +8,7 @@ tags:
 categories:
  - 基本操作
 description: Markdown简明语法
+copyright: true
 ---
 Markdown是一种极简的『标记语言』，将文本转为HTML，通常为我大码农所用。其不追求大而全，简洁至上，正所谓不求最贵，只求最好！
 

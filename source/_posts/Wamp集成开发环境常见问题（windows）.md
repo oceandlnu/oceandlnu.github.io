@@ -9,6 +9,7 @@ tags:
 categories:
  - Wamp
 description: Wamp集成开发环境常见问题（windows）
+copyright: true
 ---
 1.wamp打不开localhost下的文件
 

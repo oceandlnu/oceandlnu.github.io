@@ -7,6 +7,7 @@ tags:
 categories:
  - 配置
 description: Sublime Text 3 3126 安装+注册码
+copyright: true
 ---
 
 首先，到官网下载且安装，博主是解压版的 https://www.sublimetext.com/3

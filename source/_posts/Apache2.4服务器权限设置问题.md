@@ -7,6 +7,7 @@ tags:
 categories:
  - 配置
 description: Apache2.4服务器权限设置问题
+copyright: true
 ---
 Apache 从2.2升级到 Apache2.4.x 后配置文件 httpd.conf 的设置方法有了大变化，以前是将 deny from all 全部改成 Allow from all 实现外网访问，现在是将 Require all denied 以及 Require local 都改为 Require all granted 就可以了。
 
