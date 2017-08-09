@@ -1,11 +1,12 @@
 ---
 layout: post
 title: 解决mysql_connect()，出现警告的问题
-date: 2017-07-04 13:47:23
+date: 2017-07-04 12:47:23
 tags:
- - php
+ - MySQL
+ - PHP
 categories:
- - php
+ - MySQL
 description: 解决mysql_connect()，出现警告的问题
 copyright: true
 ---
