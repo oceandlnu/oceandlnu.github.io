@@ -1,15 +1,15 @@
 ---
 layout: post
-title: GitHub+Hexo博客多终端同步(密码：ocean)[准备工作]
+title: GitHub+Hexo博客多终端同步[准备工作]
 date: 2017-03-06 16:59:16
 tags:
  - Hexo
  - Git
 categories:
  - 基本操作
-description: GitHub+Hexo博客多终端同步(密码：ocean)[准备工作]
+description: GitHub+Hexo博客多终端同步[准备工作]
 copyright: true
-password: ocean
+password: 
 ---
 
 ```bash

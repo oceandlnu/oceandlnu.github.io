@@ -1,6 +1,6 @@
 ---
 layout: post
-title: PHPStorm解释器与服务器配置（解决502 bad gateway与404 not found问题）密码：ocean
+title: PHPStorm解释器与服务器配置（解决502 bad gateway与404 not found问题）
 date: 2017-07-18 13:47:23
 tags:
  - PHP
@@ -8,9 +8,9 @@ tags:
  - PHPStorm
 categories:
  - 配置
-description: PHPStorm解释器与服务器配置（解决502 bad gateway与404 not found问题）（密码：ocean）
+description: PHPStorm解释器与服务器配置（解决502 bad gateway与404 not found问题）
 copyright: true
-password: ocean
+password: 
 ---
 
 phpstorm是一个非常强大的全栈开发工具，但是作为刚入手的我发现它并不是安装之后就可以正常使用的，还需要相关的配置，否则会出现网页打开错误。下面记录我在使用中遇到的一些问题与解决方法。
