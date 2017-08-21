@@ -1,7 +1,8 @@
 ---
 title: About Me
 date: 2017-08-04 00:10:01
-comments: true
+type: "about"
+comments: false
 ---
 >ID：oceandlnu
 E-mail：136494666@qq.com
