@@ -129,7 +129,7 @@ Git的分支和合并 : 分支模型是Git最显著的特点, 因为这改变了
 
 选择默认就好，不用文件系统缓存
 
-![](/uploads/2016-07-03/6.png)
+![](/uploads/2016-07-03/9.png)
 
 git安装成功。
 
@@ -173,7 +173,7 @@ id_rsa  id_rsa.pub  known_hosts
 
 ```
 
-也可以打开我的电脑C:\Users\你的用户名\.ssh 里面找到
+也可以打开我的电脑"C:\Users\你的用户名\\.ssh 里面找到
 
 
 如果没有生成，那么通过$ ssh-keygen -t rsa -C “136494666@qq.com”来生成，这里换成你的邮箱。
@@ -184,7 +184,7 @@ id_rsa  id_rsa.pub  known_hosts
 
 3）直接回车键
 
-生成成功后，去对应目录C:\Users\你的用户名\.ssh里（specter为电脑用户名，每个人不同）用记事本打开id_rsa.pub，得到ssh key公钥
+生成成功后，去对应目录C:\Users\Ocean\\.ssh里（Ocean为电脑用户名，每个人不同）用记事本打开id_rsa.pub，得到ssh key公钥
 
 
 3-2 为github账号配置ssh key
