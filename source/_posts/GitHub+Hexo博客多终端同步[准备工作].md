@@ -12,14 +12,12 @@ copyright: true
 password: 
 ---
 
-```bash
 1. 搭建 Node.js 环境 
 2. 搭建 Git 环境 
-3. GitHub 注册和配置 
-4. 安装配置 Hexo 
+3. 安装配置 Hexo 
+4. GitHub 注册和配置 
 5. 关联 Hexo 与 GitHub Pages 
 6. GitHub Pages 地址解析到个人域名 
-```
 
 ### 搭建 Node.js 环境
 
@@ -30,7 +28,12 @@ Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境，可以在�
 
 保持默认设置即可，一路Next，安装很快就结束了。
 
-然后打开命令提示符，输入 node -v、npm -v，出现版本号则说明 Node.js 环境配置成功，第一步完成！！！
+然后打开命令提示符，输入
+```bash
+node -v
+npm -v
+```
+出现版本号则说明 Node.js 环境配置成功，第一步完成！！！
 
 ### 搭建 Git 环境
 
@@ -46,23 +49,6 @@ Git 是一款免费、开源的分布式版本控制系统，用于敏捷高效�
 	git --version
 
 出现版本号则说明 Git 环境配置成功，第二步完成！！！
-
-### GitHub 注册和配置
-
-GitHub 是一个代码托管平台，因为只支持 Git 作为唯一的版本库格式进行托管，故名 GitHub。
-
-Github注册：https://github.com/
-
-创建仓库：Repository name 使用自己的用户名，仓库名规则：
-
-注意：yourname 必须是你的用户名。
-
-	yourname/yourname.github.io
-
-
-访问 yourname.github.io，如果可以正常访问，那么 Github 的配置已经结束了。
-
-到此搭建 Hexo 博客的相关环境配置已经完成，下面开始讲解 Hexo 的相关操作
 
 ### 安装配置 Hexo
 
@@ -84,9 +70,31 @@ Hexo 是一个快速、简洁且高效的博客框架，使用 Markdown（或其
 
 	hexo -v
 
-__注意：如果是多终端hexo博客同步，下面的步骤不用执行了，到这里就结束__
+到此搭建 Hexo 博客的相关环境配置已经完成，下面开始讲解 Hexo 的相关操作
+
+
+
+__注意__：
+- 如果是多终端hexo博客同步，下面的步骤不用执行了，到这里就结束
+
+- 如果clone失败，可能是密钥没有配好，可以查看：关联 Hexo 与 GitHub Pages里面的SSH Key配置步骤
 
 ---
+
+### GitHub 注册和配置
+
+GitHub 是一个代码托管平台，因为只支持 Git 作为唯一的版本库格式进行托管，故名 GitHub。
+
+Github注册：https://github.com/
+
+创建仓库：Repository name 使用自己的用户名，仓库名规则：
+
+注意：yourname 必须是你的用户名。
+
+	yourname/yourname.github.io
+
+
+访问 yourname.github.io，如果可以正常访问，那么 Github 的配置已经结束了。
 
 安装 Hexo 完成后，请执行下列命令来初始化 Hexo，用户名改成你的，Hexo 将会在指定文件夹中新建所需要的文件。
 
@@ -147,7 +155,7 @@ id_rsa  id_rsa.pub  known_hosts
 
 添加 SSH Key 到 GitHub
 
-打开 C:\Users\你的用户名\.ssh\id_rsa.pub，此文件里面内容为刚才生成的密钥，准确的复制这个文件的内容，粘贴到 https://github.com/settings/keys 的 new SSH key 中
+打开 C:\Users\你的用户名\\.ssh\id_rsa.pub，此文件里面内容为刚才生成的密钥，准确的复制这个文件的内容，粘贴到 https://github.com/settings/keys 的 new SSH key 中
 
 测试
 

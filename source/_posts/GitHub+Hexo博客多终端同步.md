@@ -54,7 +54,7 @@ git clone -b hexo git@github.com:oceandlnu/oceandlnu.github.io.git  //将Github�
 cd  oceandlnu.github.io  //切换到刚刚clone的文件夹内
 npm install    //注意，这里一定要切换到刚刚clone的文件夹内执行，安装必要的所需组件，不用再hexo init
 hexo new post "new blog name"   //新建一个.md文件，并编辑完成自己的博客内容
-git add source  //经测试每次只要更新sorcerer中的文件到Github中即可，因为只是新建了一篇新博客
+git add source  //经测试每次只要更新source中的文件到Github中即可，因为只是新建了一篇新博客
 git commit -m "XX"
 git push origin hexo  //推送到远程仓库，更新hexo分支
 #这一步注意，先将themes文件夹里面的主题压缩包（例如我的是next.zip）解压，不然后面hexo g -d是没有页面效果的
