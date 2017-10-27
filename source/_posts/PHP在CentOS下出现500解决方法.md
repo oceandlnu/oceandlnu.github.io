@@ -1,7 +1,7 @@
 ---
 layout: post
 title: PHP在CentOS下出现HTTP ERROR 500解决方法
-date: 2017-10-26 13:41:08
+date: 2017-08-26 13:41:08
 tags:
  - PHP
  - CentOS
