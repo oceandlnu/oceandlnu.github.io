@@ -8,4 +8,4 @@
  - 【前端】html，css，javascript，jquery
  - 【后台】C，C++，JAVA，Python3，PHP，thinkphp5.0
  - 【数据库】MySQL，Oracle，Redis
- - 【其他】SVN，Git版本控制工具
+ - 【其他】SVN，Git版本管理工具
