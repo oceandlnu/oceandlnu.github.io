@@ -42,9 +42,9 @@ $ hexo d
 ```
 
 也可以用下面的命令，是一样的效果，让 $ hexo 在生成完毕后自动部署网站
-
-  $ hexo clean
-  $ hexo g -d
+  
+    $ hexo clean
+    $ hexo g -d
 
 文章如何添加多个标签
 
@@ -71,10 +71,12 @@ tags:
 添加 sitemap 和 feed 插件
 
 切换到你本地的 $ hexo 目录 CIA ，在git窗口，输入以下命令
+
 ```
 npm install $ hexo-generator-feed --save
 npm install $ hexo-generator-sitemap --save
 ```
+
 修改 _config.yml，增加以下内容
 
 ```bash

@@ -34,7 +34,7 @@ display_errors = On
 
 ```
 
-重启apache 刷新页面看到显示错误信息，我们看到错误提示为require_once(): Failed opening required，打开文件请求失败，由于Linux下/表示根目录，我这是从windows直接移植过来的，将前面的分号去掉。
+重启apache 刷新页面看到显示错误信息，我们看到错误提示为require_once(): Failed opening required，打开文件请求失败，由于Linux下"/"表示根目录，我这是从windows直接移植过来的，将前面的"/"去掉。
 
 	#重启服务器apache
 	service httpd restart
