@@ -19,10 +19,16 @@ copyright: true
 
 一、安装python3.6
 
-1.安装依赖环境
-	
-	# yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
+1.安装openssl静态库，若未装该静态库会导致python3自带的pip3安装失败
 
+	# yum install -y openssl-static
+
+编译python3源码
+```
+	# yum install -y gcc wget
+	# yum groupinstall "Development tools"
+	# yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
+```
 2.下载Python3 https://www.python.org/ftp/python
 
 	# wget https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tgz
@@ -44,12 +50,13 @@ copyright: true
 # ./configure --prefix=/usr/local/python3
 # make (或者 make install)
 ```
-删除文件指令
 
-	rm -rf [filename]
 5.建立python3的软链
 
 	# ln -s /usr/local/python3/bin/python3 /usr/bin/python3
+如果软链接已存在，先删除原链接，如下：
+
+	# rm -rf [filename]
 
 6.并将/usr/local/python3/bin加入PATH
 ```
@@ -76,7 +83,7 @@ export PATH
 　　检查Python3及pip3是否正常可用：
 
 # python3 -V
-Python 3.6.2
+Python 3.6.3
 # pip3 -V
 pip 9.0.1 from /usr/local/python3/lib/python3.6/site-packages (python 3.6)
 ```
@@ -84,6 +91,13 @@ pip 9.0.1 from /usr/local/python3/lib/python3.6/site-packages (python 3.6)
 
 	# ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3
 
+8.安装pip
+
+	# wget https://bootstrap.pypa.io/get-pip.py
+
+可以先在windows上下载好get-pip.py这个文件， 使用ftp将这个文件传输到linux上
+
+python3 get-pip.py
 二、安装pip以及setuptools
 　　毕竟丰富的第三方库是python的优势所在，为了更加方便的安装第三方库，使用pip命令，我们需要进行相应的安装。
 
