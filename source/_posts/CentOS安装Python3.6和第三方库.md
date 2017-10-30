@@ -44,6 +44,9 @@ copyright: true
 # ./configure --prefix=/usr/local/python3
 # make (或者 make install)
 ```
+删除文件指令
+
+	rm -rf [filename]
 5.建立python3的软链
 
 	# ln -s /usr/local/python3/bin/python3 /usr/bin/python3
