@@ -19,7 +19,7 @@ copyright: true
 
 一、安装python3.6
 
-1. 安装依赖环境
+1.安装依赖环境
 	
 	# yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
 
