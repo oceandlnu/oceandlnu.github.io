@@ -48,7 +48,8 @@ copyright: true
 ```
 # cd Python-3.6.3
 # ./configure --prefix=/usr/local/python3
-# make (或者 make install)
+# make
+# make install
 ```
 
 5.建立python3的软链
