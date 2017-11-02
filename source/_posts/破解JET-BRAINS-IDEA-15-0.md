@@ -14,11 +14,16 @@ password:
 
 JET BRAINS官方下载链接：http://www.jetbrains.com/
 
+__注意：这3种方式需要保证你电脑在启动Idea的时候能够连上网__
+
 1.http://idea.iteblog.com/
 
-（服务器地址为 http://idea.iteblog.com/key.php ），可以在线注册Idea 15的，无需任何配置。依次选择菜单Help->Register->License server即可.
+依次选择菜单Help->Register->License server输入 http://idea.iteblog.com/key.php 即可.
 
 2.http://www.0-php.com/?post=86
 
-注册时选择“License server”输入 http://www.0-php.com:1017
-点击Activate 就可以
+点击help→Register→License sever输入 http://www.0-php.com:1017 点击Activate
+
+3.http://idea.liyang.io/
+
+点击help→Register→License sever ,输入 http://idea.liyang.io
