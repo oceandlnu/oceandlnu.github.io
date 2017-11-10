@@ -11,7 +11,20 @@ categories:
 description: linux安装Git、Nodejs
 copyright: true
 ---
+### Git安装
+    
+    sudo apt-get update
+    apt-get install git
+    
+验证是否安装成功，查看git版本
+    
+    git --version
+    
+卸载Git
 
+    apt-get remove git
+    apt-get autoremove
+ 
 ### nvm安装
 
 nvm是专门的node版本管理工具，可以在同一台机器上管理不同node版本。
@@ -39,17 +52,31 @@ cd  /usr/local/bin && ls -l | grep "../lib/node_modules/" | awk '{print $9}'| xa
 #### 安装切换各版本 node/npm
 
 ```
-nvm install stable #安装最新稳定版 node，现在是 5.0.0
-nvm install 4.2.2 #安装 4.2.2 版本
-nvm install 0.12.7 #安装 0.12.7 版本
+nvm install stable
+#安装最新稳定版 node，现在是 5.0.0
+
+nvm install 4.2.2
+#安装 4.2.2 版本
+
+nvm install 0.12.7
+#安装 0.12.7 版本
 
 # 特别说明：以下模块安装仅供演示说明，并非必须安装模块
-nvm use 0 #切换至 0.12.7 版本
-npm install -g mz-fis #安装 mz-fis 模块至全局目录，安装完成的路径是 /Users/<你的用户名>/.nvm/versions/node/v0.12.7/lib/mz-fis
-nvm use 4 #切换至 4.2.2 版本
-npm install -g react-native-cli #安装 react-native-cli 模块至全局目录，安装完成的路径是 /Users/<你的用户名>/.nvm/versions/node/v4.2.2/lib/react-native-cli
 
-nvm alias default 0.12.7 #设置默认 node 版本为 0.12.7
+nvm use 0
+#切换至 0.12.7 版本
+
+npm install -g mz-fis
+#安装 mz-fis 模块至全局目录，安装完成的路径是 /Users/<你的用户名>/.nvm/versions/node/v0.12.7/lib/mz-fis
+
+nvm use 4
+#切换至 4.2.2 版本
+
+npm install -g react-native-cli
+#安装 react-native-cli 模块至全局目录，安装完成的路径是 /Users/<你的用户名>/.nvm/versions/node/v4.2.2/lib/react-native-cli
+
+nvm alias default 0.12.7
+#设置默认 node 版本为 0.12.7
 ```
 
 #### 使用 .nvmrc 文件配置项目所使用的 node 版本

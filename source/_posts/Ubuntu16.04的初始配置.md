@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Ubuntu 16.04的初始配置
-date: 2016-09-25 13:47:23
+date: 2017-09-25 13:47:23
 tags:
  - linux
  - ubuntu
