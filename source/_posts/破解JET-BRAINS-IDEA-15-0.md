@@ -12,7 +12,7 @@ description: 破解JET BRAINS IDEA 15.0
 password: 
 ---
 
-JET BRAINS官方下载链接：http://www.jetbrains.com/
+[JET BRAINS官方下载](http://www.jetbrains.com/)
 
 __注意：这3种方式需要保证你电脑在启动Idea的时候能够连上网__
 
