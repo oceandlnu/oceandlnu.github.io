@@ -27,7 +27,13 @@ copyright: true
 
 ### 换源
 
-这里换成阿里源，如果要换成其他的源，可以去搜索一下，原理相同
+这里换成[阿里源](http://mirrors.aliyun.com/)，如果要换成其他的源([163源](http://mirrors.163.com/))，可以去搜索一下，原理相同
+
+#### 1、软件包管理中心（推荐）
+
+在软件包管理中心“软件源”中选择“中国的服务器”下mirros.aliyun.com即可自动使用
+
+#### 2、手动更改配置文件
 
 先将原配置文件备份
 
@@ -35,9 +41,28 @@ copyright: true
 
 然后新建一个配置文件
 
-    sudo vi /etc/apt/sources.list
+    sudo gedit /etc/apt/sources.list
 
-输入以下内容
+在文件最前面添加以下条目
+
+Xenial(16.04)
+
+```
+# deb cdrom:[Ubuntu 16.04 LTS _Xenial Xerus_ - Release amd64 (20160420.1)]/ xenial main restricted
+deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ xenial-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse
+```
+
+
+或者输入以下内容
 
 ```
 # deb cdrom:[Ubuntu 16.04 LTS _Xenial Xerus_ - Release amd64 (20160420.1)]/ xenial main restricted
@@ -79,7 +104,59 @@ sudo apt-get upgrade
 
 #### 安装Chrome
 
-安装Google Chrome浏览器官方PPA，打开终端然后运行下面的命令，下载签名密钥，然后执行安装命令
+##### 一、通过直接下载安装Google Chrome浏览器deb包。
+打开Ubuntu终端，以下为32位版本，使用下面的命令。
+
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb
+
+以下为64位版本，使用下面的命令。
+
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+下载好后，32 位安装命令:
+
+    sudo dpkg -i google-chrome-stable_current_i386.deb
+
+64 位安装命令:
+
+    sudo dpkg -i google-chrome-stable_current_amd64.deb 
+
+直接用dpkg安装，报错浏览器还有依赖其他的包
+
+```
+ubuntu下安装chrome出现了错误：dpkg：处理 google-chrome-stable (--install)时出错： 
+
+  正在解压缩 google-chrome-stable (从 google-chrome-stable_current_i386.deb) ...
+dpkg：依赖关系问题使得 google-chrome-stable 的配置工作不能继续：
+ google-chrome-stable 依赖于 libcurl3；然而：
+  未安装软件包 libcurl3。
+dpkg：处理 google-chrome-stable (--install)时出错：
+ 依赖关系问题 - 仍未被配置
+```
+
+先执行
+
+    apt-get -f install
+
+然后在用dpkg安装
+
+    dpkg -i google-chrome-stable_current_amd64.deb
+
+##### 二、添加 Google Chrome 的PPA
+
+安装Google Chrome浏览器官方PPA，打开终端然后运行下面的命令，下载签名密钥，然后执行安装命令：
+
+```
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add
+
+sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+
+sudo apt-get update
+
+sudo apt-get install google-chrome-stable
+```
+
+上面不行换下面的
 
 ```
 wget -q -O - https://raw.githubusercontent.com/longhr/ubuntu1604hub/master/linux_signing_key.pub | sudo apt-key add
@@ -99,7 +176,7 @@ sudo apt-get install google-chrome-stable
 
     sudo apt-get install google-chrome-unstable
 
-终端输入google-chrome-stable即可运行，如果出现报错如下：
+##### 三、终端输入google-chrome-stable即可运行，如果出现报错如下：
 
 ```
 [0807/144244.712736:FATAL:nss_util.cc(627)] NSS_VersionCheck("3.26") failed. NSS >= 3.26 is required

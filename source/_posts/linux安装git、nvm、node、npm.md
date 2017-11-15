@@ -1,6 +1,6 @@
 ---
 layout: post
-title: linux安装Git、Nodejs
+title: linux安装git、nvm、node、npm
 date: 2017-09-16 21:26:56
 tags:
  - Linux
@@ -8,13 +8,13 @@ tags:
  - Git
 categories:
  - linux
-description: linux安装Git、Nodejs
+description: linux安装git、nvm、node、npm
 copyright: true
 ---
 ### Git安装
     
     sudo apt-get update
-    apt-get install git
+    sudo apt-get install git
     
 验证是否安装成功，查看git版本
     
@@ -22,12 +22,14 @@ copyright: true
     
 卸载Git
 
-    apt-get remove git
-    apt-get autoremove
+    sudo apt-get remove git
+    sudo apt-get autoremove
  
 ### nvm安装
 
 nvm是专门的node版本管理工具，可以在同一台机器上管理不同node版本。
+
+github地址为: https://github.com/creationix/nvm
 
 #### 卸载已安装到全局的 node/npm
 
@@ -45,14 +47,21 @@ cd  /usr/local/bin && ls -l | grep "../lib/node_modules/" | awk '{print $9}'| xa
 ```
 #### 安装 nvm
 
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash  #具体最新版见github
+通过curl:
 
-安装完成后请重新打开终端环境， oh-my-zsh 也是一样。
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
+    
+通过wget:
+
+    wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
+
+
+__注意：__安装完成后请重新打开终端环境， oh-my-zsh 也是一样。
 
 #### 安装切换各版本 node/npm
 
 ```
-nvm install stable
+nvm install node
 #安装最新稳定版 node，现在是 5.0.0
 
 nvm install 4.2.2
@@ -78,6 +87,16 @@ npm install -g react-native-cli
 nvm alias default 0.12.7
 #设置默认 node 版本为 0.12.7
 ```
+
+使用nvm --help查看是否安装成功。
+
+使用nvm ls查看已经安装的版本。
+
+使用nvm ls-remote查看所有远端版本。
+
+使用nvm install安装某个版本，如nvm install v5.3.0。
+
+使用nvm use切换到某个版本，如nvm use v5.3.0使用5.3.0，nvm use system使用系统版本。
 
 #### 使用 .nvmrc 文件配置项目所使用的 node 版本
 如果你的默认 node 版本（通过 nvm alias 命令设置的）与项目所需的版本不同，则可在项目根目录或其任意父级目录中创建 .nvmrc 文件，在文件中指定使用的 node 版本号，例如：
