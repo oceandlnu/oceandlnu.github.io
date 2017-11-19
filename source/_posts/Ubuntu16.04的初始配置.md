@@ -314,12 +314,75 @@ sudo gdebi {网易云deb包名称}
 安装好之后启动网易云音乐
 
     netease-cloud-music
+    
+#### 安装WPS
+
+##### 前言
+
+ubuntu 16 默认安装了liberoffie，其实蛮好用的，使用页比较简单，但是不知道为什么打开Windows下用微软office创建的PPT会卡死，很蛋疼，所以想要把office软件换成WPS的Linux 版本。
+
+##### 开始安装
+
+STEP 1
+
+到金山WPS的官方网址下载对应版本的deb安装包。 
+WPS官方网站： http://linux.wps.cn/ （区分64位、32位）
+
+STEP2
+
+安装WPS的deb，执行dpkg -i 即可。
+
+    sudo dpkg -i wps-office_10.1.0.5672-a21_amd64.deb
+    
+如果提示缺少所需依赖，执行
+
+    sudo apt-get -f install
+    
+如果提示还缺失依赖libpng-12.0，这个在默认的apt 仓库里没有。所以需要手动下载一下。 
+下载地址： https://packages.debian.org/zh-cn/wheezy/amd64/libpng12-0/download
+
+下载完成后，执行dpkg -i 安装这个依赖。
+
+    sudo dpkg -i libpng12-0_1.2.49-1+deb7u2_amd64.deb
+
+STEP 3
+
+最后一步，打开WPS 会报出一个字体缺少的对话框。 
+
+出现提示的原因是因为WPS for Linux没有自带windows的字体，只要在Linux系统中加载字体即可。
+
+具体操作步骤如下：
+
+1.下载缺失的字体文件，然后复制到Linux系统中的 /usr/share/fonts 文件夹中。
+
+国外下载地址： https://www.dropbox.com/s/lfy4hvq95ilwyw5/wps_symbol_fonts.zip
+
+国内下载地址： http://pan.baidu.com/s/1mh0lcbY
+
+（上述数据来源网络，侵删）
+
+下载完成后，解压并进入目录中，继续执行：
+
+    sudo cp * /usr/share/fonts
+
+2.执行以下命令,生成字体的索引信息：
+
+
+    sudo mkfontscale
+
+    sudo mkfontdir
+
+3.运行fc-cache命令更新字体缓存。
+
+    sudo fc-cache
+
+4.重启wps即可，字体缺失的提示不再出现。
 
 ### 安装配置shadowsocks
 
-1.首先使用快捷键ctrl+alt+t，打开我们的终端窗口
+1.首先使用快捷键ctrl+alt+t，打开终端
 
-2.接着安装shadowsocks-qt5
+2.安装shadowsocks-qt5
 
 ```
 sudo add-apt-repository ppa:hzwhuang/ss-qt5
