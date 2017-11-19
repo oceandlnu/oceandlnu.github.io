@@ -212,8 +212,8 @@ id_rsa  id_rsa.pub  known_hosts
 　　git add README.md //文件添加到仓库
 　　git add . //不但可以跟单一文件，还可以跟通配符，更可以跟目录。一个点就把当前目录下所有未追踪的文件全部add了 
 　　git commit -m "first commit" //把文件提交到仓库
-　　git remote add origin git@github.com:wangjiax9/practice.git //关联远程仓库
-　　git push -u origin master //把本地库的所有内容推送到远程库上
+　　git remote add origin git@github.com:oceandlnu/test.git //关联远程仓库
+　　git push -u origin master //把本地库的所有内容推送到远程库的master分支上
 ```
 首先，进入到test项目目录，还记得创建仓库成功后的那个页面吧，指令都在呢。
 

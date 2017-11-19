@@ -148,6 +148,30 @@ deb http://security.ubuntu.com/ubuntu xenial-security multiverse
 
     sudo apt-get update
 
+执行命令出现错误：
+
+```
+Reading package lists... Done
+E: Problem executing scripts APT::Update::Post-Invoke-Success
+'if /usr/bin/test -w /var/cache/app-info -a -e /usr/bin/appstreamcli;
+ then appstreamcli refresh > /dev/null;
+ fi'
+E: Sub-process returned an error code
+```
+
+ubuntu 16.04 经常出现内部错误，错误原因是 appstreamcli 意外停止，sudo apt-get update 的时候也出现错误如上，解决方法如下：
+
+```
+sudo pkill -KILL appstreamcli
+wget -P /tmp https://launchpad.net/ubuntu/+archive/primary/+files/appstream_0.9.4-1ubuntu1_amd64.deb https://launchpad.net/ubuntu/+archive/primary/+files/libappstream3_0.9.4-1ubuntu1_amd64.deb
+sudo dpkg -i /tmp/appstream_0.9.4-1ubuntu1_amd64.deb /tmp/libappstream3_0.9.4-1ubuntu1_amd64.deb
+```
+
+执行完上述命令之后再次运行sudo apt-get update就不会再出现上面的错误。
+
+__参考：__ https://askubuntu.com/questions/774986/appstreamcli-hanging-with-100-cpu-usage-during-update
+
+
 ### 安装
 
 更新系统源并且升级软件
@@ -316,7 +340,7 @@ sudo pip install genpac
 
 该命令会在/home/xxx/下生成autoproxy.pac（其中xxx是用户名，比如我的是/home/ocean/）
 
-5.运行shadowsocks-qt5（可通过搜索功能找到），填写server address,server port,password,Encryptioin Method等信息，其他的使用默认的就行了。
+5.运行shadowsocks-qt5（可通过搜索功能找到），填写server address,server port,password,Encryptioin Method等信息([逗比根据地](https://doub.bid/sszhfx/),[自由上网](https://github.com/Alvin9999/new-pac/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7))，其他的使用默认的就行了。
 
 6.最后一步，打开 系统设置->网络->网络代理，将 方法 改为 自动，配置 Url填”file:///home/ocean/autoproxy.pac”，然后 应用到整个系统 即可
 
