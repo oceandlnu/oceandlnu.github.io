@@ -56,13 +56,18 @@ cd  /usr/local/bin && ls -l | grep "../lib/node_modules/" | awk '{print $9}'| xa
     wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
 
 
-__注意：__安装完成后请重新打开终端环境， oh-my-zsh 也是一样。
+__注意：安装完成后请重新打开终端环境， oh-my-zsh 也是一样。__
+
+执行下面语句安装最新稳定版node（自带npm）：
+
+    nvm install node
+    #安装最新稳定版 node，现在是 9.2.0
 
 #### 安装切换各版本 node/npm
 
 ```
 nvm install node
-#安装最新稳定版 node，现在是 5.0.0
+#安装最新稳定版 node，现在是 9.2.0
 
 nvm install 4.2.2
 #安装 4.2.2 版本

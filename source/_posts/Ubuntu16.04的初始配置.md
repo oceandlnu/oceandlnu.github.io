@@ -27,28 +27,52 @@ copyright: true
 
 ### 换源
 
-这里换成[阿里源](http://mirrors.aliyun.com/)，如果要换成其他的源([163源](http://mirrors.163.com/))，可以去搜索一下，原理相同
+这里换成[阿里源](http://mirrors.aliyun.com/)，如果要换成其他的源(比如国内速度较快源地址：[163源](http://mirrors.163.com/)、[搜狐源](http://mirrors.sohu.com/)、[清华源](https://mirrors.tuna.tsinghua.edu.cn/)、[中科大](https://mirrors.ustc.edu.cn/)、[北京交通大学源码](http://mirror.bjtu.edu.cn/cn/))，可以去搜索一下，原理相同
 
-#### 1、软件包管理中心（推荐）
+#### 查看系统版本及内核
+
+首先查看自己的ubuntu系统的codename，这一步很重要，直接导致你更新的源是否对你的系统起效果，查看方法：
+
+    lsb_release -a
+
+```
+No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 16.04 LTS
+Release:	16.04
+Codename:	xenial
+```
+
+上面显示了一些ubuntu的版本信息，需要得到的是Codename，比如，我这里是xenial
+
+#### 确认阿里源支持
+
+登陆一下网页： http://mirrors.aliyun.com/ubuntu/dists/
+
+该网页显示了阿里云支持的ubuntu系统下各个Codename版本，确保自己的Codename在该网页中存在（一般都会有的）
+
+#### 更换源
+
+##### 1.软件包管理中心（推荐）
 
 在软件包管理中心“软件源”中选择“中国的服务器”下mirros.aliyun.com即可自动使用
 
-#### 2、手动更改配置文件
+##### 2.手动更改配置文件
 
 先将原配置文件备份
 
-    sudo mv /etc/apt/sources.list /etc/apt/sources.list.backup
+    sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup
 
-然后新建一个配置文件
+然后打开编辑sources.list
 
     sudo gedit /etc/apt/sources.list
 
-在文件最前面添加以下条目
+在文件最前面复制以下内容（不是覆盖原文件）
 
 Xenial(16.04)
 
 ```
-# deb cdrom:[Ubuntu 16.04 LTS _Xenial Xerus_ - Release amd64 (20160420.1)]/ xenial main restricted
+#deb cdrom:[Ubuntu 16.04 LTS _Xenial Xerus_ - Release amd64 (20160420.1)]/ xenial main restricted
 deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse
 deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse
 deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse
@@ -62,27 +86,62 @@ deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted unive
 ```
 
 
-或者输入以下内容
+系统初始官方源（默认）：
 
 ```
-# deb cdrom:[Ubuntu 16.04 LTS _Xenial Xerus_ - Release amd64 (20160420.1)]/ xenial main restricted
-deb-src http://archive.ubuntu.com/ubuntu xenial main restricted #Added by software-properties
-deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted
-deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted multiverse universe #Added by software-properties
-deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted
-deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted multiverse universe #Added by software-properties
-deb http://mirrors.aliyun.com/ubuntu/ xenial universe
-deb http://mirrors.aliyun.com/ubuntu/ xenial-updates universe
-deb http://mirrors.aliyun.com/ubuntu/ xenial multiverse
-deb http://mirrors.aliyun.com/ubuntu/ xenial-updates multiverse
-deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse #Added by software-properties
-deb http://archive.canonical.com/ubuntu xenial partner
-deb-src http://archive.canonical.com/ubuntu xenial partner
-deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted
-deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted multiverse universe #Added by software-properties
-deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe
-deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse
+#deb cdrom:[Ubuntu 16.04 LTS _Xenial Xerus_ - Release amd64 (20160420.1)]/ xenial main restricted
+
+# See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade to
+# newer versions of the distribution.
+deb http://cn.archive.ubuntu.com/ubuntu/ xenial main restricted
+# deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial main restricted
+
+## Major bug fix updates produced after the final release of the
+## distribution.
+deb http://cn.archive.ubuntu.com/ubuntu/ xenial-updates main restricted
+# deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-updates main restricted
+
+## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu
+## team, and may not be under a free licence. Please satisfy yourself as to
+## your rights to use the software. Also, please note that software in
+## universe WILL NOT receive any review or updates from the Ubuntu security
+## team.
+deb http://cn.archive.ubuntu.com/ubuntu/ xenial universe
+# deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial universe
+deb http://cn.archive.ubuntu.com/ubuntu/ xenial-updates universe
+# deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-updates universe
+
+## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu 
+## team, and may not be under a free licence. Please satisfy yourself as to 
+## your rights to use the software. Also, please note that software in 
+## multiverse WILL NOT receive any review or updates from the Ubuntu
+## security team.
+deb http://cn.archive.ubuntu.com/ubuntu/ xenial multiverse
+# deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial multiverse
+deb http://cn.archive.ubuntu.com/ubuntu/ xenial-updates multiverse
+# deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-updates multiverse
+
+## N.B. software from this repository may not have been tested as
+## extensively as that contained in the main release, although it includes
+## newer versions of some applications which may provide useful features.
+## Also, please note that software in backports WILL NOT receive any review
+## or updates from the Ubuntu security team.
+deb http://cn.archive.ubuntu.com/ubuntu/ xenial-backports main restricted universe multiverse
+# deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial-backports main restricted universe multiverse
+
+## Uncomment the following two lines to add software from Canonical's
+## 'partner' repository.
+## This software is not part of Ubuntu, but is offered by Canonical and the
+## respective vendors as a service to Ubuntu users.
+# deb http://archive.canonical.com/ubuntu xenial partner
+# deb-src http://archive.canonical.com/ubuntu xenial partner
+
+deb http://security.ubuntu.com/ubuntu xenial-security main restricted
+# deb-src http://security.ubuntu.com/ubuntu xenial-security main restricted
+deb http://security.ubuntu.com/ubuntu xenial-security universe
+# deb-src http://security.ubuntu.com/ubuntu xenial-security universe
+deb http://security.ubuntu.com/ubuntu xenial-security multiverse
+# deb-src http://security.ubuntu.com/ubuntu xenial-security multiverse
 ```
 
 ### 更新
@@ -119,9 +178,9 @@ sudo apt-get upgrade
 
 64 位安装命令:
 
-    sudo dpkg -i google-chrome-stable_current_amd64.deb 
+    sudo dpkg -i google-chrome-stable_current_amd64.deb
 
-直接用dpkg安装，报错浏览器还有依赖其他的包
+直接用dpkg安装，报错程序还有依赖其他的包，如下：
 
 ```
 ubuntu下安装chrome出现了错误：dpkg：处理 google-chrome-stable (--install)时出错： 
@@ -134,13 +193,9 @@ dpkg：处理 google-chrome-stable (--install)时出错：
  依赖关系问题 - 仍未被配置
 ```
 
-先执行
+执行安装依赖
 
     apt-get -f install
-
-然后在用dpkg安装
-
-    dpkg -i google-chrome-stable_current_amd64.deb
 
 ##### 二、添加 Google Chrome 的PPA
 
@@ -176,7 +231,7 @@ sudo apt-get install google-chrome-stable
 
     sudo apt-get install google-chrome-unstable
 
-##### 三、终端输入google-chrome-stable即可运行，如果出现报错如下：
+##### 三、终端输入 google-chrome-stable 即可运行，如果出现报错如下：
 
 ```
 [0807/144244.712736:FATAL:nss_util.cc(627)] NSS_VersionCheck("3.26") failed. NSS >= 3.26 is required
