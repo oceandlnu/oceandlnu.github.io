@@ -427,6 +427,10 @@ http://packages.deepin.com/deepin/pool/non-free/a/apps.com.qq.im/
 
 https://pan.baidu.com/s/1kVuKGq7
 
+安装deepin-crossover-helper
+
+https://pan.baidu.com/s/1eRCV9CI
+
 或者
 
 下载[官网](http://media.codeweavers.com/pub/crossover/cxlinux/demo/)试用版：
@@ -460,13 +464,9 @@ https://pan.baidu.com/s/1slTLv8T
 
 把破解文件 (Crack->winewrapper.exe.so) 拖到这里。提示已有文件，点”替换“破解完成。
 
-3.安装deepin-crossover-helper
+3.安装deepin QQ8.9包
 
-https://pan.baidu.com/s/1eRCV9CI
-
-4.安装deepin QQ8.9包
-
-5.开始使用(如果无法启动，关机，重启系统即可)
+4.开始使用(如果无法启动，关机，重启系统即可)
 
 PS：程序安装以后可能图标会在“其他”一类，请手动移到别的分类
 
