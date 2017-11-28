@@ -378,6 +378,45 @@ STEP 3
 
 4.重启wps即可，字体缺失的提示不再出现。
 
+#### 利用Google浏览器创建应用(钉钉,微信)
+
+该功能以前是谷歌自带功能，后续版本把这个功能去掉了，但是却可以这样做得以恢复
+
+下面开始说方法
+在这个目录下 ～/.local/share/applications/ 创建各自的desktop文件(vim xxx.desktop)
+
+钉钉
+```
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=钉钉
+Exec=/opt/google/chrome/google-chrome "--app=https://im.dingtalk.com/"
+Icon=/home/ocean/appicon/dd.png
+StartupWMClass=im.dingtalk.com
+```
+微信
+```
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=微信
+Exec=/opt/google/chrome/google-chrome "--app=https://wx.qq.com/?lang=zh_CN"
+Icon=/home/ocean/appicon/wx.png
+StartupWMClass=wx.qq.com
+```
+
+图标路径可以自己改成对应的路径，不必按照案例来做，只要能访问到就是OK的
+图标另存为保存即可
+
+![](/uploads/2017-09-25/dd.png)
+
+![](/uploads/2017-09-25/wx.png)
+
 ### 安装配置shadowsocks
 
 1.首先使用快捷键ctrl+alt+t，打开终端

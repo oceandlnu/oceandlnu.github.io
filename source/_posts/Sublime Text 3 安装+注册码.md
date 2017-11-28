@@ -22,7 +22,7 @@ copyright: true
 
 ![](/uploads/2017-01-18/1.png)
 
-注册码如下：
+### 注册码：
 
 Sublime Text 3 3126
 ```
@@ -56,15 +56,33 @@ D5D52613 C3D12E98 BC49967F 7652EED2
 E36B85CC 84991F19 7575D828 470A92AB
 —— END LICENSE ——
 ```
-如何解决Sublime Text 3不能正确显示中文的问题
+
+虽然vscode也还行但是sublime也还是不错的
+
+### ubuntu中文支持
+
+[zh_cn.gz](/uploads/2017-01-18/zh_cn.gz)
+
+使用方法
+
+下载后,用
+
+    tar -xf zh_cn.gz 
+
+会得到一个 sublime的文件夹,然后进入该文件夹内运行命令:
+
+    sudo sh install.sh
+
+即可完美支持中文
+
+### 如何解决Sublime Text 3不能正确显示中文的问题
 
 步骤：
 
-在Sublime Text里，按ctrl+`，打开Console，一次性输入如下代码：
-[plain] view plain copy
-```
-import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())
+在Sublime Text里，按 ctrl+` 或者 View > Show Console ，打开 Console 一次性输入如下代码：
 
+```
+import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
 ```
 
 这样Sublime Text就会安装我们需要的Package Control。否则后面会找不到Package。
