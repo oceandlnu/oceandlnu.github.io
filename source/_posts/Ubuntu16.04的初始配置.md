@@ -417,6 +417,69 @@ StartupWMClass=wx.qq.com
 
 ![](/uploads/2017-09-25/wx.png)
 
+#### 安装deepin定制版QQ
+
+1.下载deepin定制版QQ8.9的.deb包（暂不安装）
+
+http://packages.deepin.com/deepin/pool/non-free/a/apps.com.qq.im/
+
+2.安装crossover15我在网上一个疑似破解版的
+
+https://pan.baidu.com/s/1kVuKGq7
+
+或者
+
+下载[官网](http://media.codeweavers.com/pub/crossover/cxlinux/demo/)试用版：
+
+http://media.codeweavers.com/pub/crossover/cxlinux/demo/crossover_16.2.5-1.deb
+
+安装：
+
+    sudo dpkg crossover_16.2.5-1.deb
+
+[__下载破解文件__](/uploads/2017-09-25/Crack.tar.gz)
+
+https://pan.baidu.com/s/1slTLv8T
+
+如缺包则按提示安装。
+
+    in my case I have installed the missing libnss-mdns 32-bit by typing: 
+    apt-get install libnss-mdns:i386
+
+创建一个容器，安装QQ8.9.
+
+破解：
+
+在命令行输入sudo nautilus打开一个root权限的文件管理器
+
+如要求输入密码，按提示输入
+
+之后会弹出一个文件管理器的界面。
+
+找到路径: /opt/cxoffice/lib/wine
+
+把破解文件 (Crack->winewrapper.exe.so) 拖到这里。提示已有文件，点”替换“破解完成。
+
+3.安装deepin-crossover-helper
+
+https://pan.baidu.com/s/1eRCV9CI
+
+4.安装deepin QQ8.9包
+
+5.开始使用(如果无法启动，关机，重启系统即可)
+
+PS：程序安装以后可能图标会在“其他”一类，请手动移到别的分类
+
+__解决字体乱码__
+
+如果碰到字体乱码的问题请下载宋体后放在crossover的font文件夹内
+
+下载地址：https://pan.baidu.com/s/1skQm1n3 
+
+参考目录：
+
+    /opt/cxoffice/share/wine/fonts
+
 ### 安装配置shadowsocks
 
 1.首先使用快捷键ctrl+alt+t，打开终端

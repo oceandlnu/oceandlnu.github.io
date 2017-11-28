@@ -95,7 +95,7 @@ E36B85CC 84991F19 7575D828 470A92AB
 
 会得到一个 sublime的文件夹,然后进入该文件夹内运行命令:
 
-	cd sublime
+	cd sublime/
     sudo sh install.sh
 
 即可完美支持中文
