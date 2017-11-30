@@ -423,23 +423,49 @@ StartupWMClass=wx.qq.com
 
 http://packages.deepin.com/deepin/pool/non-free/a/apps.com.qq.im/
 
-2.安装crossover15我在网上一个疑似破解版的
+1.1简单移植deepin的wine软件包到其他Linux发行版
 
-https://pan.baidu.com/s/1kVuKGq7
+对于无法解决的依赖，可以直接对软件包进行修改，去掉这些依赖进行安装，但由于依赖问题，所以部分软件并不能完美运行。
 
-安装deepin-crossover-helper
+1.2 修改deepin的wine软件包
 
-https://pan.baidu.com/s/1eRCV9CI
+下载deepin的wine软件包，例如apps.com.qq.im_8.9.19990deepin14_i386.deb，
 
-或者
+1.2.1 解压wine软件包
 
-下载[官网](http://media.codeweavers.com/pub/crossover/cxlinux/demo/)试用版：
+```
+# 先创建软件包目录
+mkdir -p extract/DEBIAN
+
+# 用dpkg解压
+dpkg-deb -x apps.com.qq.im_8.9.19990deepin14_i386.deb extract/
+dpkg-deb -e apps.com.qq.im_8.9.19990deepin14_i386.deb extract/DEBIAN
+```
+
+1.2.2 去掉依赖
+
+用文本编辑器打开extract/DEBIAN/control，找到Depends这一行，去掉安装时提示的不能通过的依赖，一般只留下crossover即可。
+
+2.2.3 重新打包
+
+```
+# 建立软件包生成目录
+mkdir build
+
+# 重新打包
+dpkg-deb -b extract/ build/
+```
+
+在build目录下会看到新生成的wine软件包，安装即可;然后会在crossover中会看到这个容器，运行里面的软件即可
+
+2.安装crossover[官网下载](http://media.codeweavers.com/pub/crossover/cxlinux/demo/)试用版：
 
 http://media.codeweavers.com/pub/crossover/cxlinux/demo/crossover_16.2.5-1.deb
+http://crossover.codeweavers.com/redirect/crossover.deb
 
-安装：
+__安装：__
 
-    sudo dpkg crossover_16.2.5-1.deb
+    sudo dpkg -i crossover_16.2.5-1.deb
 
 [__下载破解文件__](/uploads/2017-09-25/Crack.tar.gz)
 
@@ -448,11 +474,9 @@ https://pan.baidu.com/s/1slTLv8T
 如缺包则按提示安装。
 
     in my case I have installed the missing libnss-mdns 32-bit by typing: 
-    apt-get install libnss-mdns:i386
+    sudo apt-get install libnss-mdns:i386
 
-创建一个容器，安装QQ8.9.
-
-破解：
+__破解：__
 
 在命令行输入sudo nautilus打开一个root权限的文件管理器
 
@@ -474,7 +498,7 @@ __解决字体乱码__
 
 如果碰到字体乱码的问题请下载宋体后放在crossover的font文件夹内
 
-下载地址：https://pan.baidu.com/s/1skQm1n3 
+下载地址：https://pan.baidu.com/s/1skQm1n3
 
 参考目录：
 

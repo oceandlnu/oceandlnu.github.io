@@ -86,7 +86,8 @@ Unix domain socket
      
 socket方式：
      
-在 /etc/nginx/sites-available/default 配置文件中（网站根目录也在是这里更改）， Nginx已经为与 PHP-FPM的整合准备好了，只需要将下面这部分改好就可以了。sock文件路径为 /run/php/php7.0-fpm.sock 。
+在 /etc/nginx/sites-available/default 配置文件中（网站根目录也在是这里更改）， Nginx已经为与 PHP-FPM的整合准备好了，只需要将下面这部分改好就可以了。
+
 ```
     # Add index.php to the list if you are using PHP(在下面条目中添加index.php)
     index index.html index.htm index.nginx-debian.html index.php;
@@ -109,13 +110,16 @@ socket方式：
      ;  与 Nginx监听同一个 sock
      listen = /run/php/php7.0-fpm.sock
 
+sock文件路径为 /run/php/php7.0-fpm.sock 。
+
 配置好后重启服务：
      
      sudo /etc/init.d/nginx restart
-     sudo /etc/init.d/php7.1-fpm restart
+     sudo /etc/init.d/php7.0-fpm restart
 
 #### 验证环境
-Apache默认的网站根目录位于 /var/www/html/ ,进入这个目录，并创建 info.php
+
+Apache(Nginx)默认的网站根目录位于 /var/www/html/ ,进入这个目录，并创建 info.php
 
 ```
 <?php 
@@ -126,6 +130,7 @@ phpinfo();
 在浏览器中输入 http://localhost/info.php 。
 
 #### 排错
+
 如果 http://localhost/info.php 页面空白，请尝试 Ctrl+F5 强制刷新页面。
 如果依然空白，说明php和apache之间还需要一些配置
 编辑 /etc/apache2/apache2.conf
