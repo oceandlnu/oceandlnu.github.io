@@ -423,45 +423,12 @@ StartupWMClass=wx.qq.com
 
 http://packages.deepin.com/deepin/pool/non-free/a/apps.com.qq.im/
 
-1.1简单移植deepin的wine软件包到其他Linux发行版
-
-对于无法解决的依赖，可以直接对软件包进行修改，去掉这些依赖进行安装，但由于依赖问题，所以部分软件并不能完美运行。
-
-1.2 修改deepin的wine软件包
-
-下载deepin的wine软件包，例如apps.com.qq.im_8.9.19990deepin14_i386.deb，
-
-1.2.1 解压wine软件包
-
-```
-# 先创建软件包目录
-mkdir -p extract/DEBIAN
-
-# 用dpkg解压
-dpkg-deb -x apps.com.qq.im_8.9.19990deepin14_i386.deb extract/
-dpkg-deb -e apps.com.qq.im_8.9.19990deepin14_i386.deb extract/DEBIAN
-```
-
-1.2.2 去掉依赖
-
-用文本编辑器打开extract/DEBIAN/control，找到Depends这一行，去掉安装时提示的不能通过的依赖，一般只留下crossover即可。
-
-2.2.3 重新打包
-
-```
-# 建立软件包生成目录
-mkdir build
-
-# 重新打包
-dpkg-deb -b extract/ build/
-```
-
-在build目录下会看到新生成的wine软件包，安装即可;然后会在crossover中会看到这个容器，运行里面的软件即可
-
 2.安装crossover[官网下载](http://media.codeweavers.com/pub/crossover/cxlinux/demo/)试用版：
 
-http://media.codeweavers.com/pub/crossover/cxlinux/demo/crossover_16.2.5-1.deb
+最新稳定版：
 http://crossover.codeweavers.com/redirect/crossover.deb
+下载指定版本(eg:crossover16.2.5-1)：
+http://media.codeweavers.com/pub/crossover/cxlinux/demo/crossover_16.2.5-1.deb
 
 __安装：__
 
@@ -478,19 +445,56 @@ https://pan.baidu.com/s/1slTLv8T
 
 __破解：__
 
-在命令行输入sudo nautilus打开一个root权限的文件管理器
+在命令行输入
 
-如要求输入密码，按提示输入
+    sudo nautilus
 
-之后会弹出一个文件管理器的界面。
+打开一个root权限的文件管理器，找到路径:
+    
+    /opt/cxoffice/lib/wine
 
-找到路径: /opt/cxoffice/lib/wine
+将破解文件 (Crack->winewrapper.exe.so) 拖到这里，点”替换“破解完成。
 
-把破解文件 (Crack->winewrapper.exe.so) 拖到这里。提示已有文件，点”替换“破解完成。
+3.0安装deepin QQ8.9
 
-3.安装deepin QQ8.9包
+3.1简单移植deepin的wine软件包到其他Linux发行版
 
-4.开始使用(如果无法启动，关机，重启系统即可)
+对于无法解决的依赖，可以直接对软件包进行修改，去掉这些依赖进行安装，但由于依赖问题，所以部分软件并不能完美运行。
+
+3.2 修改deepin的wine软件包
+
+下载deepin的wine软件包，例如已经下载好的apps.com.qq.im_8.9.19990deepin14_i386.deb，在此目录下打开终端
+
+3.2.1 解压wine软件包
+
+```
+# 先创建软件包目录
+mkdir -p extract/DEBIAN
+
+# 用dpkg解压
+dpkg-deb -x apps.com.qq.im_8.9.19990deepin14_i386.deb extract/
+dpkg-deb -e apps.com.qq.im_8.9.19990deepin14_i386.deb extract/DEBIAN
+```
+
+3.2.2 去掉依赖
+
+用文本编辑器打开extract/DEBIAN/control，找到Depends这一行，去掉安装时提示的不能通过的依赖，一般只留下crossover即可。
+
+3.2.3 重新打包
+
+```
+# 建立软件包生成目录
+mkdir build
+
+# 重新打包
+dpkg-deb -b extract/ build/
+```
+
+在build目录下会看到新生成的wine软件包，安装即可;
+
+    sudo dpkg -i apps.com.qq.im_8.9.19990deepin14_i386.deb
+
+然后会在crossover中会看到这个容器，运行里面的软件即可
 
 PS：程序安装以后可能图标会在“其他”一类，请手动移到别的分类
 
