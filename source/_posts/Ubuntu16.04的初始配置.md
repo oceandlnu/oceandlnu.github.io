@@ -508,7 +508,117 @@ __解决字体乱码__
 
     /opt/cxoffice/share/wine/fonts
 
-### 安装配置shadowsocks
+### 安装shadowsocksr/shadowsocks
+
+#### shadowsocksr安装配置
+
+Shadowsocks 与 Shadowsocksr 区别
+
+SS是原版，SSR是原版基础上衍生出来的第三方版本，兼容原版协议，比原版多了一些伪装功能（协议和混淆）。
+SSR 主要特点是增加了一些人性化功能，比如服务器连接统计、连接管理、协议转换、多重代理等。
+
+##### ssr下载
+
+[ssr releases](https://github.com/shadowsocksrr/shadowsocksr/releases)
+
+下载之后，解压zip文件，更改文件夹名称为shadowsocksr
+
+解压的文件夹， 有一个文件 config.json ，这个就是配置文件的模板，我们可以复制一份到/etc/shadowsocks.json，然后对这个文件进行配置：
+
+    sudo cp config.json /etc/shadowsocks.json
+    sudo vim config.json
+
+```
+{
+    "server": "0.0.0.0",
+    "server_ipv6": "::",
+    "server_port": 8388,
+    "local_address": "127.0.0.1",
+    "local_port": 1080,
+
+    "password": "m",
+    "method": "aes-128-ctr",
+    "protocol": "auth_aes128_md5",
+    "protocol_param": "",
+    "obfs": "tls1.2_ticket_auth_compatible",
+    "obfs_param": "",
+    "speed_limit_per_con": 0,
+    "speed_limit_per_user": 0,
+
+    "additional_ports" : {}, // only works under multi-user mode
+    "additional_ports_only" : false, // only works under multi-user mode
+    "timeout": 120,
+    "udp_timeout": 60,
+    "dns_ipv6": false,
+    "connect_verbose_info": 0,
+    "redirect": "",
+    "fast_open": false
+}
+```
+
+主要用到的配置是下面的这几个选项：
+
+```
+"server_port":8388,        //端口
+"password":"password",     //密码
+"protocol":"origin",       //协议插件
+"obfs":"http_simple",      //混淆插件
+"method":"aes-256-cfb",    //加密方式
+ ```
+
+运行程序
+
+进入到shadowsocksr/shadowsocks/目录里面，执行：
+
+    python local.py -c /etc/shadowsocks.json
+
+出现下面的提示,说明运行成功
+
+```
+2017-10-17 12:30:49 INFO     local.py:50 local start with protocol[auth_chain_a] password [Ck6295iFwq] method [none] obfs [tls1.2_ticket_auth] obfs_param []
+2017-10-17 12:30:49 INFO     local.py:54 starting local at 127.0.0.1:1080
+2017-10-17 12:30:49 INFO     asyncdns.py:324 dns server: [('127.0.1.1', 53)]
+2017-10-17 12:30:57 INFO     util.py:85 loading libcrypto from libcrypto.so.1.0.0
+```
+
+##### ssr GUI图像客户端（需要先下载ssr）
+
+[ssr GUI 客户端](https://github.com/erguotou520/electron-ssr/releases)
+
+点击"..."选择shadowsocksr/shadowsocks/，点击"保存"，在出现的界面点击"确定"即可（不要点右上角的X，不然直接退出程序），右键右上角"纸飞机"图标，勾选"启用系统代理"，"开机自启"
+
+添加服务器：右键右上角"纸飞机"图标，服务器->编辑服务器->添加，填写完毕后点击"确定"即可；或者也可以右键"纸飞机"图标->"二维码扫描"，然后"服务器"列表选择相应的服务器即可
+
+##### SwitchyOmega配置代理
+
+https://switchyomega.com/index.html
+
+[Github](https://github.com/FelisCatus/SwitchyOmega/releases)
+
+安装好后，打开拓展程序->选项
+
+然后进入情景模式->proxy
+
+设置：
+
+```
+代理协议：SOCKS5
+代理服务器：127.0.0.1
+端口：1080
+```
+
+情景模式->auto switch
+
+```
+规则列表格式:AutoProxy
+规则列表网址:https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt
+```
+
+点击"立即更新情景模式"，然后点击左边的"应用选项"应用更改。
+
+SwitchyOmega情景模式选择"proxy"（都走代理模式）或者"auto switch"（自动根据URL来决定是否使用代理）就可以科学上网，推荐使用"auto switch"。
+
+#### shadowsocks安装配置
 
 1.首先使用快捷键ctrl+alt+t，打开终端
 
