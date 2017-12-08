@@ -1,13 +1,13 @@
 ---
 layout: post
-title: PHP在CentOS下出现HTTP ERROR 500解决方法
+title: PHP在Linux下出现HTTP ERROR 500解决方法
 date: 2017-08-26 13:41:08
 tags:
  - PHP
  - CentOS
 categories:
  - Linux
-description: PHP在CentOS下出现HTTP ERROR 500解决方法
+description: PHP在Linux下出现HTTP ERROR 500解决方法
 copyright: true
 ---
 
@@ -15,7 +15,12 @@ copyright: true
 
 ![](/uploads/2017-08-26/1.png)
 
-修改 /etc/php.ini 把display_errors = Off 改成 display_errors = On，建议开发完之后关闭，只在开发的时候开启此项
+修改配置文件
+
+	sudo vim /etc/php.ini #CentOS
+	sudo vim /etc/php/7.0/fpm/php.ini #Ubunbu
+
+把display_errors = Off 改成 display_errors = On，建议开发完之后关闭，只在开发的时候开启此项
 
 ![](/uploads/2017-08-26/2.png)
 
