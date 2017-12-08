@@ -74,7 +74,7 @@ __注意：__
 
 备份/etc/nginx/sites-available/default文件 
      
-     cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.back
+    sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.back
      
 PHP-FPM 与 Nginx 通信方式有两种，一种是TCP方式，一种是unix socket 方式。
      
@@ -88,25 +88,47 @@ socket方式：
      
 在 /etc/nginx/sites-available/default 配置文件中（网站根目录也在是这里更改）， Nginx已经为与 PHP-FPM的整合准备好了，只需要将下面这部分改好就可以了。
 
+    sudo vim /etc/nginx/sites-available/default
+
+```
+    # Add index.php to the list if you are using PHP
+    index index.html index.htm index.nginx-debian.html;
+	
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+    #
+    #location ~ \.php$ {
+    #   include snippets/fastcgi-php.conf;
+    #
+    #	# With php7.0-cgi alone:
+    #	fastcgi_pass 127.0.0.1:9000;
+    #	# With php7.0-fpm:
+    #   fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+    #}
+```
+
+修改为
+
 ```
     # Add index.php to the list if you are using PHP(在下面条目中添加index.php)
     index index.html index.htm index.nginx-debian.html index.php;
-	
+    
     # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
     #将下面4行前面的#号去掉，启动支持php模块
     #
     location ~ \.php$ {
         include snippets/fastcgi-php.conf;
     #
-    #	# With php7.0-cgi alone:
-    #	fastcgi_pass 127.0.0.1:9000;
-    #	# With php7.0-fpm:
+    #   # With php7.0-cgi alone:
+    #   fastcgi_pass 127.0.0.1:9000;
+    #   # With php7.0-fpm:
         fastcgi_pass unix:/run/php/php7.0-fpm.sock;
     }
 ```
 然后再修改 PHP-FPM的配置文件 /etc/php/7.0/fpm/pool.d/www.conf
      ，(大概36行)如下:
-     
+
+     sudo vim /etc/php/7.0/fpm/pool.d/www.conf
+
      ;  与 Nginx监听同一个 sock
      listen = /run/php/php7.0-fpm.sock
 
@@ -114,8 +136,8 @@ sock文件路径为 /run/php/php7.0-fpm.sock 。
 
 配置好后重启服务：
      
-     sudo /etc/init.d/nginx restart
-     sudo /etc/init.d/php7.0-fpm restart
+     sudo service nginx restart
+     sudo service php7.0-fpm restart
 
 #### 验证环境
 
