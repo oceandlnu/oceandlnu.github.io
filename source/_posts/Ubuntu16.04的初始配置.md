@@ -607,14 +607,14 @@ https://switchyomega.com/index.html
 端口：1080
 ```
 
-情景模式->auto switch
+情景模式->auto switch->添加规则列表
 
 ```
 规则列表格式:AutoProxy
 规则列表网址:https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt
 ```
 
-点击"立即更新情景模式"，然后点击左边的"应用选项"应用更改。
+将规则列表规则(按照规则列表匹配请求)，情景模式修改为：proxy，默认情景模式：直接连接；点击"立即更新情景模式"，然后点击左边的"应用选项"应用更改。
 
 SwitchyOmega情景模式选择"proxy"（都走代理模式）或者"auto switch"（自动根据URL来决定是否使用代理）就可以科学上网，推荐使用"auto switch"。
 
