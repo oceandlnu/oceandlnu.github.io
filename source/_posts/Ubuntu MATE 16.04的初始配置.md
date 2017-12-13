@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Ubuntu 16.04的初始配置
+title: Ubuntu MATE 16.04的初始配置
 date: 2017-09-25 13:47:23
 tags:
  - linux
  - ubuntu
 categories:
  - 配置
-description: Ubuntu 16.04的初始配置
+description: Ubuntu MATE 16.04的初始配置
 copyright: true
 ---
 
@@ -649,6 +649,81 @@ sudo pip install genpac
 
 7.打开浏览器，现在可以开始科学上网了
 
+### GIMP图像编辑器
+
+GIMP是什么？最准确的说法：[The GNU Image Manipulation Program](https://www.gimp.org/) 的简称，一个用 GTK 编写的图像编辑处理程序。
+　　最容易理解的说法：Linux下的Photoshop，但现在的 Windows 版本同样好用。
+　　最xbeta风格的说法：免费开源的GIMP，是昂贵的 PhotoShop 的较好替代方案。
+　　网络介绍：GIMP 是一个免费的、分布式的图片润饰、图象制作和处理软件，内含几乎所有图象处理所需的功能，号称Linux下的PhotoShop。 GIMP在Linux系统推出时就风靡了许多绘图爱好者的喜爱，它的接口相当轻巧，但其功能却不输于专业的绘图软件；它提供了各种的影像处理工具、滤镜， 还有许多的组件模块，对于要制作一个又酷又炫的网页按钮或网站Logo来说是一个非常方便好用的绘图软件，因为它也提供了许多的组件模块，你只要稍加修改一下，便可制作出一个属于你的网页按钮或网站Logo。 如今推出了For Windows版本，还不赶快试试… 注：需要安装GTK+环境包才能正常安装。
+
+安装：
+
+    sudo apt install gimp
+
+
+### Kdenlive视频编辑软件
+
+[Kdenlive](https://kdenlive.org/)是一款来自于 KDE 的自由而开源的视频编辑软件，它提供双视频监视器、多轨时间轴、剪辑列表、可自定义的布局支持、基本效果和基本转换的功能。
+
+它支持各种文件格式和各种摄像机和相机，包括低分辨率摄像机（Raw 和 AVI DV 编辑）：mpeg2、mpeg4 和 h264 AVCHD（小型摄像机和摄像机）；高分辨率摄像机文件，包括 HDV 和 AVCHD 摄像机；专业摄像机，包括 XDCAM-HDTM 流、IMXTM （D10）流、DVCAM（D10）、DVCAM、DVCPROTM 、DVCPRO50TM 流和 DNxHDTM 流等等。
+
+安装：
+
+    sudo apt install kdenlive
+    
+### 安装7zip
+
+p7zip：包含7zr（最小的7zip归档工具），仅仅只能处理原生的7z格式。
+
+p7zip-full：包含7z，支持7z、LZMA2、XZ、ZIP、CAB、GZIP、BZIP2、ARJ、TAR、CPIO、RPM、ISO和DEB格式。
+
+p7zip-rar：包含一个能解压RAR文件的插件。
+
+建议安装p7zip-full包（不是p7zip），因为这是最完全的7zip程序包，它支持很多归档格式。此外，如果想处理RAR文件话，还需要安装p7zip-rar包，做成一个独立的插件包的原因是因为RAR是一种专有格式。当然也可以三者都装。
+
+    sudo apt-get install p7zip-rar
+    sudo apt-get install p7zip-full
+    sudo apt-get install p7zip
+
+使用：
+
+直接命令行，或者压缩包右键->压缩/解压
+
+### 禁用f12调出终端Tilda
+
+系统->控制中心->启动应用程序
+
+去掉Tilda前面的勾，重启即可
+
+### 安装FTP客户端filezilla
+
+    sudo apt-get install filezilla
+
+### ssh远程登录脚本
+
+创建脚本
+
+    vim conn.sh
+    
+输入以下内容
+
+```$xslt
+#!/bin/bash
+
+user=用户名
+host=服务器地址
+passwd=密码
+
+echo 'passwd:'$passwd
+ssh $user@$host
+```
+
+设置执行权限755，然后执行脚本
+```$xslt
+sudo chmod 755 conn.sh
+./conn.sh
+```
+
 ### 移动Unity位置以及点击图标放大缩小
 
 从 Ubuntu 11.04 中首次发布 Unity 以来，它就一直被固定在系统左侧。但从 Ubuntu 16.04 开始，用户已经可以手动选择将 Unity 栏放在桌面左侧或是底部显示，目前还没办法将其移动到顶部或右侧。
@@ -686,32 +761,3 @@ indicator-sysmonitor &
 勾选Run on startup，这样就能开机启动了。切换到 Advanced 选项，可以对要显示的信息的格式进行设置。比如要显示网速，则加上net选项，点击Test，直到效果满意再点击保存。
 
 ![](/uploads/2017-09-25/3.png)
-
-### 安装FTP客户端filezilla
-
-    sudo apt-get install filezilla
-
-### ssh远程登录脚本
-
-创建脚本
-
-    vim conn.sh
-    
-输入以下内容
-
-```$xslt
-#!/bin/bash
-
-user=用户名
-host=服务器地址
-passwd=密码
-
-echo 'passwd:'$passwd
-ssh $user@$host
-```
-
-设置执行权限755，然后执行脚本
-```$xslt
-sudo chmod 755 conn.sh
-./conn.sh
-```
