@@ -1,7 +1,7 @@
 ---
 layout: post
-title: ubuntu 16.04 LTS下la(n)mp环境配置
-date: 2017-09-26 21:26:56
+title: ubuntu 18.04 LTS la(n)mp环境配置
+date: 2018-05-03 21:26:56
 tags:
  - Linux
  - Mysql
@@ -9,26 +9,26 @@ tags:
  - PHP
 categories:
  - linux
-description: ubuntu 16.04 LTS下la(n)mp环境配置
+description: ubuntu 18.04 LTS la(n)mp环境配置
 copyright: true
 ---
 
-ctrl+alt+t打开终端
+ctrl+alt+t 打开终端
 
 ```
-sudo apt-get update
-sudo apt-get upgrade
+sudo apt update
+sudo apt upgrade
 ```
 
 ### 安装apache2
 
-    sudo apt-get install apache2
+    sudo apt install apache2
 
 安装完成之后使用service apache2 status查看apahce2的状态，使用service apache2 restart重启apache2。
 
 ### 安装nginx
 
-    sudo apt-get install nginx
+    sudo apt install nginx
     
 安装好之后，使用 dpkg -S nginx 命令来搜索 nginx相关文件，可以从命令显示结果看出 Nginx默认的安装位置是/etc/nginx目录，其配置文件nginx.conf也是在该目录下，并且在 etc/init.d 下有 nginx的启动程序，该目录下的程序都会在系统开启时启动。
 
@@ -45,23 +45,23 @@ sudo apt-get upgrade
 
 ### 安装php7.0
 
-    sudo apt-get install php7.0
+    sudo apt install php7.0
 
 安装完成之后可以通过php -v测试环境是否配置正确，或者通过 sudo vim /var/www/html/testphp.php 命令创建testphp.php文件,浏览器输入 http://localhost/testphp.php 进行访问，如果访问正常，则表示php安装成功。
 
 ### 安装mysql
 
-    sudo apt-get install mysql-server
+    sudo apt install mysql-server
 
 安装过程中记住自己设置的密码。使用mysql -u root -p命令，然后输入自己的密码进行数据库登录。
 
 ### 整合LA(N)MP
 
 #### 整合php和mysql
-    sudo apt-get install php7.0-mysql
+    sudo apt install php7.0-mysql
 
 #### 整合php和Apache
-    sudo apt-get install libapache2-mod-php7.0
+    sudo apt install libapache2-mod-php7.0
     sudo service apache2 restart
     
 #### Nginx 与 PHP-FPM集成
@@ -146,7 +146,6 @@ Apache(Nginx)默认的网站根目录位于 /var/www/html/ ,进入这个目录�
 ```
 <?php 
 phpinfo();
-?>
 ```
 
 在浏览器中输入 http://localhost/info.php 。
