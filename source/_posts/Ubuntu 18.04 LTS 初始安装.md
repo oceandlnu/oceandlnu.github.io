@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Ubuntu MATE 18.04LTS配置
+title: Ubuntu 18.04 LTS 初始安装
 date: 2018-04-28 13:47:23
 tags:
  - linux
  - ubuntu
 categories:
  - 配置
-description: Ubuntu MATE 18.04LTS配置
+description: Ubuntu 18.04 LTS 初始安装
 copyright: true
 ---
 
@@ -86,7 +86,6 @@ sudo apt upgrade
     sudo apt install vim chromium-browser filezilla -y
     sudo apt install gimp kdenlive p7zip-full -y
 
-
 #### 安装搜狗输入法
 
 下载：https://pinyin.sogou.com/linux/?r=pinyin
@@ -109,6 +108,7 @@ sudo apt upgrade
 在这个目录下 ～/.local/share/applications/ 创建各自的desktop文件(vim xxx.desktop)
 
 钉钉
+
 ```
 #!/usr/bin/env xdg-open
 [Desktop Entry]
@@ -120,7 +120,9 @@ Exec=/opt/google/chrome/google-chrome "--app=https://im.dingtalk.com/"
 Terminal=false
 StartupWMClass=im.dingtalk.com
 ```
+
 微信
+
 ```
 #!/usr/bin/env xdg-open
 [Desktop Entry]
@@ -133,7 +135,8 @@ Terminal=false
 StartupWMClass=wx.qq.com
 ```
 
-附上创建应用快捷方式(比如Phpstorm)：
+附上创建应用快捷方式(例如Phpstorm)：
+
 ```
 [Desktop Entry]
 Version=1.0
@@ -152,6 +155,16 @@ StartupWMClass=jetbrains-phpstorm
 ![](/uploads/2017-09-25/dd.png)
 
 ![](/uploads/2017-09-25/wx.png)
+
+#### 安装Postman
+
+官网：https://www.getpostman.com/
+
+下载解压
+
+    cd Postman/
+    sudo apt install libgconf-2-4
+    ./Postman &
 
 ### shadowsocksr客户端(ssr)
 
@@ -224,7 +237,7 @@ StartupWMClass=jetbrains-phpstorm
 
 如果失败，根据提示信息安装依赖
 
-    sudo apt install curl jq tsock
+    sudo apt install curl jq tsocks -y
     //再次运行
     python local.py -c /etc/shadowsocks.json
 
@@ -232,7 +245,7 @@ StartupWMClass=jetbrains-phpstorm
 
 [ssr GUI 客户端](https://github.com/erguotou520/electron-ssr/releases)
 
-直接下载安装就可以，不多做介绍，对于有些Linux该客户端无效，不推荐。
+直接下载安装就可以，不多做介绍，对于有些Linux客户端无效，不推荐。
 
 安装ssr之后，还不能翻墙，因为没有开启代理端口，下面进行设置。
 
@@ -266,7 +279,7 @@ https://switchyomega.com/index.html
 
 SwitchyOmega情景模式选择"proxy"（都走代理模式）或者"auto switch"（自动根据URL来决定是否使用代理）就可以科学上网，推荐使用"auto switch"。
 
-#### pac配置
+#### pac代理配置
 
 1.安装genpac
 

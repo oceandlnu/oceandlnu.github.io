@@ -50,23 +50,8 @@ sudo apt-get install sublime-text
 
 ### 注册码：
 
-Sublime Text 3 3126
-```
-—– BEGIN LICENSE —–
-Michael Barnes
-Single User License
-EA7E-821385
-8A353C41 872A0D5C DF9B2950 AFF6F667
-C458EA6D 8EA3C286 98D1D650 131A97AB
-AA919AEC EF20E143 B361B1E7 4C8B7F04
-B085E65E 2F5F5360 8489D422 FB8FC1AA
-93F6323C FD7F7544 3F39C318 D95E6480
-FCCC7561 8A4A1741 68FA4223 ADCEDE07
-200C25BE DBBC4855 C4CFB774 C5EC138C
-0FEC1CEF D9DCECEC D3A5DAD1 01316C36
-—— END LICENSE ——
-```
 Sublime Text 3 3143
+
 ```
 —– BEGIN LICENSE —–
 TwitterInc
@@ -83,7 +68,30 @@ E36B85CC 84991F19 7575D828 470A92AB
 —— END LICENSE ——
 ```
 
-### ubuntu中文支持
+### 如何禁用自动更新：
+
+```
+“Preferences -> Settings-User/Distraction Free“
+#增加一行
+“update_check”: false,
+```
+
+__如果上面方法无效，修改hosts文件，添加下面几行：__
+
+| OS | path |
+| :--- | :-- |
+|Windows | C:\Windows\System32\drivers\etc\hosts |
+|Mac | /Private/etc/hosts |
+|Linux | /etc/hosts |
+
+```
+127.0.0.1 www.sublimetext.com
+127.0.0.1 license.sublimehq.com
+127.0.0.1 45.55.255.55
+127.0.0.1 45.55.41.223
+```
+
+### linux不能输入中文解决方法
 
 下载 [zh_cn.gz](/uploads/2017-01-18/zh_cn.gz)
 
@@ -92,29 +100,26 @@ E36B85CC 84991F19 7575D828 470A92AB
 下载后，执行
 
     tar -xf zh_cn.gz 
-
-会得到一个 sublime的文件夹,然后进入该文件夹内运行命令:
-
 	cd sublime/
-    sudo sh install.sh
+    sudo ./install.sh
 
 即可完美支持中文
 
-### 如何解决Sublime Text 3不能正确显示中文的问题
+### 安装汉化插件
 
-步骤：
-
-打开Sublime Text，按 ctrl+` 或者选择 View > Show Console ，打开 Console 一次性输入如下代码，回车：
+打开Sublime Text，按 ctrl + \` 或者 View > Show Console ，打开 Console 一次性输入如下代码，回车：
 
 ```
 import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
 ```
 
-接着Ctrl+Shift+P打开命令行模式，输入Install Package关键字，然后回车选择：Package Control: Install Package。
+接着Ctrl+Shift+P打开命令行模式，输入pci，然后回车选择：Package Control: Install Package。
 
-此时你会看到左下角有个=号来回动，稍等一会，会再次在命令行下弹出一个下拉菜单。
+稍等一会，在弹出的下拉菜单输入"ChineseLocalization"。
 
-输入“ConvertToUTF8”或者“GBK Encoding Support”，选择匹配项。中文字符就可以正常显示了。
+### Sublime Text 3中文显示乱码
+
+安装"ConvertToUTF8" 或者 "ConvertChineseCharacters" 或者 "GBK Support"，中文字符就可以正常显示了。
 
 __参考资料：__
 

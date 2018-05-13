@@ -1,24 +1,18 @@
 ---
 layout: post
-title: ubuntu 18.04 LTS la(n)mp环境配置
+title: Ubuntu la(n)mp 环境搭建
 date: 2018-05-03 21:26:56
 tags:
  - Linux
  - Mysql
  - Apache
+ - Nginx
  - PHP
 categories:
  - linux
-description: ubuntu 18.04 LTS la(n)mp环境配置
+description: Ubuntu la(n)mp 环境搭建
 copyright: true
 ---
-
-ctrl+alt+t 打开终端
-
-```
-sudo apt update
-sudo apt upgrade
-```
 
 ### 安装apache2
 

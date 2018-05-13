@@ -19,7 +19,7 @@ password:
 
 1.准备条件
 
-安装Node.js,Git,Hexo环境，完成Github与本地Hexo的对接。
+安装Node,Git,Hexo环境，完成Github与本地Hexo的对接。
 
 配置好这些，就可以捋起袖子大干一场了！
 
@@ -57,7 +57,12 @@ hexo new post "new blog name"   //新建一个.md文件，并编辑完成自己�
 git add source  //经测试每次只要更新source中的文件到Github中即可，因为只是新建了一篇新博客
 git commit -m "XX"
 git push origin hexo  //推送到远程仓库，更新hexo分支
-#这一步注意，先将themes文件夹里面的主题压缩包（例如我的是next.zip）解压，不然后面hexo g -d是没有页面效果的
+```
+
+__注意，这里先将themes文件夹里面的主题压缩包（例如我的是next.zip）解压，不然直接hexo g -d页面为空白__
+
+
+```
 hexo g -d   //push更新完分支之后将自己写的博客对接到自己搭的博客网站上，同时同步了Github中的master
 ```
 
@@ -71,6 +76,12 @@ hexo new post " new blog name"
 git add source
 git commit -m "XX"
 git push origin hexo
+```
+
+__注意，这里先将themes文件夹里面的主题压缩包（例如我的是next.zip）解压，不然直接hexo g -d页面为空白__
+
+
+```
 hexo g -d
 ```
 
