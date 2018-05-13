@@ -1,13 +1,13 @@
 ---
 layout: post
-title: PHPstorm常用插件
+title: PHPStorm常用插件
 date: 2017-09-28 21:26:56
 tags:
  - Markdown
  - Git
 categories:
  - 基本操作
-description: PHPstorm常用插件
+description: PHPStorm常用插件
 copyright: true
 ---
 

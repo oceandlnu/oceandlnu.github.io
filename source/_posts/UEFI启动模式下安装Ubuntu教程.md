@@ -1,13 +1,13 @@
 ---
 layout: post
-title: UEFI启动模式下安装Ubuntu 16.04教程
+title: UEFI启动模式下安装Ubuntu教程
 date: 2017-09-11 21:26:56
 tags:
  - Linux
  - Ubuntu
 categories:
  - linux
-description: UEFI启动模式下安装Ubuntu 16.04教程
+description: UEFI启动模式下安装Ubuntu教程
 copyright: true
 ---
 

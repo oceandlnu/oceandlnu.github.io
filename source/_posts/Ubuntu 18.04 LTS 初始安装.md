@@ -81,9 +81,10 @@ sudo apt update
 sudo apt upgrade
 ```
 
-#### 安装vim、Chromium
+#### 安装vim、chromium、filezilla
 
     sudo apt install vim chromium-browser filezilla -y
+    #GIMP图像处理，Kdenlive视频处理，p7zip支持rar压缩
     sudo apt install gimp kdenlive p7zip-full -y
 
 #### 安装搜狗输入法
@@ -92,7 +93,7 @@ sudo apt upgrade
 
 双击安装下载的deb软件包，安装完成之后，进入语言支持->键盘输入法系统 选项旁边选择fcitx，重启电脑
 
-使用快捷键ctrl+space或者shift切换输入法
+使用快捷键 ctrl+space 或者 shift 切换输入法
 
 #### 安装网易云音乐
 
@@ -100,12 +101,11 @@ sudo apt upgrade
 
 双击安装下载的deb软件包即可
 
-#### Chromium浏览器创建应用(钉钉,微信)
+#### Chromium创建桌面应用(例如：钉钉、微信)
 
-该功能以前是谷歌自带功能，后续版本把这个功能去掉了，但是却可以这样做得以恢复
+该功能以前是chromium/chrome自带功能，后续版本把这个功能去掉了，但是却可以这样做得以恢复
 
-下面开始说方法
-在这个目录下 ～/.local/share/applications/ 创建各自的desktop文件(vim xxx.desktop)
+在 ～/.local/share/applications/ 目录下创建各自的desktop文件(vim xxx.desktop)
 
 钉钉
 
@@ -135,7 +135,7 @@ Terminal=false
 StartupWMClass=wx.qq.com
 ```
 
-附上创建应用快捷方式(例如Phpstorm)：
+创建App快捷方式(例如PHPStorm)：
 
 ```
 [Desktop Entry]
@@ -165,6 +165,33 @@ StartupWMClass=jetbrains-phpstorm
     cd Postman/
     sudo apt install libgconf-2-4
     ./Postman &
+
+#### 安装Workbench
+
+下载地址：https://dev.mysql.com/downloads/workbench/
+
+#### 安装VirtualBox VMware
+
+VirtualBox下载地址：https://www.virtualbox.org/wiki/Downloads
+
+VMware下载地址：https://www.vmware.com/cn/products/workstation-pro/workstation-pro-evaluation.html
+
+安装Vmware:
+
+    sudo ./VMware-Workstation-Full-14.1.1-7528167.x86_64.bundle
+
+#### PHPStorm Pycharm
+
+下载地址：http://www.jetbrains.com/
+
+解压进入bin目录，启动
+
+    ./phpstorm.sh &
+    ./pycharm.sh &
+
+#### sublime-text
+
+下载地址：http://www.sublimetext.com/
 
 ### shadowsocksr客户端(ssr)
 

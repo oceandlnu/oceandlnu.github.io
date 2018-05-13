@@ -1,13 +1,13 @@
 ---
 layout: post
-title: win10关闭security boot的方法
+title: Win10关闭security boot的方法
 date: 2017-09-10 13:47:23
 tags:
  - windows
  - 配置
 categories:
  - 配置
-description: win10关闭security boot的方法
+description: Win10关闭security boot的方法
 copyright: true
 ---
 
