@@ -1,20 +1,20 @@
 ---
 layout: post
-title: linux安装git、nvm、node、npm
+title: Linux安装git、nvm
 date: 2017-09-16 21:26:56
 tags:
  - Linux
- - Nodejs
+ - nvm
  - Git
 categories:
  - linux
-description: linux安装git、nvm、node、npm
+description: Linux安装git、nvm
 copyright: true
 ---
-### Git安装
+
+### Git
     
-    sudo apt-get update
-    sudo apt-get install git
+    sudo apt install git
     
 验证是否安装成功，查看git版本
     
@@ -22,14 +22,14 @@ copyright: true
     
 卸载Git
 
-    sudo apt-get remove git
-    sudo apt-get autoremove
+    sudo apt remove git
+    sudo apt autoremove
  
-### nvm安装
+### nvm
 
 nvm是专门的node版本管理工具，可以在同一台机器上管理不同node版本。
 
-github地址为: https://github.com/creationix/nvm
+github地址: https://github.com/creationix/nvm
 
 #### 卸载已安装到全局的 node/npm
 
@@ -38,6 +38,7 @@ github地址为: https://github.com/creationix/nvm
 node 命令在 /usr/local/bin/node ，npm 命令在全局 node_modules 目录中，具体路径为 /usr/local/lib/node_modules/npm
 
 安装 nvm 之后最好先删除下已安装的 node 和全局 node 模块：
+
 ```
 npm ls -g --depth=0 #查看已经安装在全局的模块，以便删除这些全局模块后再按照不同的 node 版本重新进行全局安装
 
@@ -45,29 +46,29 @@ sudo rm -rf /usr/local/lib/node_modules #删除全局 node_modules 目录
 sudo rm /usr/local/bin/node #删除 node
 cd  /usr/local/bin && ls -l | grep "../lib/node_modules/" | awk '{print $9}'| xargs rm #删除全局 node 模块注册的软链
 ```
+
 #### 安装 nvm
 
 通过curl:
 
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
     
 通过wget:
 
-    wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
+    wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
 
 __注意：安装完成后请重新打开终端环境， oh-my-zsh 也是一样。__
 
+
 执行下面语句安装最新稳定版node（自带npm）：
 
     nvm install node
-    #安装最新稳定版 node，现在是 9.2.0
 
 #### 安装切换各版本 node/npm
 
 ```
 nvm install node
-#安装最新稳定版 node，现在是 9.2.0
 
 nvm install 4.2.2
 #安装 4.2.2 版本
@@ -117,56 +118,4 @@ node -v #查看 node 是否切换为对应版本
 
 类似的工具也有n命令，n 命令是作为一个 node 的模块而存在，而 nvm 是一个独立于 node/npm 的外部 shell 脚本， 因此 n 命令相比 nvm 更加局限。由于 npm 安装的模块路径均为 /usr/local/lib/node_modules ， 当使用 n 切换不同的 node 版本时，实际上会共用全局的 node/npm 目录。所以还是推荐使用nvm。
 
-### Node.js 编译安装(不推荐)
-
-#### 安装、源码下载
-
-下载最新版本node的源代码：下载 https://nodejs.org/en/download/
-
-解压下载文件：
-
-    tar -xzvf node-v4.2.1.tar.gz
-
-切换工作目录至源代码目录：
-
-    cd node-v4.2.1
-
-configure配置安装文件：
-
-    ./configure
-
-make编译码代码： (编译Node源码时间较长，我编译用了大约40分左右。)
-
-    make
-
-make install安装：
-
-    sudo make install
-
-查看安装：(显示版本号)
-
-    node -v
-
-#### 卸载
-
-保留编译完成的源码包，或者自己再重新编译生成个
-
-干掉make install命令时装进去的文件,需要管理员身份
-
-    sudo make uninstall
-
-只删除make时产生的临时文件：
-
-    make clean
-
-同时删除configure和make产生的临时文件
-
-    make distclean
-
-升级Node版本
-
-直接下载源码重新编译，安装。（覆盖了旧的版本）
-
-#### Ps:
-
-也同样适用与其他linux平台编译安装软件。
+github地址：https://github.com/tj/n
