@@ -11,24 +11,24 @@ description: Hexo的常用操作
 copyright: true
 ---
 
-新建一个网站
+>* 新建一个网站
 
-  //新建一个网站。如果没有设置 folder ，$ hexo 默认在目前的文件夹建立网站。
-  $ hexo init [foledr]
+    //新建一个网站。如果没有设置 folder ，$ hexo 默认在目前的文件夹建立网站。
+    $ hexo init [foledr]
 
-发表一篇文章
+>* 发表一篇文章
 
-  //新建一篇文章。如果没有设置 layout 的话，默认使用 _config.yml 中的 default_layout 参数代替。如果标题包含空格的话，请使用引号括起来。
-  $ hexo new [layout] "文章标题"
+    //新建一篇文章。如果没有设置 layout 的话，默认使用 _config.yml 中的 default_layout 参数代替。如果标题包含空格的话，请使用引号括起来。
+    $ hexo new [layout] "文章标题"
 
 在本地博客文件夹 source_posts 文件夹下看到我们新建的 markdown 文件。
 
-当然，我们也可以手动添加Markdown文件在source->_deploy文件夹下，其效果同样可以媲美$ hexo new
+当然，我们也可以手动添加Markdown文件在source -> \_deploy文件夹下，其效果同样可以媲美$ hexo new
 
-文章编辑好之后，运行生成、部署命令：
+>* 文章编辑好之后，运行生成、部署命令：
 
 ```bash
-// 清除缓存文件 (db.json) 和已生成的静态文件 (public)。
+//清除缓存文件 (db.json) 和已生成的静态文件 (public)。
 //在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令。
 $ hexo clean
 // 生成新的静态文件（public）
@@ -66,7 +66,7 @@ tags:
 <!--more-->
 ```
 
-添加插件
+>* 添加插件
 
 添加 sitemap 和 feed 插件
 
@@ -77,7 +77,7 @@ npm install $ hexo-generator-feed --save
 npm install $ hexo-generator-sitemap --save
 ```
 
-修改 _config.yml，增加以下内容
+>* 修改 \_config.yml，增加以下内容
 
 ```bash
 # Extensions
@@ -96,7 +96,7 @@ sitemap:
 
 再执行以下命令，部署服务端
 
-  $ hexo g -d
+    $ hexo g -d
 
 配完之后，就可以访问 https://oceandlnu.github.io/atom.xml 和 https://oceandlnu.github.io/sitemap.xml ，发现这两个文件已经成功生成了。
 

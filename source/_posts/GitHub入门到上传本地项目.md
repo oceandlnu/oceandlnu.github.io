@@ -96,7 +96,7 @@ Git的分支和合并 : 分支模型是Git最显著的特点, 因为这改变了
 选择安装组件，按默认的来就好了。
 1）图标组件(Addition icons) : 选择是否创建快速启动栏图标 或者 是否创建桌面快捷方式;
 2）桌面浏览(Windows Explorer integration) : 浏览源码的方法, 单独的上下文浏览 只使用bash 或者 只用Git GUI工具; 高级的上下文浏览方法 使用git-cheetah plugin插件;
-3）关联配置文件(Associate .git*) : 是否关联git配置文件, 该配置文件主要显示文本编辑器的样式;
+3）关联配置文件(Associate .git\*) : 是否关联git配置文件, 该配置文件主要显示文本编辑器的样式;
 4）关联shell脚本文件(Associate .sh) : 是否关联Bash命令行执行的脚本文件;
 5）使用TrueType编码 : 在命令行中是否使用TruthType编码, 该编码是微软和苹果公司制定的通用编码;
 ![](/uploads/2016-07-03/4.png)
@@ -162,7 +162,10 @@ ps：git config  –global 参数，有了这个参数，表示你这台机器�
 
 3-1 生成ssh key
 
-首先检查是否已生成密钥 cd ~/.ssh，ls如果有3个文件，则密钥已经生成，id_rsa.pub就是公钥
+检查是否已生成密钥
+
+	cd ~/.ssh，ls如果有3个文件，则密钥已经生成，id_rsa.pub就是公钥
+
 ```bash
 YANG@DESKTOP-VLST063 MINGW64 /d/hexo/oceandlnu.github.io (master|REBASE 1/2)
 $ cd ~/.ssh

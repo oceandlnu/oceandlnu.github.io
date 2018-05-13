@@ -118,10 +118,10 @@ npm install
 ├── public          #生成的静态网页文件
 ├── scaffolds       #模板
 ├── source          #博客正文和其他源文件，404、favicon、CNAME 都应该放在这里
-| ├── _drafts       #草稿
-| └── _posts        #文章
+| ├── \_drafts       #草稿
+| └── \_posts        #文章
 ├── themes          #主题
-├── _config.yml     #全局配置文件
+├── \_config.yml     #全局配置文件
 └── package.json    #npm 依赖等
 
 运行本地 Hexo 服务
@@ -142,7 +142,9 @@ __注意：如果 http://localhost:4000 不能访问，那有可能是端口被�
 
 我们如何让本地git项目与远程的github建立联系呢？用 SSH keys
 
-首先检查是否已生成密钥 cd ~/.ssh，ls如果有3个文件，则密钥已经生成，id_rsa.pub就是公钥
+检查是否已生成密钥
+
+	cd ~/.ssh，ls如果有3个文件，则密钥已经生成，id_rsa.pub就是公钥
 
 ```bash
 YANG@DESKTOP-VLST063 MINGW64 /d/hexo/oceandlnu.github.io (master|REBASE 1/2)
