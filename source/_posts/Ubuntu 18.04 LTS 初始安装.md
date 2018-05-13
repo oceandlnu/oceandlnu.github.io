@@ -268,7 +268,7 @@ VMware下载地址：https://www.vmware.com/cn/products/workstation-pro/workstat
     //再次运行
     python local.py -c /etc/shadowsocks.json
 
-##### ssr GUI 客户端
+##### SSR GUI 客户端
 
 [ssr GUI 客户端](https://github.com/erguotou520/electron-ssr/releases)
 
@@ -276,7 +276,7 @@ VMware下载地址：https://www.vmware.com/cn/products/workstation-pro/workstat
 
 安装ssr之后，还不能翻墙，因为没有开启代理端口，下面进行设置。
 
-##### SwitchyOmega 配置代理
+##### SwitchyOmega 代理配置
 
 https://switchyomega.com/index.html
 
@@ -306,7 +306,7 @@ https://switchyomega.com/index.html
 
 SwitchyOmega情景模式选择"proxy"（都走代理模式）或者"auto switch"（自动根据URL来决定是否使用代理）就可以科学上网，推荐使用"auto switch"。
 
-#### pac代理配置
+#### Pac 代理配置
 
 1.安装genpac
 
@@ -319,14 +319,8 @@ sudo pip install genpac
 
     genpac -p "SOCKS5 127.0.0.1:1080" --output="autoproxy.pac"
 
-该命令会在/home/xxx/下生成autoproxy.pac（其中xxx是用户名，比如我的是/home/ocean/）
+该命令会在当前目录(比如：/home/xxx/)下生成autoproxy.pac（其中xxx是用户名，比如我的是/home/ocean/）
 
 3.打开系统设置->网络->网络代理，将 方法 改为 自动，配置 Url填”file:///home/ocean/autoproxy.pac”
 
 4.干货分享 ([逗比根据地](https://doub.bid/sszhfx/),[自由上网](https://github.com/Alvin9999/new-pac/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7))。
-
-#### 点击应用程序 Launcher 图标放大缩小功能
-
-```
-gsettings set org.compiz.unityshell:/org/compiz/profiles/unity/plugins/unityshell/ launcher-minimize-window true
-```
