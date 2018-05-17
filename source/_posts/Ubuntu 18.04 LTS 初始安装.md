@@ -193,11 +193,35 @@ VMware下载地址：https://www.vmware.com/cn/products/workstation-pro/workstat
 
 下载地址：http://www.sublimetext.com/
 
-### shadowsocksr客户端(ssr)
+### Shadowsocksr 客户端
 
-#### 安装配置
+#### SSR 客户端一键脚本(推荐)
 
-##### ssr下载
+```
+# 下载
+wget https://raw.githubusercontent.com/the0demiurge/CharlesScripts/master/charles/bin/ssr -O "ssr"
+# 或者
+curl https://raw.githubusercontent.com/the0demiurge/CharlesScripts/master/charles/bin/ssr -o "ssr"
+chmod a+x ssr
+sudo ln -s /home/xxx/ssr /usr/bin/ssr
+sudo ln -s /usr/bin/python3 /usr/bin/python
+# 安装依赖
+sudo apt install curl jq tsocks -y
+# 首次使用先安装ssr client
+ssr install
+# 配置
+ssr config
+# 启动
+ssr start
+# 停止
+ssr stop
+# 重启
+ssr restart
+# 卸载
+ssr uninstall
+```
+
+#### SSR 客户端
 
 [ssr releases](https://github.com/shadowsocksrr/shadowsocksr/releases)
 
@@ -253,34 +277,66 @@ VMware下载地址：https://www.vmware.com/cn/products/workstation-pro/workstat
 
     python local.py -c /etc/shadowsocks.json
 
-出现下面的提示,说明运行成功
-
-```
-2017-10-17 12:30:49 INFO     local.py:50 local start with protocol[auth_chain_a] password [Ck6295iFwq] method [none] obfs [tls1.2_ticket_auth] obfs_param []
-2017-10-17 12:30:49 INFO     local.py:54 starting local at 127.0.0.1:1080
-2017-10-17 12:30:49 INFO     asyncdns.py:324 dns server: [('127.0.1.1', 53)]
-2017-10-17 12:30:57 INFO     util.py:85 loading libcrypto from libcrypto.so.1.0.0
-```
-
-如果失败，根据提示信息安装依赖
-
-    sudo apt install curl jq tsocks -y
-    //再次运行
-    python local.py -c /etc/shadowsocks.json
-
-##### SSR GUI 客户端
+#### SSR GUI 客户端
 
 [ssr GUI 客户端](https://github.com/erguotou520/electron-ssr/releases)
 
 直接下载安装就可以，不多做介绍，对于有些Linux客户端无效，不推荐。
 
-安装ssr之后，还不能翻墙，因为没有开启代理端口，下面进行设置。
+安装ssr之后，还不能翻墙，因为没有设置代理，下面进行设置。
+
+#### 代理配置(Pac/SwitchyOmega 二选一)
+
+##### Pac 自动代理配置
+
+1.genpac 生成pac(推荐)
+
+> [genpac](https://github.com/JinnLynn/genpac)
+
+```
+# 安装pip
+sudo apt install python-pip
+# 安装genpac
+sudo pip install genpac
+# 更新
+sudo pip install --upgrade genpac
+# 卸载
+sudo pip uninstall genpac
+# 在当前目录(比如：/home/xxx/)下生成autoproxy.pac
+genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" --pac-precise --output="autoproxy.pac"
+```
+2.pac_get.sh 生成pac
+
+> [pac_get](https://github.com/ToyoDAdoubi/doubi/blob/master/pac_get.sh)
+
+```
+# 下载脚本到当前目录
+wget https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/pac_get.sh -O "pac_get.sh"
+# 或者
+curl https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/pac_get.sh -o "pac_get.sh"
+chmod a+x pac_get.sh
+# 编辑脚本
+vim pac_get.sh
+# Output_URL=pac文件名，可自由修改，比如"autoproxy.pac"
+# "__PROXY__"为自己的代理地址，比如"SOCKS5 127.0.0.1:1080"，不改可能无法翻墙
+# 保存后执行脚本即可
+./pac_get.sh
+chmod a+x autoproxy.pac
+```
+
+3.打开系统设置->网络->网络代理->自动，配置 URL”file://pac文件路径”，比如"file:///home/ocean/autoproxy.pac"
+
+4.干货分享
+
+> [自由上网](https://github.com/Alvin9999/new-pac/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7)
+
+> [逗比根据地](https://doub.bid/sszhfx/)
 
 ##### SwitchyOmega 代理配置
 
-https://switchyomega.com/index.html
+[SwitchyOmega](https://switchyomega.com/index.html)
 
-[Github](https://github.com/FelisCatus/SwitchyOmega/releases)
+[SwitchyOmega Github](https://github.com/FelisCatus/SwitchyOmega/releases)
 
 安装完成后，拓展程序->选项
 
@@ -304,39 +360,8 @@ https://switchyomega.com/index.html
 
 点击"立即更新情景模式"，然后点击左边的"应用选项"应用更改。
 
-SwitchyOmega情景模式选择"proxy"（都走代理模式）或者"auto switch"（自动根据URL来决定是否使用代理）就可以科学上网，推荐使用"auto switch"。
+情景模式说明：
 
-#### Pac 代理配置
-
-1.安装genpac
-
-```
-# 安装pip
-sudo apt install python-pip
-# 安装genpac
-sudo pip install genpac
-# 更新
-sudo pip install --upgrade genpac
-# 卸载
-sudo pip uninstall genpac
-```
-
-2.生成autoproxy.pac
-
-    genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" --pac-precise --output="autoproxy.pac"
-
-该命令会在当前目录(比如：/home/xxx/)下生成autoproxy.pac（其中xxx是用户名，比如我的是/home/ocean/）
-
-3.打开系统设置->网络->网络代理，将 方法 改为 自动，配置 Url填”file:///home/ocean/autoproxy.pac”
-
-4.干货分享
-
-> [自由上网](https://github.com/Alvin9999/new-pac/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7)
-
-> [逗比根据地](https://doub.bid/sszhfx/)
-
-> [genpac](https://github.com/JinnLynn/genpac)
-
-> [pac_get](https://github.com/ToyoDAdoubi/doubi/blob/master/pac_get.sh)
-
-提示：如果使用pac_get，将pac_get.sh里面的"__PROXY__"修改为自己的代理服务器，比如"SOCKS5 127.0.0.1:1080"，"Output_URL"填写自己想要输出的文件名，比如"autoproxy.pac"
+| proxy  | auto switch |
+| :----- | :---------- |
+| 所有URL都走代理模式| 自动根据URL判断是否走代理 |
