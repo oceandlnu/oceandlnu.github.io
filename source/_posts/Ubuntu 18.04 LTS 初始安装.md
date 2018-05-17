@@ -195,7 +195,7 @@ VMware下载地址：https://www.vmware.com/cn/products/workstation-pro/workstat
 
 ### Shadowsocksr 客户端
 
-#### SSR 客户端一键脚本(推荐)
+##### SSR 客户端一键脚本(推荐)
 
 ```
 # 下载
@@ -221,7 +221,7 @@ ssr restart
 ssr uninstall
 ```
 
-#### SSR 客户端
+##### SSR 客户端
 
 [ssr releases](https://github.com/shadowsocksrr/shadowsocksr/releases)
 
@@ -277,7 +277,7 @@ ssr uninstall
 
     python local.py -c /etc/shadowsocks.json
 
-#### SSR GUI 客户端
+##### SSR GUI 客户端
 
 [ssr GUI 客户端](https://github.com/erguotou520/electron-ssr/releases)
 
@@ -305,6 +305,7 @@ sudo pip uninstall genpac
 # 在当前目录(比如：/home/xxx/)下生成autoproxy.pac
 genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" --pac-precise --output="autoproxy.pac"
 ```
+
 2.pac_get.sh 生成pac
 
 > [pac_get](https://github.com/ToyoDAdoubi/doubi/blob/master/pac_get.sh)
@@ -315,13 +316,11 @@ wget https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/pac_get.sh -O "p
 # 或者
 curl https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/pac_get.sh -o "pac_get.sh"
 chmod a+x pac_get.sh
-# 编辑脚本
 vim pac_get.sh
 # Output_URL=pac文件名，可自由修改，比如"autoproxy.pac"
-# "__PROXY__"为自己的代理地址，比如"SOCKS5 127.0.0.1:1080"，不改可能无法翻墙
-# 保存后执行脚本即可
+# "__PROXY__"为自己的代理地址，比如"SOCKS5 127.0.0.1:1080"，不改无法翻墙
+# 修改保存后，执行脚本，在当前目录(比如：/home/xxx/)下生成autoproxy.pac
 ./pac_get.sh
-chmod a+x autoproxy.pac
 ```
 
 3.打开系统设置->网络->网络代理->自动，配置 URL”file://pac文件路径”，比如"file:///home/ocean/autoproxy.pac"
