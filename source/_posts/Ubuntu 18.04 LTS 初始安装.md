@@ -311,16 +311,32 @@ SwitchyOmega情景模式选择"proxy"（都走代理模式）或者"auto switch"
 1.安装genpac
 
 ```
-sudo apt-get install python-pip
+# 安装pip
+sudo apt install python-pip
+# 安装genpac
 sudo pip install genpac
+# 更新
+sudo pip install --upgrade genpac
+# 卸载
+sudo pip uninstall genpac
 ```
 
-2.接下来使用genpac生成autoproxy.pac
+2.生成autoproxy.pac
 
-    genpac -p "SOCKS5 127.0.0.1:1080" --output="autoproxy.pac"
+    genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" --pac-precise --output="autoproxy.pac"
 
 该命令会在当前目录(比如：/home/xxx/)下生成autoproxy.pac（其中xxx是用户名，比如我的是/home/ocean/）
 
 3.打开系统设置->网络->网络代理，将 方法 改为 自动，配置 Url填”file:///home/ocean/autoproxy.pac”
 
-4.干货分享 ([逗比根据地](https://doub.bid/sszhfx/),[自由上网](https://github.com/Alvin9999/new-pac/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7))。
+4.干货分享
+
+> [自由上网](https://github.com/Alvin9999/new-pac/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7)
+
+> [逗比根据地](https://doub.bid/sszhfx/)
+
+> [genpac](https://github.com/JinnLynn/genpac)
+
+> [pac_get](https://github.com/ToyoDAdoubi/doubi/blob/master/pac_get.sh)
+
+提示：如果使用pac_get，将pac_get.sh里面的"__PROXY__"修改为自己的代理服务器，比如"SOCKS5 127.0.0.1:1080"，"Output_URL"填写自己想要输出的文件名，比如"autoproxy.pac"
