@@ -297,13 +297,29 @@ ssr uninstall
 # 安装pip
 sudo apt install python-pip
 # 安装genpac
-sudo pip install genpac
-# 更新
-sudo pip install --upgrade genpac
-# 卸载
-sudo pip uninstall genpac
+pip install genpac
+# 更新genpac
+pip install --upgrade genpac
+# 卸载genpac
+pip uninstall genpac
 # 在当前目录(比如：/home/xxx/)下生成autoproxy.pac
-genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" --pac-precise --output="autoproxy.pac"
+genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" --output="autoproxy.pac"
+```
+
+> 注意：如果执行时出现无法找到命令的错误，可能是因为genpac命令没有被安装到系统路径，genpac执行入口文件被安装到了~/.local/bin，解决方法：
+
+> 方案一：将~/.local/bin添加到系统路径
+
+```
+sudo ln -s ~/.local/bin/genpac /usr/bin/genpac
+```
+
+> 方案二：卸载重新使用sudo安装
+
+```
+pip uninstall genpac
+sudo pip install genpac
+sudo pip install --upgrade genpac
 ```
 
 2.pac_get.sh 生成pac
