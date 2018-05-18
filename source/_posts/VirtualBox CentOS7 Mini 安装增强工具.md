@@ -31,7 +31,7 @@ copyright: true
 # ./VBoxLinuxAdditions.run
 ```
 
->* 打开 VirtualBox 界面，选择对应的虚拟系统进行"设置"，选中设置窗口中的最后一项"共享文件夹"，再选中"固定分配"，右键单击并确定共享文件夹的路径，下面的复选框一个都不用勾选，最后"确定"。启动虚拟系统，进入系统以后，执行以下命令来挂载共享文件夹：mount -t vboxsf code /web，其中 code 为共享文件夹的名字，/web 表示当前挂载到 web 目录下，如果没有web目录请自行创建 mkdir /web。如果需要取消挂载，可以直接使用命令：umount -f /web。
+>* 打开 VirtualBox 界面，选择对应的虚拟系统进行"设置"，选中设置窗口中的最后一项"共享文件夹"，再选中"固定分配"，右键单击并确定共享文件夹的路径，下面的复选框一个都不用勾选，最后"确定"。启动虚拟系统，进入系统以后，执行以下命令来挂载共享文件夹：mount -t vboxsf share /share，其中 share 为共享文件夹的名字，/share 表示当前挂载到 share 目录下，如果没有share目录请自行创建 mkdir /share。如果需要取消挂载，可以直接使用命令：umount -f /share。
 
 
 >* 实现开机自动挂载
@@ -41,14 +41,14 @@ copyright: true
 ```
 # vim ~/.bashrc
 // 在最后添加一行
-# mount -t vboxsf code /web
+# mount -t vboxsf share /share
 ```
 2.只适用于CentOS6
 
 ```
 # vim /etc/rc.d/rc.local
 // 在文件的最后面加上挂载命令
-# mount -t vboxsf code /web
+# mount -t vboxsf share /share
 ```
 
 ### VirtualBox Win7虚拟机无法识别U盘问题解决方法

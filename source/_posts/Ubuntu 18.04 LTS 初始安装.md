@@ -81,15 +81,32 @@ sudo apt update
 sudo apt upgrade
 ```
 
-#### 安装vim、chromium、filezilla
+#### 安装vim、chromium、filezilla、git
 
-    sudo apt install vim chromium-browser filezilla -y
+    sudo apt install vim chromium-browser filezilla git -y
     #GIMP图像处理，Kdenlive视频处理，p7zip支持rar压缩
     sudo apt install gimp kdenlive p7zip-full -y
 
+#### 安装nvm、node
+
+通过curl:
+
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+    
+通过wget:
+
+    wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+
+__注意：安装完成后请重新打开终端环境， oh-my-zsh 也是一样。__
+
+
+执行下面语句安装最新稳定版node（自带npm）：
+
+    nvm install node
+
 #### 安装搜狗输入法
 
-下载：https://pinyin.sogou.com/linux/?r=pinyin
+下载：https://pinyin.sogou.com/linux/
 
 双击安装下载的deb软件包，安装完成之后，进入语言支持->键盘输入法系统 选项旁边选择fcitx，重启电脑
 
@@ -135,19 +152,16 @@ Terminal=false
 StartupWMClass=wx.qq.com
 ```
 
-创建App快捷方式(例如PHPStorm)：
+创建App快捷方式(如Pycharm)：
 
 ```
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=PhpStorm
-Icon=/home/ocean/develop/PhpStorm-181.4668.78/bin/phpstorm.png
-Exec="/home/ocean/develop/PhpStorm-181.4668.78/bin/phpstorm.sh" %f
-Comment=The Drive to Develop
-Categories=Development;IDE;
+Name=Pycharm
+Icon=/home/ocean/develop/Pycharm/bin/pycharm.png
+Exec="/home/ocean/develop/Pycharm/bin/pycharm.sh" %f
 Terminal=false
-StartupWMClass=jetbrains-phpstorm
 ```
 
 图标路径可以自己改成对应的路径，不必按照案例来做，只要能访问到就是OK的
@@ -189,13 +203,13 @@ VMware下载地址：https://www.vmware.com/cn/products/workstation-pro/workstat
     ./phpstorm.sh &
     ./pycharm.sh &
 
-#### sublime-text
+#### Sublime Text
 
 下载地址：http://www.sublimetext.com/
 
-### Shadowsocksr 客户端
+### Shadowsocksr Client
 
-##### SSR 客户端一键脚本(推荐)
+##### SSR 客户端一键安装配置脚本(推荐)
 
 ```
 # 下载
@@ -204,7 +218,6 @@ wget https://raw.githubusercontent.com/the0demiurge/CharlesScripts/master/charle
 curl https://raw.githubusercontent.com/the0demiurge/CharlesScripts/master/charles/bin/ssr -o "ssr"
 chmod a+x ssr
 sudo ln -s /home/xxx/ssr /usr/bin/ssr
-sudo ln -s /usr/bin/python3 /usr/bin/python
 # 安装依赖
 sudo apt install curl jq tsocks -y
 # 首次使用先安装ssr client
@@ -306,7 +319,7 @@ pip uninstall genpac
 genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" --pac-precise --output="autoproxy.pac"
 ```
 
-> 注意：如果执行时出现无法找到命令的错误，可能是因为genpac命令没有被安装到系统路径，genpac执行入口文件被安装到了~/.local/bin，解决方法：
+> 注意：如果执行时出现无法找到命令的错误，可能是因为genpac命令没有被安装到系统路径，genpac执行入口文件被安装到了~/.local/bin，解决方法
 
 > 方案一：将~/.local/bin添加到系统路径
 
@@ -314,7 +327,7 @@ genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" --pac-precise --output="
 sudo ln -s ~/.local/bin/genpac /usr/bin/genpac
 ```
 
-> 方案二：卸载重新使用sudo安装
+> 方案二：卸载重新使用sudo安装genpac
 
 ```
 pip uninstall genpac
@@ -328,15 +341,15 @@ sudo pip install --upgrade genpac
 
 ```
 # 下载脚本到当前目录
-wget https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/pac_get.sh -O "pac_get.sh"
+wget https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/pac_get.sh -O "pac_get"
 # 或者
-curl https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/pac_get.sh -o "pac_get.sh"
-chmod a+x pac_get.sh
-vim pac_get.sh
-# Output_URL=pac文件名，可自由修改，比如"autoproxy.pac"
-# "__PROXY__"为自己的代理地址，比如"SOCKS5 127.0.0.1:1080"，不改无法翻墙
+curl https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/pac_get.sh -o "pac_get"
+chmod a+x pac_get
+vim pac_get
+# "__PROXY__"修改为自己的代理地址，比如"SOCKS5 127.0.0.1:1080"，否则无法翻墙
+# Output_URL=生成pac文件路径，可自由修改，比如"autoproxy.pac"
 # 修改保存后，执行脚本，在当前目录(比如：/home/xxx/)下生成autoproxy.pac
-./pac_get.sh
+./pac_get
 ```
 
 3.打开系统设置->网络->网络代理->自动，配置 URL”file://pac文件路径”，比如"file:///home/ocean/autoproxy.pac"

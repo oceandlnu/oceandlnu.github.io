@@ -93,13 +93,13 @@ __如果上面方法无效，修改hosts文件，添加下面几行：__
 
 ### linux不能输入中文解决方法
 
-下载 [zh_cn.gz](/uploads/2017-01-18/zh_cn.gz)
+下载 [zh_cn.tar.gz](/uploads/2017-01-18/zh_cn.tar.gz)
 
 使用方法
 
 下载后，执行
 
-    tar -xf zh_cn.gz 
+    tar -zxvf zh_cn.tar.gz 
 	cd sublime/
     sudo ./install.sh
 
