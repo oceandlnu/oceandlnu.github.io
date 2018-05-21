@@ -81,13 +81,21 @@ sudo apt update
 sudo apt upgrade
 ```
 
-#### 安装vim、chromium、filezilla、git
+#### 安装vim、chromium、filezilla
 
-    sudo apt install vim chromium-browser filezilla git -y
+    sudo apt install vim chromium-browser filezilla -y
     #GIMP图像处理，Kdenlive视频处理，p7zip支持rar压缩
     sudo apt install gimp kdenlive p7zip-full -y
 
-#### 安装nvm、node
+#### 安装git、nvm、node
+
+##### 安装git
+
+    sudo apt install git -y
+
+##### 安装nvm
+
+Github：https://github.com/creationix/nvm
 
 通过curl:
 
@@ -219,6 +227,7 @@ curl https://raw.githubusercontent.com/the0demiurge/CharlesScripts/master/charle
 chmod a+x ssr
 sudo ln -s /home/xxx/ssr /usr/bin/ssr
 # 安装依赖
+sudo ln -s /usr/bin/python3 /usr/bin/python
 sudo apt install curl jq tsocks -y
 # 首次使用先安装ssr client
 ssr install
