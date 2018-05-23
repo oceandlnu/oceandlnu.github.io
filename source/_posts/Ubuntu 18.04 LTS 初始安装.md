@@ -185,7 +185,7 @@ Terminal=false
 下载解压
 
     cd Postman/
-    sudo apt install libgconf-2-4
+    sudo apt install libgconf-2-4 -y
     ./Postman &
 
 #### 安装Workbench
@@ -217,19 +217,19 @@ VMware下载地址：https://www.vmware.com/cn/products/workstation-pro/workstat
 
 ### Shadowsocksr Client
 
-##### SSR 客户端一键安装配置脚本(推荐)
+##### SSR 客户端安装配置脚本(推荐)
 
 ```
 # 下载
-wget https://raw.githubusercontent.com/the0demiurge/CharlesScripts/master/charles/bin/ssr -O "ssr"
-# 或者
 curl https://raw.githubusercontent.com/the0demiurge/CharlesScripts/master/charles/bin/ssr -o "ssr"
+# 或者
+wget https://raw.githubusercontent.com/the0demiurge/CharlesScripts/master/charles/bin/ssr -O "ssr"
+# 添加执行权限
 chmod a+x ssr
-sudo ln -s /home/xxx/ssr /usr/bin/ssr
+sudo ln -s /home/ocean/develop/ssr /usr/bin/ssr
 # 安装依赖
-sudo ln -s /usr/bin/python3 /usr/bin/python
 sudo apt install curl jq tsocks -y
-# 首次使用先安装ssr client
+# 安装ssr客户端
 ssr install
 # 配置
 ssr config
@@ -242,62 +242,6 @@ ssr restart
 # 卸载
 ssr uninstall
 ```
-
-##### SSR 客户端
-
-[ssr releases](https://github.com/shadowsocksrr/shadowsocksr/releases)
-
-下载之后，解压zip文件，更改文件夹名称为shadowsocksr
-
-解压的文件夹， 有一个文件 config.json ，这个就是配置文件的模板，我们可以复制一份到/etc/shadowsocks.json，然后对这个文件进行配置：
-
-    sudo cp config.json /etc/shadowsocks.json
-    sudo vim config.json
-
-```
-{
-    "server": "0.0.0.0",
-    "server_ipv6": "::",
-    "server_port": 8388,
-    "local_address": "127.0.0.1",
-    "local_port": 1080,
-
-    "password": "m",
-    "method": "aes-128-ctr",
-    "protocol": "auth_aes128_md5",
-    "protocol_param": "",
-    "obfs": "tls1.2_ticket_auth_compatible",
-    "obfs_param": "",
-    "speed_limit_per_con": 0,
-    "speed_limit_per_user": 0,
-
-    "additional_ports" : {}, // only works under multi-user mode
-    "additional_ports_only" : false, // only works under multi-user mode
-    "timeout": 120,
-    "udp_timeout": 60,
-    "dns_ipv6": false,
-    "connect_verbose_info": 0,
-    "redirect": "",
-    "fast_open": false
-}
-```
-
-主要用到的配置是下面的这几个选项：
-
-```
-"server": "0.0.0.0",       //服务器
-"server_port":888,         //端口
-"password":"password",     //密码
-"method":"aes-256-cfb",    //加密方式
-"protocol":"origin",       //协议
-"obfs":"http_simple",      //混淆
- ```
-
-运行程序
-
-进入shadowsocksr/shadowsocks/目录里面，执行：
-
-    python local.py -c /etc/shadowsocks.json
 
 ##### SSR GUI 客户端
 
@@ -317,18 +261,18 @@ ssr uninstall
 
 ```
 # 安装pip
-sudo apt install python-pip
+sudo apt install python-pip -y
 # 安装genpac
 pip install genpac
 # 更新genpac
 pip install --upgrade genpac
 # 卸载genpac
 pip uninstall genpac
-# 在当前目录(比如：/home/xxx/)下生成autoproxy.pac
+# 在当前目录(比如：/home/ocean/develop)下生成autoproxy.pac
 genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" --pac-precise --output="autoproxy.pac"
 ```
 
-> 注意：如果执行时出现无法找到命令的错误，可能是因为genpac命令没有被安装到系统路径，genpac执行入口文件被安装到了~/.local/bin，解决方法
+> 注意：如果执行时出现无法找到命令 genpac 错误，可能是因为genpac命令没有被安装到系统路径，genpac执行入口文件被安装到了~/.local/bin，解决方法
 
 > 方案一：将~/.local/bin添加到系统路径
 
@@ -350,24 +294,18 @@ sudo pip install --upgrade genpac
 
 ```
 # 下载脚本到当前目录
-wget https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/pac_get.sh -O "pac_get"
-# 或者
 curl https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/pac_get.sh -o "pac_get"
+# 或者
+wget https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/pac_get.sh -O "pac_get"
 chmod a+x pac_get
 vim pac_get
 # "__PROXY__"修改为自己的代理地址，比如"SOCKS5 127.0.0.1:1080"，否则无法翻墙
 # Output_URL=生成pac文件路径，可自由修改，比如"autoproxy.pac"
-# 修改保存后，执行脚本，在当前目录(比如：/home/xxx/)下生成autoproxy.pac
+# 修改保存后，执行脚本，在当前目录(比如：/home/ocean/develop)下生成autoproxy.pac
 ./pac_get
 ```
 
-3.打开系统设置->网络->网络代理->自动，配置 URL”file://pac文件路径”，比如"file:///home/ocean/autoproxy.pac"
-
-4.干货分享
-
-> [自由上网](https://github.com/Alvin9999/new-pac/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7)
-
-> [逗比根据地](https://doub.bid/sszhfx/)
+3.打开系统设置->网络->网络代理->自动，配置 URL”file://pac文件路径”，比如"file:///home/ocean/develop/autoproxy.pac"
 
 ##### SwitchyOmega 代理配置
 
@@ -377,28 +315,38 @@ vim pac_get
 
 安装完成后，拓展程序->选项
 
-进入：情景模式->proxy 设置
+1.进入：情景模式->proxy 设置
 
 | 代理协议  | 代理服务器 | 代理端口 |
 | :--- | :-- | :-- |
 | SOCKS5| 127.0.0.1 | 1080 |
 
-进入：情景模式->auto switch 
+2.进入：情景模式->auto switch 
 
 | 规则列表规则(按照规则列表匹配请求) | 默认情景模式 |
 | :--- | :-- |
 | proxy | 直接连接 |
 
-点击 添加规则列表
+3.点击 左侧 添加规则列表
 
 | 规则列表格式  | 规则列表网址 |
 | :--- | :-- |
 | AutoProxy | https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt |
 
-点击"立即更新情景模式"，然后点击左边的"应用选项"应用更改。
+4.点击"立即更新情景模式"，然后点击左边的"应用选项"应用更改。
 
 情景模式说明：
 
 | proxy  | auto switch |
 | :----- | :---------- |
 | 所有URL都走代理模式| 自动根据URL判断是否走代理 |
+
+5.干货分享
+
+> [自由上网](https://github.com/Alvin9999/new-pac/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7)
+
+> [逗比根据地](https://doub.io/sszhfx/)
+
+> [SSR 账号](http://ss.pythonic.life/)
+
+> [老D博客](https://laod.cn/)
