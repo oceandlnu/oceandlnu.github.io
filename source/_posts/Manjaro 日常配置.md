@@ -126,12 +126,15 @@ WPS官方网站： http://linux.wps.cn/
 
 4.重启wps即可，字体缺失的提示不再出现。
 
-### 安装zsh
+### 安装proxychains-ng
 
 ```
-sudo pacman -S zsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-chsh -s /bin/zsh
+yaourt -S proxychains-ng
+sudo nano /etc/proxychains.conf
+#文件末尾修改
+socks5 127.0.0.1 1080
 ```
 
-> 重启系统即可使用
+使用样例：
+
+	proxychains curl www.google.com
