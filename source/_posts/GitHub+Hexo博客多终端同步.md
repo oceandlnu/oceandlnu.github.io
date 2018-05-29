@@ -30,13 +30,19 @@ password:
 __注意：themes文件夹里面的主题是不会add的，所以可以先将主题文件压缩（如我的是next.zip），然后add，之后同步到本地之后再解压，目前还没有找到别的办法__
 
 ```bash
-git init  //初始化本地仓库
-git add . //将目录下的所有文件添加到本地仓库
+//初始化本地仓库
+git init
+//将目录下的所有文件添加到本地仓库
+git add . 
 git commit -m "Blog Source Hexo"
-git branch hexo  //新建hexo分支
-git checkout hexo  //切换到hexo分支上
-git remote add origin git@github.com:oceandlnu/oceandlnu.github.io.git  //将本地与Github项目对接
-git push origin hexo  //push到Github项目的hexo分支上
+//新建hexo分支
+git branch hexo
+//切换到hexo分支上
+git checkout hexo
+//将本地与Github项目对接
+git remote add origin git@github.com:oceandlnu/oceandlnu.github.io.git
+//push到Github项目的hexo分支上
+git push origin hexo
 ```
 
 完成之后的效果图为：
@@ -50,13 +56,19 @@ git push origin hexo  //push到Github项目的hexo分支上
 此时在另一终端更新博客，只需要将Github的hexo分支clone下来，进行初次的相关配置，详细配置点击[GitHub+Hexo博客多终端同步[准备工作]](https://oceandlnu.github.io/2017/03/06/GitHub+Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%90%8C%E6%AD%A5[%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C]/)
 
 ```bash
-git clone -b hexo git@github.com:oceandlnu/oceandlnu.github.io.git  //将Github中hexo分支clone到本地
-cd  oceandlnu.github.io  //切换到刚刚clone的文件夹内
-npm install    //注意，这里一定要切换到刚刚clone的文件夹内执行，安装必要的所需组件，不用再hexo init
-hexo new post "new blog name"   //新建一个.md文件，并编辑完成自己的博客内容
-git add source  //经测试每次只要更新source中的文件到Github中即可，因为只是新建了一篇新博客
+//将Github中hexo分支clone到本地
+git clone -b hexo git@github.com:oceandlnu/oceandlnu.github.io.git  
+//切换到刚刚clone的文件夹内
+cd  oceandlnu.github.io
+//注意，这里一定要切换到刚刚clone的文件夹内执行，安装必要的所需组件，不用再hexo init
+npm install
+//新建一个.md文件，并编辑完成自己的博客内容
+hexo new post "new blog name"
+//经测试每次只要更新source中的文件到Github中即可，因为只是新建了一篇新博客
+git add source
 git commit -m "XX"
-git push origin hexo  //推送到远程仓库，更新hexo分支
+//推送到远程仓库，更新hexo分支
+git push origin hexo
 ```
 
 __注意，这里先将themes文件夹里面的主题压缩包（例如我的是next.zip）解压，不然直接hexo g -d页面为空白__
@@ -71,7 +83,8 @@ hexo g -d   //push更新完分支之后将自己写的博客对接到自己搭�
 在不同的终端已经做完配置，就可以愉快的分享自己更新的博客，进入自己相应的文件夹
 
 ```bash
-git pull origin hexo  //先pull完成本地与远端的融合
+//先pull完成本地与远端的融合
+git pull origin hexo
 hexo new post " new blog name"
 git add source
 git commit -m "XX"

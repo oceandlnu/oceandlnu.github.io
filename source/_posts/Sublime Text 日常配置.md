@@ -47,7 +47,7 @@ E627DDBA 960A2153 69A2D98A C87C0607
 __如果上面方法无效，修改hosts文件，添加下面几行：__
 
 | OS | path |
-| :--- | :-- |
+| :--- | :------- |
 |Windows | C:\Windows\System32\drivers\etc\hosts |
 |Mac | /Private/etc/hosts |
 |Linux | /etc/hosts |
@@ -75,20 +75,22 @@ __如果上面方法无效，修改hosts文件，添加下面几行：__
 
 ### 导入插件
 
-1.选择LiveReload for Sublime text3.zip，将解压的文件夹放在Packages文件夹（Preference>Browse Packags）重启ST3。
-
-2.Preference>Package Settings>LiveReload>Settings User
+1.进入Packages/User
 
 ```
-{
-“enabled_plugins”: [
-“SimpleReloadPlugin”,
-“SimpleRefresh”
-]
-}
+cd ~/.config/sublime-text-3/Packages/User
+git clone git@gitee.com:oceandlnu/sublime-config.git
+mv sublime-config/* ./
+rm -rf sublime-config
 ```
 
-3.首选项 -> 快捷键设置
+打开Sublime Text，按 ctrl + \` 或者 View > Show Console ，打开 Console 一次性输入如下代码，回车：
+
+```
+import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
+```
+
+2.首选项 -> 快捷键设置
 
 ```
     //显示、隐藏侧边栏
@@ -99,7 +101,7 @@ __如果上面方法无效，修改hosts文件，添加下面几行：__
     { "keys": ["alt+f"],"command":"reindent","args":{"single_line": false} },
 ```
 
-4.首选项 -> 设置
+3.首选项 -> 设置
 
 ```
 {
@@ -108,19 +110,9 @@ __如果上面方法无效，修改hosts文件，添加下面几行：__
 }
 ```
 
-5.将 chromein.com_ext_11631.crx 托放到谷歌浏览器扩展程序处安装，谷歌浏览器右上角刷新按钮点击变为实心即和ST3同步。
-
-下载工具包：[LiveReload for Sublime text3.tar](/uploads/2016-10-03/LiveReload-for-Sublime-text3.tar.gz)
-
 ### 安装汉化插件
 
-打开Sublime Text，按 ctrl + \` 或者 View > Show Console ，打开 Console 一次性输入如下代码，回车：
-
-```
-import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
-```
-
-接着Ctrl+Shift+P打开命令行模式，输入pci，然后回车选择：Package Control: Install Package。
+Ctrl+Shift+P打开命令行模式，输入pci，然后回车选择：Package Control: Install Package。
 
 稍等一会，在弹出的下拉菜单输入"ChineseLocalization"。
 
