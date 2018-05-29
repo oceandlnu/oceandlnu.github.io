@@ -58,7 +58,7 @@ AURURL="https://aur.tuna.tsinghua.edu.cn"
 
 ### 常用软件
 
-	sudo pacman -S git chromium filezilla netease-cloud-music
+	sudo pacman -S git chromium filezilla netease-cloud-music screenfetch
 
 其他的软件就不多说了，大家可以自行去[AUR](https://aur.archlinux.org/)上查找.
 
@@ -160,16 +160,6 @@ yaourt -S zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 #安装powerline及字体
 yaourt -S powerline powerline-fonts
-```
-
-> nano .bashrc
-
-```
-#在最后增加
-powerline-daemon -q
-POWERLINE_BASH_CONTINUATION=1
-POWERLINE_BASH_SELECT=1
-. /usr/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
 ```
 
 > nano .zshrc
