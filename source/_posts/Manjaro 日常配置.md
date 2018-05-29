@@ -125,3 +125,13 @@ WPS官方网站： http://linux.wps.cn/
 	sudo fc-cache
 
 4.重启wps即可，字体缺失的提示不再出现。
+
+### 安装zsh
+
+```
+sudo pacman -S zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+chsh -s /bin/zsh
+```
+
+> 重启系统即可使用

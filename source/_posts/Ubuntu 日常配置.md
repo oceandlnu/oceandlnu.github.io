@@ -192,6 +192,17 @@ VMware下载地址：https://www.vmware.com/cn/products/workstation-pro/workstat
     ./phpstorm.sh &
     ./pycharm.sh &
 
+> 激活
+
+修改hosts文件，添加下面一行
+
+    0.0.0.0 account.jetbrains.com
+
+获取激活码，注册码激活：
+
+http://idea.iteblog.com/
+http://idea.lanyus.com/
+
 #### Sublime Text
 
 下载地址：http://www.sublimetext.com/
