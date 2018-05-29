@@ -1,33 +1,17 @@
 ---
 layout: post
-title: Ubuntu安装git、nvm
+title: Linux 安装 nvm
 date: 2017-09-16 21:26:56
 tags:
  - Linux
  - nvm
- - Git
 categories:
  - linux
-description: Ubuntu安装git、nvm
+description: Linux 安装 nvm
 copyright: true
 ---
 
-### Git
-    
-    sudo apt install git
-    
-验证是否安装成功，查看git版本
-    
-    git --version
-    
-卸载Git
-
-    sudo apt remove git
-    sudo apt autoremove
- 
-### nvm
-
-nvm是专门的node版本管理工具，可以在同一台机器上管理不同node版本。
+> nvm是专门的node版本管理工具，可以在同一台机器上管理不同node版本。
 
 github地址: https://github.com/creationix/nvm
 
@@ -57,9 +41,7 @@ cd  /usr/local/bin && ls -l | grep "../lib/node_modules/" | awk '{print $9}'| xa
 
     wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
-
-__注意：安装完成后请重新打开终端环境， oh-my-zsh 也是一样。__
-
+> 安装完成后请重新打开终端
 
 执行下面语句安装最新稳定版node（自带npm）：
 

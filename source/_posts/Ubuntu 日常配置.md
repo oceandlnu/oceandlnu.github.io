@@ -1,76 +1,19 @@
 ---
 layout: post
-title: Ubuntu 18.04 LTS 初始安装
-date: 2018-04-28 13:47:23
+title: Ubuntu 日常配置
+date: 2018-05-26 13:47:23
 tags:
  - linux
  - ubuntu
 categories:
  - 配置
-description: Ubuntu 18.04 LTS 初始安装
+description: Ubuntu 日常配置
 copyright: true
 ---
 
-### 更换阿里源
-
-#### 查看系统版本及内核
-
-首先查看自己的ubuntu系统的codename，这一步很重要，直接导致你更新的源是否对你的系统起效果，查看方法：
-
-    lsb_release -a
-
-```
-No LSB modules are available.
-Distributor ID: Ubuntu
-Description:    Ubuntu 18.04 LTS
-Release:    18.04
-Codename:   bionic
-```
-
-上面显示了一些ubuntu的版本信息，codename->xenial
-
-#### 确认阿里源支持
-
-登陆一下网页： http://mirrors.aliyun.com/ubuntu/dists/
-
-该网页显示了阿里云支持的ubuntu系统下各个Codename版本，确保自己的Codename在该网页中存在（一般都会有的）
-
-#### 更换源
-
-##### 1.软件包管理中心（推荐）
+### 更换国内源
 
 系统设置 -> 软件和更新 选择下载服务器 -> "mirrors.aliyun.com"
-
-##### 2.手动更改配置文件
-
-先将原配置文件备份
-
-    sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup
-
-然后打开编辑sources.list,替换默认的 archive.ubuntu.com 为 mirrors.aliyun.com
-
-    sudo vi /etc/apt/sources.list
-
-最后的效果如下：
-
-bionic(18.04)
-
-```
-deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
-
-deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
-
-deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
-
-deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
-
-deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
-```
 
 ### 安装常用软件
 
@@ -83,17 +26,11 @@ sudo apt upgrade
 
 #### 安装vim、chromium、filezilla
 
-    sudo apt install vim chromium-browser filezilla -y
+    sudo apt install git vim chromium-browser filezilla -y
     #GIMP图像处理，Kdenlive视频处理，p7zip支持rar压缩
     sudo apt install gimp kdenlive p7zip-full -y
 
-#### 安装git、nvm、node
-
-##### 安装git
-
-    sudo apt install git -y
-
-##### 安装nvm
+#### 安装nvm
 
 Github：https://github.com/creationix/nvm
 
@@ -105,12 +42,16 @@ Github：https://github.com/creationix/nvm
 
     wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
-__注意：安装完成后请重新打开终端环境， oh-my-zsh 也是一样。__
+> 安装完成后请重新打开终端
 
-
-执行下面语句安装最新稳定版node（自带npm）：
+安装最新稳定版node（自带npm）：
 
     nvm install node
+
+> Ps:
+类似的工具也有n命令，n 命令是作为一个 node 的模块而存在，而 nvm 是一个独立于 node/npm 的外部 shell 脚本， 因此 n 命令相比 nvm 更加局限。由于 npm 安装的模块路径均为 /usr/local/lib/node_modules ， 当使用 n 切换不同的 node 版本时，实际上会共用全局的 node/npm 目录。所以还是推荐使用nvm。
+
+github地址：https://github.com/tj/n
 
 #### 安装搜狗输入法
 
@@ -127,8 +68,6 @@ __注意：安装完成后请重新打开终端环境， oh-my-zsh 也是一样�
 双击安装下载的deb软件包即可
 
 #### Chromium创建桌面应用(例如：钉钉、微信)
-
-该功能以前是chromium/chrome自带功能，后续版本把这个功能去掉了，但是却可以这样做得以恢复
 
 在 ～/.local/share/applications/ 目录下创建各自的desktop文件(vim xxx.desktop)
 
@@ -160,23 +99,65 @@ Terminal=false
 StartupWMClass=wx.qq.com
 ```
 
-创建App快捷方式(如Pycharm)：
-
-```
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=Pycharm
-Icon=/home/ocean/develop/Pycharm/bin/pycharm.png
-Exec="/home/ocean/develop/Pycharm/bin/pycharm.sh" %f
-Terminal=false
-```
-
 图标路径可以自己改成对应的路径，不必按照案例来做，只要能访问到就是OK的
 
 ![](/uploads/2017-09-25/dd.png)
 
 ![](/uploads/2017-09-25/wx.png)
+
+创建App快捷方式：
+
+charles
+```
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=charles
+Icon=/home/ocean/develop/charles/icon/64x64/apps/charles-proxy.png
+Exec="/home/ocean/develop/charles/bin/charles" %f
+Comment=The Drive to Develop
+Categories=Development;IDE;
+Terminal=false
+```
+
+postman
+```
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Postman
+Icon=/home/ocean/develop/Postman/resources/app/assets/icon.png
+Exec="/home/ocean/develop/Postman/Postman" %f
+Comment=The Drive to Develop
+Categories=Development;IDE;
+Terminal=false
+```
+
+pycharm
+```
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Pycharm
+Icon=/home/ocean/develop/pycharm-community-2018.1.2/bin/pycharm.png
+Exec="/home/ocean/develop/pycharm-community-2018.1.2/bin/pycharm.sh" %f
+Comment=The Drive to Develop
+Categories=Development;IDE;
+Terminal=false
+```
+
+wechat-dev-tool
+```
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=wechat-dev-tool
+Icon=/home/ocean/develop/wechat-dev-tool/app/images/icon.png
+Exec="/home/ocean/develop/wechat-dev-tool/nw" %f
+Comment=The Drive to Develop
+Categories=Development;IDE;
+Terminal=false
+```
 
 #### 安装Postman
 
@@ -272,9 +253,9 @@ pip uninstall genpac
 genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" --pac-precise --output="autoproxy.pac"
 ```
 
-> 注意：如果执行时出现无法找到命令 genpac 错误，可能是因为genpac命令没有被安装到系统路径，genpac执行入口文件被安装到了~/.local/bin，解决方法
+> 注意：如果执行时出现无法找到命令 genpac 错误，可能是因为genpac命令没有被安装到系统路径，genpac执行入口文件被安装到了`~/.local/bin`，解决方法
 
-> 方案一：将~/.local/bin添加到系统路径
+> 方案一：将`~/.local/bin`添加到系统路径
 
 ```
 sudo ln -s ~/.local/bin/genpac /usr/bin/genpac

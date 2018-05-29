@@ -29,6 +29,11 @@ server {
   #error_page 404 /404.html;
   #error_page 502 /502.html;
   
+  #允许跨域，仅测试开放
+  location / {
+        add_header Access-Control-Allow-Origin *;
+  }
+  
   location ~ [^/]\.php(/|$) {
     #增加下面三行
     fastcgi_split_path_info ^(.+\.php)(/?.+)$;
