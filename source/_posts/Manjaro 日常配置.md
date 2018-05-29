@@ -180,19 +180,6 @@ powerline-daemon -q
 . /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
 ```
 
-> vim支持
-
-	yaourt -S powerline-vim
-
-> 配置 nano .vimrc
-
-```
-let g:powerline_pycmd="py3"
-set laststatus=2
-set t_Co=256
-syntax on
-```
-
 ### Pac 全局代理
 
 ```
@@ -204,10 +191,11 @@ sudo pip install --upgrade genpac
 genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" --pac-precise --output="autoproxy.pac"
 ```
 
-> 设置全局代理，在/etc/environment文件里添加如下内容
+> 设置全局代理，在/etc/environment文件里添加auto_proxy/AUTO_PROXY
 
 ```
 auto_proxy="file:///home/ocean/develop/autoproxy.pac"
+#或者
 AUTO_PROXY="file:///home/ocean/develop/autoproxy.pac"
 ```
 
