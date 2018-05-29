@@ -11,10 +11,7 @@ description: VirtualBox CentOS7 Mini 安装增强工具
 copyright: true
 ---
 
->* 宿主机：Ubuntu18.04
-   虚拟机：CentOS7 Mini
-   教程适用系统：CentOS6/CentOS7(亲测)
-
+### 安装增强工具
 
 >* 安装相关依赖
 
