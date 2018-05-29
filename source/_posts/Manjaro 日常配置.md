@@ -151,24 +151,6 @@ ssr restart
 # 卸载
 ssr uninstall
 ```
-### 安装zsh、oh-my-zsh、powerline
-
-```
-#安装zsh
-yaourt -S zsh
-#安装 oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-#安装powerline及字体
-yaourt -S powerline powerline-fonts
-```
-
-> nano .zshrc
-
-```
-#在最后增加
-powerline-daemon -q
-. /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
-```
 
 ### Pac 全局代理
 
@@ -219,3 +201,22 @@ socks5 127.0.0.1 1080
 > [SSR 账号](http://ss.pythonic.life/)
 
 > [老D博客](https://laod.cn/)
+
+### 安装zsh、oh-my-zsh、powerline
+
+```
+#安装zsh
+yaourt -S zsh
+#安装 oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+#安装powerline及字体
+yaourt -S powerline powerline-fonts
+```
+
+> nano .zshrc
+
+```
+#在最后增加
+powerline-daemon -q
+. /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
+```

@@ -88,22 +88,27 @@ __如果上面方法无效，修改hosts文件，添加下面几行：__
 }
 ```
 
-3.快捷键推荐设置 Preference>Keymap User
+3.首选项 -> 快捷键设置
+
+```
+    //显示、隐藏侧边栏
+    { "keys": ["alt+1"], "command": "toggle_side_bar" },
+    //复制当前行
+    { "keys": ["ctrl+d"],"command": "duplicate_line" },
+    //格式化代码
+    { "keys": ["alt+f"],"command":"reindent","args":{"single_line": false} },
+```
+
+4.首选项 -> 设置
 
 ```
 {
-//复制当前行
-	"keys": ["ctrl+d"],
-	"command": "duplicate_line" 
-},{
-//格式化代码
-	"keys": ["ctrl+alt+/"],
-	"command":"reindent",
-	"args":{"single_line": false}
-},
+    //自动换行
+    "word_wrap": "true",
+}
 ```
 
-4.将 chromein.com_ext_11631.crx 托放到谷歌浏览器扩展程序处安装，谷歌浏览器右上角刷新按钮点击变为实心即和ST3同步。
+5.将 chromein.com_ext_11631.crx 托放到谷歌浏览器扩展程序处安装，谷歌浏览器右上角刷新按钮点击变为实心即和ST3同步。
 
 下载工具包：[LiveReload for Sublime text3.tar](/uploads/2016-10-03/LiveReload-for-Sublime-text3.tar.gz)
 
@@ -119,10 +124,6 @@ import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe0
 
 稍等一会，在弹出的下拉菜单输入"ChineseLocalization"。
 
-### Sublime Text 3中文显示乱码
-
-安装"ConvertToUTF8" 或者 "ConvertChineseCharacters" 或者 "GBK Support"，中文字符就可以正常显示了。
-
-__参考资料：__
+> 参考资料：
 
 + [Installation - Package Control](https://packagecontrol.io/installation)
