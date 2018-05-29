@@ -58,7 +58,9 @@ AURURL="https://aur.tuna.tsinghua.edu.cn"
 
 ### 常用软件
 
-	sudo pacman -S git chromium filezilla
+	sudo pacman -S git chromium filezilla netease-cloud-music
+
+其他的软件就不多说了，大家可以自行去[AUR](https://aur.archlinux.org/)上查找.
 
 ### U盘挂载安装
 
