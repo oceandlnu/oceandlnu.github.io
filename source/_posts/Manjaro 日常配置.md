@@ -126,15 +126,118 @@ WPS官方网站： http://linux.wps.cn/
 
 4.重启wps即可，字体缺失的提示不再出现。
 
-### 安装proxychains-ng
+### SSR Client安装配置脚本
 
 ```
-yaourt -S proxychains-ng
+# 下载
+curl https://raw.githubusercontent.com/the0demiurge/CharlesScripts/master/charles/bin/ssr -o "ssr"
+# 或者
+wget https://raw.githubusercontent.com/the0demiurge/CharlesScripts/master/charles/bin/ssr -O "ssr"
+# 添加执行权限
+chmod a+x ssr
+sudo ln -s /home/ocean/develop/ssr /usr/bin/ssr
+# 安装依赖
+yaourt -S curl jq tsocks -y
+# 安装ssr客户端
+ssr install
+# 配置
+ssr config
+# 启动
+ssr start
+# 停止
+ssr stop
+# 重启
+ssr restart
+# 卸载
+ssr uninstall
+```
+### 安装zsh、oh-my-zsh、powerline
+
+```
+#安装zsh
+yaourt -S zsh
+#安装 oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+#安装powerline及字体
+yaourt -S powerline powerline-fonts
+```
+
+> nano .bashrc
+
+```
+#在最后增加
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+. /usr/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+```
+
+> nano .zshrc
+
+```
+#在最后增加
+powerline-daemon -q
+. /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
+```
+
+> vim支持
+
+	yaourt -S powerline-vim
+
+> 配置 nano .vimrc
+
+```
+let g:powerline_pycmd="py3"
+set laststatus=2
+set t_Co=256
+syntax on
+```
+
+### Pac 全局代理
+
+```
+yaourt -S python-pip
+sudo pip install --upgrade pip
+sudo pip install genpac
+sudo pip install --upgrade genpac
+# 在当前目录(比如：/home/ocean/develop)下生成autoproxy.pac
+genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" --pac-precise --output="autoproxy.pac"
+```
+
+> 设置全局代理，在/etc/environment文件里添加如下内容
+
+```
+auto_proxy="file:///home/ocean/develop/autoproxy.pac"
+AUTO_PROXY="file:///home/ocean/develop/autoproxy.pac"
+```
+
+> 重启系统
+
+### 终端代理
+
+	yaourt -S proxychains-ng
+
+> 编辑/etc/proxychains.conf文件，将socks4 127.0.0.1 9095（tor代理）修改为socks5 127.0.0.1 1080（shadowsocks代理） 
+
+```
 sudo nano /etc/proxychains.conf
-#文件末尾修改
 socks5 127.0.0.1 1080
 ```
 
-使用样例：
+> 使用：
+
+	proxychains yourcommand
+
+> 例如：
 
 	proxychains curl www.google.com
+
+### 干货分享
+
+> [自由上网](https://github.com/Alvin9999/new-pac/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7)
+
+> [逗比根据地](https://doub.io/sszhfx/)
+
+> [SSR 账号](http://ss.pythonic.life/)
+
+> [老D博客](https://laod.cn/)
