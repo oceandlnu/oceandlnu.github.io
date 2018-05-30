@@ -88,10 +88,11 @@ AURURL="https://aur.tuna.tsinghua.edu.cn"
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
+#或者
 export XMODIFIERS="@im=fcitx"
 ```
 
-> 对于jetbrians系列fcitx无法跟随的情况 设置>fcitx配置>附加组件>勾选 '高级'>Fcitx XIM 前端>配置>勾选 '对XIM使用On The Spot风格'
+> 对于jetbrians系列fcitx无法跟随的情况 设置 > fcitx配置 > 附加组件 > 勾选 `高级'`> Fcitx XIM 前端 > 点击 `配置` > 勾选 `对XIM使用On The Spot风格`
 
 > 重启系统，就可以使用输入法了。
 
@@ -174,11 +175,15 @@ socks5 127.0.0.1 1080
 
 	yaourt -S virtualbox linux414-virtualbox-host-modules virtualbox-ext-oracle
 
-> `[kernel version]-virtualbox-host-modules`  根据内核版本选择，假如我的内核版本为 `3.7.4-1-MANJARO`，则安装 linux37-virtualbox-host-modules ；
+> `[kernel version]-virtualbox-host-modules`  根据内核版本选择，假如我的内核版本为 `3.7.4-1-MANJARO`，则安装 `linux37-virtualbox-host-modules`
 
 > 添加当前用户到vboxusers，如果不需要使用USB外设，可以不执行此操作。
 
 	sudo gpasswd -a [username] vboxusers
+
+> 例如
+
+	sudo gpasswd -a ocean vboxusers
 
 重新启动系统或执行 `sudo modprobe vboxdrv`
 
