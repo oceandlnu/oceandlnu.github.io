@@ -54,11 +54,11 @@ AURURL="https://aur.tuna.tsinghua.edu.cn"
 
 > 安装更新
 
-	sudo pacman -Syu
+	sudo pacman -Syyu
 
 ### 常用软件
 
-	sudo pacman -S chromium filezilla netease-cloud-music screenfetch
+	sudo pacman -S chromium filezilla screenfetch netease-cloud-music
 
 其他的软件就不多说了，大家可以自行去[AUR](https://aur.archlinux.org/)上查找.
 
@@ -76,7 +76,7 @@ AURURL="https://aur.tuna.tsinghua.edu.cn"
 
 ### 安装搜狗拼音
 
-	sudo pacman -S fcitx-im fcitx-configtool fcitx-sogoupinyin
+	yaourt -S fcitx-im fcitx-configtool fcitx-sogoupinyin
 
 > 如果出现错误：无效或已损坏的软件包 (PGP 签名)。将所有的 `SigLevel = ×××` 修改为 `SigLevel = Never` 即可。
 
@@ -88,11 +88,9 @@ AURURL="https://aur.tuna.tsinghua.edu.cn"
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-#或者
-export XMODIFIERS="@im=fcitx"
 ```
 
-> 对于jetbrians系列fcitx无法跟随的情况 设置 > fcitx配置 > 附加组件 > 勾选 `高级'`> Fcitx XIM 前端 > 点击 `配置` > 勾选 `对XIM使用On The Spot风格`
+> 对于jetbrians系列fcitx无法跟随的情况 设置 > fcitx配置 > 附加组件 > 勾选 `高级`> Fcitx XIM 前端 > 点击 `配置` > 勾选 `对XIM使用On The Spot风格`
 
 > 重启系统，就可以使用输入法了。
 
@@ -107,7 +105,7 @@ wget https://raw.githubusercontent.com/the0demiurge/CharlesScripts/master/charle
 chmod a+x ssr
 sudo ln -s /home/ocean/develop/ssr /usr/bin/ssr
 # 安装依赖
-yaourt -S curl jq tsocks -y
+yaourt -S jq tsocks
 # 安装ssr客户端
 ssr install
 # 配置
@@ -126,9 +124,7 @@ ssr uninstall
 
 ```
 yaourt -S python-pip
-sudo pip install --upgrade pip
 sudo pip install genpac
-sudo pip install --upgrade genpac
 # 在当前目录(比如：/home/ocean/develop)下生成autoproxy.pac
 genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" --pac-precise --output="autoproxy.pac"
 ```
@@ -140,7 +136,7 @@ auto_proxy="file:///home/ocean/develop/autoproxy.pac"
 AUTO_PROXY="file:///home/ocean/develop/autoproxy.pac"
 ```
 
-> 重启系统
+> 重启系统生效
 
 ### 终端代理
 
