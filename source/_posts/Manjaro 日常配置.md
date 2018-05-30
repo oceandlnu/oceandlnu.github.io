@@ -58,7 +58,7 @@ AURURL="https://aur.tuna.tsinghua.edu.cn"
 
 ### 常用软件
 
-	sudo pacman -S git chromium filezilla netease-cloud-music screenfetch
+	sudo pacman -S chromium filezilla netease-cloud-music screenfetch
 
 其他的软件就不多说了，大家可以自行去[AUR](https://aur.archlinux.org/)上查找.
 
@@ -70,61 +70,30 @@ AURURL="https://aur.tuna.tsinghua.edu.cn"
 
 > 参考：https://wiki.archlinux.org/index.php/thunar#Automounting_of_large_external_drives
 
+### 安装WPS
+
+	yaourt -S wps-office ttf-wps-fonts
+
 ### 安装搜狗拼音
 
 	sudo pacman -S fcitx-im fcitx-configtool fcitx-sogoupinyin
 
-> 如果出现错误：无效或已损坏的软件包 (PGP 签名)
+> 如果出现错误：无效或已损坏的软件包 (PGP 签名)。将所有的 `SigLevel = ×××` 修改为 `SigLevel = Never` 即可。
 
-```
-sudo nano /etc/pacman.conf
-# 将所有的SigLevel = ××× 修改为 SigLevel = Never即可。
-```
+	sudo nano /etc/pacman.conf
 
 > 创建 `~/.xprofile` 文件，添加以下语句，否则只能在一部分窗口下输入。
 
 ```
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
-export XMODIFIERS="@im=fcitx
+export XMODIFIERS=@im=fcitx
+export XMODIFIERS="@im=fcitx"
 ```
 
-> 注销再登录， 就可以使用搜狗输入法了。
+> 对于jetbrians系列fcitx无法跟随的情况 设置>fcitx配置>附加组件>勾选 '高级'>Fcitx XIM 前端>配置>勾选 '对XIM使用On The Spot风格'
 
-### 安装WPS
-
-WPS官方网站： http://linux.wps.cn/ 
-
-	yaourt -S wps-office
-
-打开WPS 如果出现一个字体缺少的对话框。
-
-出现提示的原因是因为WPS for Linux没有自带windows的字体，只要在Linux系统中加载字体即可。
-
-具体操作步骤如下：
-
-1.下载缺失的字体文件，然后复制到Linux系统中的 /usr/share/fonts 文件夹中。
-
-国外下载地址： https://www.dropbox.com/s/lfy4hvq95ilwyw5/wps_symbol_fonts.zip
-
-国内下载地址： http://pan.baidu.com/s/1mh0lcbY
-
-（上述数据来源网络，侵删）
-
-下载完成后，解压并进入目录中，继续执行：
-
-	sudo cp * /usr/share/fonts
-
-2.执行以下命令,生成字体的索引信息：
-
-	sudo mkfontscale
-	sudo mkfontdir
-
-3.运行fc-cache命令更新字体缓存。
-
-	sudo fc-cache
-
-4.重启wps即可，字体缺失的提示不再出现。
+> 重启系统，就可以使用输入法了。
 
 ### SSR Client安装配置脚本
 
@@ -192,7 +161,7 @@ socks5 127.0.0.1 1080
 
 	proxychains curl www.google.com
 
-### 干货分享
+> 干货分享
 
 > [自由上网](https://github.com/Alvin9999/new-pac/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7)
 
@@ -202,21 +171,37 @@ socks5 127.0.0.1 1080
 
 > [老D博客](https://laod.cn/)
 
-### 安装zsh、oh-my-zsh、powerline
+### 安装oh-my-zsh、powerline
+
+> Manjaro 自带zsh，`zsh --version` 查看，如果没有安装 执行 `yaourt -S zsh`
+
+oh-my-zsh：http://ohmyz.sh/
 
 ```
-#安装zsh
-yaourt -S zsh
 #安装 oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 #安装powerline及字体
 yaourt -S powerline powerline-fonts
 ```
 
-> nano .zshrc
+> 编辑 `nano .zshrc` 在最后添加
 
 ```
-#在最后增加
 powerline-daemon -q
 . /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
 ```
+> 临时切换 bash
+
+	bash
+
+> 临时切换 zsh
+
+	zsh
+
+> 修改 bash 为默认 shell
+
+	chsh -s /bin/bash
+
+> 修改 zsh 为默认 shell
+
+	chsh -s /bin/zsh
