@@ -136,7 +136,6 @@ genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" --pac-precise --output="
 
 ```
 auto_proxy="file:///home/ocean/develop/autoproxy.pac"
-#或者
 AUTO_PROXY="file:///home/ocean/develop/autoproxy.pac"
 ```
 
@@ -161,8 +160,6 @@ socks5 127.0.0.1 1080
 
 	proxychains curl www.google.com
 
-> 干货分享
-
 > [自由上网](https://github.com/Alvin9999/new-pac/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7)
 
 > [逗比根据地](https://doub.io/sszhfx/)
@@ -170,6 +167,22 @@ socks5 127.0.0.1 1080
 > [SSR 账号](http://ss.pythonic.life/)
 
 > [老D博客](https://laod.cn/)
+
+### 安装 VirtualBox
+
+> 查看当前的内核版本， `uname -r` ，比如输出了 `4.14.44-1-MANJARO` 内核版本为 `414`
+
+	yaourt -S virtualbox linux414-virtualbox-host-modules virtualbox-ext-oracle
+
+> `[kernel version]-virtualbox-host-modules`  根据内核版本选择，假如我的内核版本为 `3.7.4-1-MANJARO`，则安装 linux37-virtualbox-host-modules ；
+
+> 添加当前用户到vboxusers，如果不需要使用USB外设，可以不执行此操作。
+
+	sudo gpasswd -a [username] vboxusers
+
+重新启动系统或执行 `sudo modprobe vboxdrv`
+
+参考：https://wiki.manjaro.org/index.php?title=Virtualbox
 
 ### 安装oh-my-zsh、powerline
 
