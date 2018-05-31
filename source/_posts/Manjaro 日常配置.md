@@ -23,7 +23,7 @@ copyright: true
 
 勾选 `https://mirrors.tuna.tsinghua.edu.cn/manjaro/ `，然后 OK -> 确定 。
 
-> `Arch Linux CN` 源
+> `Arch Linux CN` 软件源
 
 ```
 sudo nano /etc/pacman.conf
@@ -44,7 +44,7 @@ Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
 
 	sudo pacman -S yaourt
 
-> 设置AUR源
+> `AUR` 软件源
 
 ```
 sudo nano /etc/yaourtrc
@@ -62,13 +62,17 @@ AURURL="https://aur.tuna.tsinghua.edu.cn"
 
 	sudo pacman -S chromium filezilla screenfetch netease-cloud-music
 
-其他的软件就不多说了，大家可以自行去软件包管理器或者[AUR](https://aur.archlinux.org/)上查找。
+> 日常开发
 
-### U盘挂载(系统默认已安装，如果没有执行下面命令安装)
+	yaourt -S sublime-text-dev-imfix phpstorm postman charles mysql-workbench redis-desktop-manager-bin
 
-	sudo pacman -S udiskie
+大家可以自行去 `软件包管理器(添加/删除软件)` 或者[AUR](https://aur.archlinux.org/)查找所需要软件。
 
-设置udiskie -2命令为开机自动后台启动即可自动挂载，[参考](https://wiki.archlinux.org/index.php/thunar#Automounting_of_large_external_drives)
+### 移动设备挂载
+
+> 系统已安装 `udiskie`，如果没有执行下面命令安装 `sudo pacman -S udiskie`
+
+> 菜单 -> 搜索 `可移动驱动器和介质` -> 存储器 -> 勾选 `热插拔时挂载可移动驱动器` `插入后挂载可移动介质`(或将`usidkie -2` 命令设置为开机启动)
 
 ### 安装WPS
 
@@ -122,7 +126,7 @@ ssr uninstall
 
 ### Pac 全局代理
 
-> 系统默认已经安装 `pip`，想重新安装执行`yaourt -S python-pip`
+> 系统默认已经安装 `pip`，重新安装执行`yaourt -S python-pip`
 
 ```
 sudo pip install genpac
