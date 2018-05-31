@@ -82,11 +82,7 @@ AURURL="https://aur.tuna.tsinghua.edu.cn"
 
 	yaourt -S fcitx-im fcitx-configtool fcitx-sogoupinyin
 
-> 如果出现错误：无效或已损坏的软件包 (PGP 签名)。将所有的 `SigLevel = ×××` 修改为 `SigLevel = Never` 即可。
-
-	sudo nano /etc/pacman.conf
-
-> 创建 `~/.xprofile` 文件，添加以下语句，否则只能在一部分窗口下输入。
+> 创建 `nano ~/.xprofile` 文件，添加以下语句，否则只能在一部分窗口下输入。
 
 ```
 export GTK_IM_MODULE=fcitx
@@ -94,7 +90,7 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 ```
 
-> 对于jetbrians系列fcitx无法跟随的情况 设置 > fcitx配置 > 附加组件 > 勾选 `高级`> Fcitx XIM 前端 > 点击 `配置` > 勾选 `对XIM使用On The Spot风格`
+> 如果jetbrians系列出现fcitx无法跟随的情况 设置 > fcitx配置 > 附加组件 > 勾选 `高级`> Fcitx XIM 前端 > 点击 `配置` > 勾选 `对XIM使用On The Spot风格`
 
 > 重启系统，就可以使用输入法了。
 
@@ -188,7 +184,7 @@ yaourt -S virtualbox linux414-virtualbox-host-modules virtualbox-ext-oracle
 
 	sudo gpasswd -a ocean vboxusers
 
-重新启动系统或执行 `sudo vboxreload` ，[参考](https://wiki.manjaro.org/)index.php?title=Virtualbox
+重新启动系统或执行 `sudo vboxreload` ，[参考](https://wiki.manjaro.org/index.php?title=Virtualbox)
 
 ### 安装oh-my-zsh、powerline
 
