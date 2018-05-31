@@ -64,7 +64,7 @@ AURURL="https://aur.tuna.tsinghua.edu.cn"
 
 > 日常开发
 
-	yaourt -S sublime-text-dev-imfix phpstorm postman charles mysql-workbench redis-desktop-manager-bin
+	yaourt -S sublime-text-dev-imfix phpstorm postman charles mysql-workbench redis-desktop-manager-bin haroopad
 
 大家可以自行去 `软件包管理器(添加/删除软件)` 或者[AUR](https://aur.archlinux.org/)查找所需要软件。
 
