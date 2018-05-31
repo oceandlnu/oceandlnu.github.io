@@ -21,9 +21,9 @@ copyright: true
 
 	sudo pacman-mirrors -i -c China -m rank
 
-勾选 https://mirrors.tuna.tsinghua.edu.cn/manjaro/ ，然后 OK -> 确定 。
+勾选 `https://mirrors.tuna.tsinghua.edu.cn/manjaro/ `，然后 OK -> 确定 。
 
-> ArchlinuxCN 镜像
+> `Arch Linux CN` 源
 
 ```
 sudo nano /etc/pacman.conf
@@ -32,13 +32,13 @@ sudo nano /etc/pacman.conf
 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
 ```
 
-> 更新软件包缓存
+> 更新缓存
 
 	sudo pacman -Syy
 
-> 安装 archlinuxcn-keyring 包导入 GPG key
+> 安装 `archlinuxcn-keyring` 包导入 GPG key
 
-	sudo pacman -S archlinux-keyring archlinuxcn-keyring
+	sudo pacman -S archlinuxcn-keyring
 
 > 安装 yaourt
 
@@ -52,6 +52,8 @@ sudo nano /etc/yaourtrc
 AURURL="https://aur.tuna.tsinghua.edu.cn"
 ```
 
+> 菜单 -> 添加/删除软件 -> 首选项 -> AUR，打开 `启用AUR支持`  勾选 `从AUR检查更新`
+
 > 安装更新
 
 	sudo pacman -Syyu
@@ -60,15 +62,13 @@ AURURL="https://aur.tuna.tsinghua.edu.cn"
 
 	sudo pacman -S chromium filezilla screenfetch netease-cloud-music
 
-其他的软件就不多说了，大家可以自行去[AUR](https://aur.archlinux.org/)上查找.
+其他的软件就不多说了，大家可以自行去软件包管理器或者[AUR](https://aur.archlinux.org/)上查找。
 
-### U盘挂载安装
+### U盘挂载(系统默认已安装，如果没有执行下面命令安装)
 
 	sudo pacman -S udiskie
 
-设置udiskie -2命令为开机自动后台启动即可自动挂载
-
-> 参考：https://wiki.archlinux.org/index.php/thunar#Automounting_of_large_external_drives
+设置udiskie -2命令为开机自动后台启动即可自动挂载，[参考](https://wiki.archlinux.org/index.php/thunar#Automounting_of_large_external_drives)
 
 ### 安装WPS
 
@@ -122,8 +122,9 @@ ssr uninstall
 
 ### Pac 全局代理
 
+> 系统默认已经安装 `pip`，想重新安装执行`yaourt -S python-pip`
+
 ```
-yaourt -S python-pip
 sudo pip install genpac
 # 在当前目录(比如：/home/ocean/develop)下生成autoproxy.pac
 genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" --pac-precise --output="autoproxy.pac"
@@ -142,7 +143,7 @@ AUTO_PROXY="file:///home/ocean/develop/autoproxy.pac"
 
 	yaourt -S proxychains-ng
 
-> 编辑/etc/proxychains.conf文件，将socks4 127.0.0.1 9095（tor代理）修改为socks5 127.0.0.1 1080（shadowsocks代理） 
+> 编辑/etc/proxychains.conf文件，将`socks4 127.0.0.1 9095`修改为`socks5 127.0.0.1 1080`
 
 ```
 sudo nano /etc/proxychains.conf
@@ -169,7 +170,9 @@ socks5 127.0.0.1 1080
 
 > 查看当前的内核版本， `uname -r` ，比如输出了 `4.14.44-1-MANJARO` 内核版本为 `414`
 
-	yaourt -S virtualbox linux414-virtualbox-host-modules virtualbox-ext-oracle
+```
+yaourt -S virtualbox linux414-virtualbox-host-modules virtualbox-ext-oracle
+```
 
 > `[kernel version]-virtualbox-host-modules`  根据内核版本选择，假如我的内核版本为 `3.7.4-1-MANJARO`，则安装 `linux37-virtualbox-host-modules`
 
@@ -181,9 +184,7 @@ socks5 127.0.0.1 1080
 
 	sudo gpasswd -a ocean vboxusers
 
-重新启动系统或执行 `sudo modprobe vboxdrv`
-
-参考：https://wiki.manjaro.org/index.php?title=Virtualbox
+重新启动系统或执行 `sudo vboxreload` ，[参考](https://wiki.manjaro.org/)index.php?title=Virtualbox
 
 ### 安装oh-my-zsh、powerline
 
