@@ -64,13 +64,13 @@ AURURL="https://aur.tuna.tsinghua.edu.cn"
 
 > 日常开发
 
-	yaourt -S sublime-text-dev-imfix phpstorm postman charles mysql-workbench redis-desktop-manager-bin haroopad
+	yaourt -S sublime-text-dev-imfix phpstorm postman-bin charles mysql-workbench redis-desktop-manager-bin haroopad
 
-> 删除孤立软件包
+> 删除孤立软件包(慎用)
 
 	sudo pacman -Rs $(pacman -Qtdq)
 
-大家可以自行去 `软件包管理器(添加/删除软件)` 或者[AUR](https://aur.archlinux.org/)查找所需要软件。
+有需要可以自行去 `软件包管理器(添加/删除软件)` 或者[AUR](https://aur.archlinux.org/)查找软件。
 
 ### 移动设备挂载
 
