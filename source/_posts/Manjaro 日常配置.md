@@ -78,7 +78,7 @@ git config --global user.email "oceandlnu@gmail.com"
 
 ### 日常开发
 
-	yaourt -S charles mysql-workbench haroopad postman redis-desktop-manager-bin
+	yaourt -S charles mysql-workbench haroopad redis-desktop-manager-bin postman
 
 > phpstorm
 
