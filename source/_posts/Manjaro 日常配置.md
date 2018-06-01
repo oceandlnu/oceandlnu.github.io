@@ -60,11 +60,11 @@ AURURL="https://aur.tuna.tsinghua.edu.cn"
 
 ### 常用软件
 
-	sudo pacman -S chromium filezilla screenfetch netease-cloud-music
+	sudo pacman -S chromium filezilla screenfetch netease-cloud-music obs-studio
 
 > 日常开发
 
-	yaourt -S sublime-text-dev-imfix phpstorm postman-bin charles mysql-workbench redis-desktop-manager-bin haroopad
+	yaourt -S charles mysql-workbench haroopad postman redis-desktop-manager-bin
 
 > 删除孤立软件包(慎用)
 
@@ -224,3 +224,5 @@ powerline-daemon -q
 > 修改 zsh 为默认 shell
 
 	chsh -s /bin/zsh
+
+> [保持ssh连接](http://einverne.github.io/post/2017/05/ssh-keep-alive.html)
