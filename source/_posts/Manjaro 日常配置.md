@@ -64,7 +64,7 @@ AURURL="https://aur.tuna.tsinghua.edu.cn"
 
 > 微信、TIM
 
-	yaourt -S deepin-wechat deepin-wine-tim
+	yaourt -S deepin-wechat deepin.com.qq.office
 
 > git配置
 
