@@ -80,6 +80,15 @@ git config --global user.email "oceandlnu@gmail.com"
 
 	yaourt -S charles mysql-workbench haroopad redis-desktop-manager-bin postman
 
+__如果redis-desktop无法打开，执行下面命令__
+
+```
+yaourt -R redis-desktop-manager-bin
+yaourt -S redis-desktop-manager
+yaourt -R redis-desktop-manager
+yaourt -S redis-desktop-manager-bin
+```
+
 > phpstorm
 
 下载地址：http://www.jetbrains.com/
