@@ -101,6 +101,8 @@ sudo nano /etc/hosts
 http://idea.iteblog.com/
 http://idea.lanyus.com/
 
+配置文件存放目录：`~/.PhpStorm2018.1`
+
 > sublime text
 
 [Sublime Text 日常配置](https://oceandlnu.github.io/2017/01/18/Sublime%20Text%20%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/)
