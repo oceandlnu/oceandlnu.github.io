@@ -40,6 +40,10 @@ Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
 
 	sudo pacman -S archlinuxcn-keyring
 
+> 安装更新
+
+	sudo pacman -Syyu
+
 > 安装 yaourt
 
 	sudo pacman -S yaourt
@@ -54,13 +58,13 @@ AURURL="https://aur.tuna.tsinghua.edu.cn"
 
 > 菜单 -> 添加/删除软件 -> 首选项 -> AUR，打开 `启用AUR支持`  勾选 `从AUR检查更新`
 
-> 安装更新
-
-	sudo pacman -Syyu
-
 ### 常用软件
 
 	sudo pacman -S chromium filezilla screenfetch netease-cloud-music obs-studio
+
+> 微信、TIM
+
+	yaourt -S deepin-wechat deepin-wine-tim
 
 > git配置
 
@@ -78,18 +82,20 @@ git config --global user.email "oceandlnu@gmail.com"
 
 ### 日常开发
 
-	yaourt -S charles mysql-workbench haroopad redis-desktop-manager-bin postman
+	yaourt -S charles mysql-workbench haroopad postman
 
-__如果redis-desktop无法打开，执行下面命令__
+#### redis-desktop-manager(软件中心搜索`redis-desktop-manager`安装)
+
+> 如果打开失败
 
 ```
-yaourt -R redis-desktop-manager-bin
-yaourt -S redis-desktop-manager
 yaourt -R redis-desktop-manager
 yaourt -S redis-desktop-manager-bin
+yaourt -R redis-desktop-manager-bin
+yaourt -S redis-desktop-manager
 ```
 
-> phpstorm
+#### phpstorm
 
 下载地址：http://www.jetbrains.com/
 
@@ -112,7 +118,7 @@ http://idea.lanyus.com/
 
 配置文件存放目录：`~/.PhpStorm2018.1`
 
-> sublime text
+#### sublime text
 
 [Sublime Text 日常配置](https://oceandlnu.github.io/2017/01/18/Sublime%20Text%20%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/)
 
