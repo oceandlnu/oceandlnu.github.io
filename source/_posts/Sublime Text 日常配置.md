@@ -16,7 +16,29 @@ copyright: true
 
 解压缩，将目录名改为sublime_text，移动到 /opt/ 目录下
 
-	sudo mv sublime_text /opt/
+```
+sudo mv sublime_text_3 sublime_text
+sudo mv sublime_text /opt/
+```
+
+### 禁用自动更新
+
+```
+“Preferences -> Settings-User/Distraction Free“
+#增加一行
+“update_check”: false,
+```
+
+> 如果上面方法无效，修改hosts文件，添加下面几行：
+
+```
+sudo nano /etc/hosts
+#添加下面几行
+127.0.0.1 www.sublimetext.com
+127.0.0.1 license.sublimehq.com
+127.0.0.1 45.55.255.55
+127.0.0.1 45.55.41.223
+```
 
 ### 注册码：
 
@@ -36,46 +58,21 @@ E627DDBA 960A2153 69A2D98A C87C0607
 ------ END LICENSE ------
 ```
 
-### 如何禁用自动更新：
-
-```
-“Preferences -> Settings-User/Distraction Free“
-#增加一行
-“update_check”: false,
-```
-
-__如果上面方法无效，修改hosts文件，添加下面几行：__
-
-| OS | path |
-| :--- | :------- |
-|Windows | C:\Windows\System32\drivers\etc\hosts |
-|Mac | /Private/etc/hosts |
-|Linux | /etc/hosts |
-
-```
-127.0.0.1 www.sublimetext.com
-127.0.0.1 license.sublimehq.com
-127.0.0.1 45.55.255.55
-127.0.0.1 45.55.41.223
-```
-
 ### linux不能输入中文解决方法
 
 下载 [zh_cn.tar.gz](/uploads/2017-01-18/zh_cn.tar.gz)
 
-使用方法
-
 下载后，执行
 
-    tar -zxvf zh_cn.tar.gz 
-	cd sublime/
-    sudo ./install.sh
-
-即可完美支持中文
+```
+tar -zxvf zh_cn.tar.gz 
+cd sublime/
+sudo ./install.sh
+```
 
 ### 导入插件
 
-1.进入Packages/User
+> 进入Packages/User
 
 ```
 cd ~/.config/sublime-text-3/Packages/User
@@ -84,13 +81,15 @@ mv sublime-config/* ./
 rm -rf sublime-config
 ```
 
-打开Sublime Text，按 ctrl + \` 或者 View > Show Console ，打开 Console 一次性输入如下代码，回车：
+> 打开Sublime Text，按 ctrl + \` 或者 View > Show Console ，打开 Console 一次性输入如下代码，回车：
 
 ```
 import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
 ```
 
-2.首选项 -> 快捷键设置
+### 其他配置
+
+1.首选项 -> 快捷键设置
 
 ```
     //显示、隐藏侧边栏
@@ -101,7 +100,7 @@ import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe0
     { "keys": ["alt+f"],"command":"reindent","args":{"single_line": false} },
 ```
 
-3.首选项 -> 设置
+2.首选项 -> 设置
 
 ```
 {
@@ -110,7 +109,7 @@ import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe0
 }
 ```
 
-### 安装汉化插件
+3.安装汉化插件
 
 Ctrl+Shift+P打开命令行模式，输入pci，然后回车选择：Package Control: Install Package。
 

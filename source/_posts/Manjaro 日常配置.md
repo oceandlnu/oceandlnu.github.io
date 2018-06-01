@@ -62,9 +62,13 @@ AURURL="https://aur.tuna.tsinghua.edu.cn"
 
 	sudo pacman -S chromium filezilla screenfetch netease-cloud-music obs-studio
 
-> 日常开发
+> git配置
 
-	yaourt -S charles mysql-workbench haroopad postman redis-desktop-manager-bin
+```
+ssh-keygen -t rsa -C "home"
+git config --global user.name "oceandlnu"
+git config --global user.email "oceandlnu@gmail.com"
+```
 
 > 删除孤立软件包(慎用)
 
@@ -72,11 +76,42 @@ AURURL="https://aur.tuna.tsinghua.edu.cn"
 
 有需要可以自行去 `软件包管理器(添加/删除软件)` 或者[AUR](https://aur.archlinux.org/)查找软件。
 
+### 日常开发
+
+	yaourt -S charles mysql-workbench haroopad postman redis-desktop-manager-bin
+
+> phpstorm
+
+下载地址：http://www.jetbrains.com/
+
+```
+sudo nano /etc/hosts
+#添加下面一行
+0.0.0.0 account.jetbrains.com
+```
+
+解压安装包进入bin目录
+
+```
+./phpstorm.sh &
+```
+
+获取激活码，注册码激活：
+
+http://idea.iteblog.com/
+http://idea.lanyus.com/
+
+> sublime text
+
+[Sublime Text 日常配置](https://oceandlnu.github.io/2017/01/18/Sublime%20Text%20%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/)
+
 ### 移动设备挂载
 
 > 系统已安装 `udiskie`，如果没有执行下面命令安装 `sudo pacman -S udiskie`
 
-> 菜单 -> 搜索 `可移动驱动器和介质` -> 存储器 -> 勾选 `热插拔时挂载可移动驱动器` `插入后挂载可移动介质`(或将`usidkie -2` 命令设置为开机启动)
+> 菜单 -> 设置 -> 可移动驱动器和介质 -> 选择 `存储器` -> 勾选 `热插拔时挂载可移动驱动器` `插入后挂载可移动介质`(或将`usidkie -2` 命令设置为开机启动)
+
+> 重启系统生效
 
 ### 安装WPS
 
@@ -96,11 +131,12 @@ export XMODIFIERS=@im=fcitx
 
 > 如果jetbrians系列出现fcitx无法跟随的情况 设置 > fcitx配置 > 附加组件 > 勾选 `高级`> Fcitx XIM 前端 > 点击 `配置` > 勾选 `对XIM使用On The Spot风格`
 
-> 重启系统，就可以使用输入法了。
+> 重启系统生效。
 
 ### SSR Client安装配置脚本
 
 ```
+cd ~/develop
 # 下载
 curl https://raw.githubusercontent.com/the0demiurge/CharlesScripts/master/charles/bin/ssr -o "ssr"
 # 或者
@@ -123,6 +159,14 @@ ssr restart
 # 卸载
 ssr uninstall
 ```
+
+> [自由上网](https://github.com/Alvin9999/new-pac/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7)
+
+> [逗比根据地](https://doub.io/sszhfx/)
+
+> [SSR 账号](http://ss.pythonic.life/)
+
+> [老D博客](https://laod.cn/)
 
 ### Pac 全局代理
 
@@ -161,14 +205,6 @@ socks5 127.0.0.1 1080
 > 例如：
 
 	proxychains curl www.google.com
-
-> [自由上网](https://github.com/Alvin9999/new-pac/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7)
-
-> [逗比根据地](https://doub.io/sszhfx/)
-
-> [SSR 账号](http://ss.pythonic.life/)
-
-> [老D博客](https://laod.cn/)
 
 ### 安装 VirtualBox
 
@@ -209,6 +245,23 @@ yaourt -S powerline powerline-fonts
 powerline-daemon -q
 . /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
 ```
+
+> 安装 nvm(安装完成后需要重启终端)
+
+```
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | zsh
+#或者
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | zsh
+```
+
+> 安装node
+
+	nvm install node
+
+> 安装hexo
+
+	npm install hexo-cli -g
+
 > 临时切换 bash
 
 	bash
@@ -225,4 +278,19 @@ powerline-daemon -q
 
 	chsh -s /bin/zsh
 
-> [保持ssh连接](http://einverne.github.io/post/2017/05/ssh-keep-alive.html)
+> 免密登录
+
+```
+cat ~/.ssh/id_rsa.pub
+#将公钥追加到远程服务器的 ~/.ssh/authorized_keys
+```
+
+> 保持ssh连接(配置客户端)
+
+```
+sudo nano /etc/ssh/ssh_config
+ServerAliveInterval 120
+ServerAliveCountMax 60
+```
+
+(参考链接)(http://einverne.github.io/post/2017/05/ssh-keep-alive.html)
