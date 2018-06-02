@@ -66,6 +66,8 @@ AURURL="https://aur.tuna.tsinghua.edu.cn"
 
 	yaourt -S deepin-wechat deepin.com.qq.office
 
+> 自由截图快捷键设置，菜单 -> 设置 -> 键盘 -> 应用程序快捷键 -> 添加 -> 命令 `xfce4-screenshooter -r` 点击确定，接下来会提示设置快捷键，我设置为 `ctrl+alt+A`
+
 > git配置
 
 ```
