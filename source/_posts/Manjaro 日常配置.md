@@ -62,6 +62,10 @@ AURURL="https://aur.tuna.tsinghua.edu.cn"
 
 	sudo pacman -S chromium filezilla screenfetch netease-cloud-music obs-studio
 
+> `chromiun`安装 `flash`
+
+	yaourt -S pepper-flash
+
 > 微信、TIM
 
 	yaourt -S deepin-wechat deepin.com.qq.office
