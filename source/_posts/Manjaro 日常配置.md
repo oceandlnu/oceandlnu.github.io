@@ -84,11 +84,15 @@ git config --global user.email "oceandlnu@gmail.com"
 
 ### 日常开发
 
-	yaourt -S charles mysql-workbench haroopad postman
+	yaourt -S charles mysql-workbench postman redis-desktop-manager haroopad
 
-#### redis-desktop-manager(软件中心搜索`redis-desktop-manager`安装)
+> 破解 `charles`
 
-> 如果打开失败
+```
+sudo mv charles.jar /usr/share/java/charles
+```
+
+> 如果 `redis-desktop-manager`打开失败
 
 ```
 yaourt -R redis-desktop-manager
@@ -126,9 +130,9 @@ http://idea.lanyus.com/
 
 ### 移动设备挂载
 
-> 系统已安装 `udiskie`，如果没有执行下面命令安装 `sudo pacman -S udiskie`
+> 系统默认已安装 `udiskie`，如果没有执行下面命令安装 `sudo pacman -S udiskie`
 
-> 菜单 -> 设置 -> 可移动驱动器和介质 -> 选择 `存储器` -> 勾选 `热插拔时挂载可移动驱动器` `插入后挂载可移动介质`(或将`usidkie -2` 命令设置为开机启动)
+> 菜单 -> 设置 -> 可移动驱动器和介质 -> 选择 `存储器` -> 勾选 `热插拔时挂载可移动驱动器` `插入后挂载可移动介质`(或执行`usidkie -2` 命令设置为开机启动)
 
 > 重启系统生效
 
@@ -243,7 +247,7 @@ yaourt -S virtualbox linux414-virtualbox-host-modules virtualbox-ext-oracle
 
 	sudo gpasswd -a ocean vboxusers
 
-重新启动系统或执行 `sudo vboxreload` ，[参考](https://wiki.manjaro.org/index.php?title=Virtualbox)
+重新启动系统或执行 `sudo vboxreload` ，[参考链接](https://wiki.manjaro.org/index.php?title=Virtualbox)
 
 ### 安装oh-my-zsh、powerline
 
@@ -266,6 +270,8 @@ powerline-daemon -q
 ```
 
 > 安装 nvm(安装完成后需要重启终端)
+
+Github：https://github.com/creationix/nvm
 
 ```
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | zsh
@@ -312,4 +318,4 @@ ServerAliveInterval 120
 ServerAliveCountMax 60
 ```
 
-(参考链接)(http://einverne.github.io/post/2017/05/ssh-keep-alive.html)
+[参考链接](http://einverne.github.io/post/2017/05/ssh-keep-alive.html)
