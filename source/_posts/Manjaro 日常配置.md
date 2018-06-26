@@ -70,12 +70,10 @@ AURURL="https://aur.tuna.tsinghua.edu.cn"
 
 	yaourt -S deepin-wechat deepin.com.qq.office
 
-> 自由截图快捷键设置，菜单 -> 设置 -> 键盘 -> 应用程序快捷键 -> 添加 -> 命令 `xfce4-screenshooter -r` 点击确定，接下来会提示设置快捷键，我设置为 `ctrl+alt+A`
-
 > git配置
 
 ```
-ssh-keygen -t rsa -C "home"
+ssh-keygen -t rsa -C "ocean"
 git config --global user.name "oceandlnu"
 git config --global user.email "oceandlnu@gmail.com"
 ```
@@ -85,6 +83,20 @@ git config --global user.email "oceandlnu@gmail.com"
 	sudo pacman -Rs $(pacman -Qtdq)
 
 有需要可以自行去 `软件包管理器(添加/删除软件)` 或者[AUR](https://aur.archlinux.org/)查找软件。
+
+### 自由截图快捷键设置
+
+> 菜单 -> 设置 -> 键盘 -> 应用程序快捷键 -> 添加 -> 命令 `xfce4-screenshooter -r` 点击确定，接下来会提示设置快捷键，我设置为 `ctrl+alt+A`
+
+### 安装深度截图
+
+	yaourt -S deepin-screenshot
+
+### 移动设备挂载
+
+> 系统默认已安装 `udiskie`，如果没有执行下面命令安装 `sudo pacman -S udiskie`
+
+> 菜单 -> 设置 -> 可移动驱动器和介质 -> 选择 `存储器` -> 勾选 `热插拔时挂载可移动驱动器` `插入后挂载可移动介质`(或执行`usidkie -2` 命令设置为开机启动)
 
 ### 日常开发
 
@@ -132,14 +144,6 @@ http://idea.lanyus.com/
 
 [Sublime Text 日常配置](https://oceandlnu.github.io/2017/01/18/Sublime%20Text%20%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/)
 
-### 移动设备挂载
-
-> 系统默认已安装 `udiskie`，如果没有执行下面命令安装 `sudo pacman -S udiskie`
-
-> 菜单 -> 设置 -> 可移动驱动器和介质 -> 选择 `存储器` -> 勾选 `热插拔时挂载可移动驱动器` `插入后挂载可移动介质`(或执行`usidkie -2` 命令设置为开机启动)
-
-> 重启系统生效
-
 ### 安装WPS
 
 	yaourt -S wps-office ttf-wps-fonts
@@ -148,17 +152,15 @@ http://idea.lanyus.com/
 
 	yaourt -S fcitx-im fcitx-configtool fcitx-sogoupinyin
 
-> 创建 `nano ~/.xprofile` 文件，添加以下语句，否则只能在一部分窗口下输入。
+> 创建 `.xprofile` 文件，添加以下语句，否则只能在一部分窗口下输入。
 
 ```
+nano ~/.xprofile
+#添加以下语句
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 ```
-
-> 如果jetbrians系列出现fcitx无法跟随的情况 设置 > fcitx配置 > 附加组件 > 勾选 `高级`> Fcitx XIM 前端 > 点击 `配置` > 勾选 `对XIM使用On The Spot风格`
-
-> 重启系统生效。
 
 ### SSR Client安装配置脚本
 
@@ -205,23 +207,24 @@ sudo pip install genpac
 genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" --pac-precise --output="autoproxy.pac"
 ```
 
-> 设置全局代理，在/etc/environment文件里添加auto_proxy/AUTO_PROXY
+> 设置全局代理，在`environment`文件里添加 `auto_proxy/AUTO_PROXY`
 
 ```
+sudo nano /etc/environment
+#添加下面任意一行
 auto_proxy="file:///home/ocean/develop/autoproxy.pac"
 AUTO_PROXY="file:///home/ocean/develop/autoproxy.pac"
 ```
-
-> 重启系统生效
 
 ### 终端代理
 
 	yaourt -S proxychains-ng
 
-> 编辑/etc/proxychains.conf文件，将`socks4 127.0.0.1 9095`修改为`socks5 127.0.0.1 1080`
+> 编辑`proxychains.conf`文件，将`socks4 127.0.0.1 9095`修改为`socks5 127.0.0.1 1080`
 
 ```
 sudo nano /etc/proxychains.conf
+#找到最后一行，修改为
 socks5 127.0.0.1 1080
 ```
 
@@ -318,6 +321,7 @@ cat ~/.ssh/id_rsa.pub
 
 ```
 sudo nano /etc/ssh/ssh_config
+#添加下面两行
 ServerAliveInterval 120
 ServerAliveCountMax 60
 ```
