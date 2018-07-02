@@ -12,6 +12,6 @@ comments: false
 
 >*	【目前技术栈】
 	【前端】html，css，javascript，bootstrap，jquery
-	【后台】C，C++，JAVA，Python3，PHP
-	【数据库】MySQL，Oracle，Redis
-	【其他】Git版本管理工具
+	【后台】C，C++，JAVA，PHP，Thinkphp5.0，Laravel
+	【数据库】MySQL，Redis
+	【其他】docker，composer，git
