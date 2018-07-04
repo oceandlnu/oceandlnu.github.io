@@ -40,6 +40,16 @@ sudo nano /etc/hosts
 127.0.0.1 45.55.41.223
 ```
 
+### linux不能输入中文解决方法
+
+下载 [zh_cn.tar.gz](/uploads/2017-01-18/zh_cn.tar.gz) 执行
+
+```
+tar -zxvf zh_cn.tar.gz 
+cd sublime/
+sudo ./install.sh
+```
+
 ### 注册码：
 
 ```
@@ -56,18 +66,6 @@ E627DDBA 960A2153 69A2D98A C87C0607
 45DC6049 8C04EC29 D18DFA40 442C680B
 1342224D 44D90641 33A3B9F2 46AADB8F
 ------ END LICENSE ------
-```
-
-### linux不能输入中文解决方法
-
-下载 [zh_cn.tar.gz](/uploads/2017-01-18/zh_cn.tar.gz)
-
-下载后，执行
-
-```
-tar -zxvf zh_cn.tar.gz 
-cd sublime/
-sudo ./install.sh
 ```
 
 ### 导入插件
@@ -98,14 +96,26 @@ import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe0
     { "keys": ["ctrl+d"],"command": "duplicate_line" },
     //格式化代码
     { "keys": ["alt+f"],"command":"reindent","args":{"single_line": false} },
+    { "keys": ["alt+j"], "command": "move", "args": {"by": "characters", "forward": false} },
+    { "keys": ["alt+l"], "command": "move", "args": {"by": "characters", "forward": true} },
+    { "keys": ["alt+i"], "command": "move", "args": {"by": "lines", "forward": false} },
+    { "keys": ["alt+k"], "command": "move", "args": {"by": "lines", "forward": true} },
 ```
 
 2.首选项 -> 设置
 
 ```
 {
-    //自动换行
-    "word_wrap": "true",
+    "color_scheme": "Packages/Material Theme/schemes/Material-Theme-Palenight.tmTheme",
+    "font_face": "Liberation Mono",
+    "font_size": 14,
+    "ignored_packages":
+    [
+        "Markdown",
+        "Vintage"
+    ],
+    "theme": "Material-Theme-Palenight.sublime-theme",
+    "word_wrap": "true"
 }
 ```
 
