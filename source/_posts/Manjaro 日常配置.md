@@ -197,7 +197,9 @@ ssr uninstall
 
 > [老D博客](https://laod.cn/)
 
-### Pac 全局代理
+### 代理配置(Pac/SwitchyOmega 二选一)
+
+#### Pac 全局代理
 
 > 系统默认已经安装 `pip`，重新安装执行`yaourt -S python-pip`
 
@@ -215,6 +217,42 @@ sudo nano /etc/environment
 auto_proxy="file:///home/ocean/develop/autoproxy.pac"
 AUTO_PROXY="file:///home/ocean/develop/autoproxy.pac"
 ```
+
+#### SwitchyOmega 代理配置
+
+[SwitchyOmega](https://switchyomega.com/index.html)
+
+[SwitchyOmega Github](https://github.com/FelisCatus/SwitchyOmega/releases)
+
+安装完成后，点击右上角 `SwitchyOmega` -> 选项
+
+1.情景模式 -> proxy
+
+| 网址协议 | 代理协议  | 代理服务器 | 代理端口 |
+| :----- | :------- | :------- | :----- |
+| (默认)  | SOCKS5   | 127.0.0.1 | 1080 |
+
+2.情景模式 -> auto switch
+
+> 规则列表设置 -> 添加规则列表
+
+| 规则列表格式  | AutoProxy |
+| :---------- | :-------- |
+| 规则列表网址  | https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt |
+
+> 切换规则
+
+| 规则列表规则 | (按照规则列表匹配请求) | proxy |
+| :--------- | :----------------- | :---- |
+| 默认情景模式 |                    | 直接连接 |
+
+3.`立即更新情景模式` -> `应用选项` 保存设置。
+
+情景模式说明：
+
+| proxy  | 所有URL都走代理模式 |
+| :----- | :--------------- |
+| auto switch | 自动根据URL判断是否走代理 |
 
 ### 终端代理
 
@@ -292,6 +330,8 @@ wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh |
 
 > 安装hexo
 
+	#淘宝镜像加速
+	npm config set registry=https://registry.npm.taobao.org
 	npm install hexo-cli -g
 
 > 临时切换 bash
@@ -317,7 +357,7 @@ cat ~/.ssh/id_rsa.pub
 #将公钥追加到远程服务器的 ~/.ssh/authorized_keys
 ```
 
-> 保持ssh连接(配置客户端)
+> 保持ssh连接(客户端配置)
 
 ```
 sudo nano /etc/ssh/ssh_config

@@ -47,6 +47,9 @@ Github：https://github.com/creationix/nvm
 安装最新稳定版node（自带npm）：
 
     nvm install node
+    #淘宝镜像加速
+    npm config set registry=https://registry.npm.taobao.org
+    npm install hexo-cli -g
 
 > Ps:
 类似的工具也有n命令，n 命令是作为一个 node 的模块而存在，而 nvm 是一个独立于 node/npm 的外部 shell 脚本， 因此 n 命令相比 nvm 更加局限。由于 npm 安装的模块路径均为 /usr/local/lib/node_modules ， 当使用 n 切换不同的 node 版本时，实际上会共用全局的 node/npm 目录。所以还是推荐使用nvm。
@@ -305,35 +308,37 @@ vim pac_get
 
 [SwitchyOmega Github](https://github.com/FelisCatus/SwitchyOmega/releases)
 
-安装完成后，拓展程序->选项
+安装完成后，点击右上角 `SwitchyOmega` -> 选项
 
-1.进入：情景模式->proxy 设置
+1.情景模式 -> proxy
 
-| 代理协议  | 代理服务器 | 代理端口 |
-| :--- | :-- | :-- |
-| SOCKS5| 127.0.0.1 | 1080 |
+| 网址协议 | 代理协议  | 代理服务器 | 代理端口 |
+| :----- | :------- | :------- | :----- |
+| (默认)  | SOCKS5   | 127.0.0.1 | 1080 |
 
-2.进入：情景模式->auto switch 
+2.情景模式 -> auto switch
 
-| 规则列表规则(按照规则列表匹配请求) | 默认情景模式 |
-| :--- | :-- |
-| proxy | 直接连接 |
+> 规则列表设置 -> 添加规则列表
 
-3.点击 左侧 添加规则列表
+| 规则列表格式  | AutoProxy |
+| :---------- | :-------- |
+| 规则列表网址  | https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt |
 
-| 规则列表格式  | 规则列表网址 |
-| :--- | :-- |
-| AutoProxy | https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt |
+> 切换规则
 
-4.点击"立即更新情景模式"，然后点击左边的"应用选项"应用更改。
+| 规则列表规则 | (按照规则列表匹配请求) | proxy |
+| :--------- | :----------------- | :---- |
+| 默认情景模式 |                    | 直接连接 |
+
+3.`立即更新情景模式` -> `应用选项` 保存设置。
 
 情景模式说明：
 
-| proxy  | auto switch |
-| :----- | :---------- |
-| 所有URL都走代理模式| 自动根据URL判断是否走代理 |
+| proxy  | 所有URL都走代理模式 |
+| :----- | :--------------- |
+| auto switch | 自动根据URL判断是否走代理 |
 
-5.干货分享
+4.干货分享
 
 > [自由上网](https://github.com/Alvin9999/new-pac/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7)
 
