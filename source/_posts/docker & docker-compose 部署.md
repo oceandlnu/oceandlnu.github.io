@@ -48,6 +48,42 @@ sudo chmod +x /usr/local/bin/docker-compose
 
     docker-compose --version
 
+### 基本命令
+
+> 关闭所有容器（停止所有服务）
+
+    docker-compose stop
+
+> 删除所有容器
+
+    docker-compose down
+
+> 删除所有镜像
+
+    docker rmi $(docker images -q)
+
+> 后台启动容器（以后台的方式启动服务）
+    
+    docker-compose up -d {容器名称}
+
+> 查看所有容器
+
+    docker ps
+
+> 查看所有镜像
+
+    docer images
+
+> 远程连接mysql并执行mysql命令行模式
+
+    docker-compose exec mysql mysql -u [用户名] -p[密码]
+
+> 远程连接redis并进入redis命令行模式，这条命令是默认端口为6379，如果你更改了端口请在后面加上 -p [端口号]
+
+    docker-compose exec redis redis-cli -h redis
+
+> 设置代理 https://github.com/laradock/laradock/issues/1315#issuecomment-380492758
+
 > 参考资料：
 > https://docs.docker.com/install/linux/docker-ce/binaries/
 > https://docs.docker.com/install/linux/linux-postinstall/
