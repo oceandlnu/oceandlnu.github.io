@@ -56,23 +56,13 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 > 删除所有容器
 
+    docker container prune
     docker-compose down
 
 > 删除所有镜像
 
+    docker image rm $(docker image ls -q redis)
     docker rmi $(docker images -q)
-
-> 后台启动容器（以后台的方式启动服务）
-    
-    docker-compose up -d {容器名称}
-
-> 查看所有容器
-
-    docker ps
-
-> 查看所有镜像
-
-    docer images
 
 > 远程连接mysql并执行mysql命令行模式
 
