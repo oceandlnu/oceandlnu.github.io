@@ -61,12 +61,16 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 > 删除所有镜像
 
-    docker image rm $(docker image ls -q redis)
+    docker image rm $(docker image ls -q)
     docker rmi $(docker images -q)
+
+> 进入工作目录
+
+    docker-compose exec workspace bash
 
 > 远程连接mysql并执行mysql命令行模式
 
-    docker-compose exec mysql mysql -u [用户名] -p[密码]
+    docker-compose exec mysql mysql -u[用户名] -p[密码]
 
 > 远程连接redis并进入redis命令行模式，这条命令是默认端口为6379，如果你更改了端口请在后面加上 -p [端口号]
 
