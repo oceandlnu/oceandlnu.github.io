@@ -100,7 +100,7 @@ git config --global user.email "oceandlnu@gmail.com"
 
 ### 日常开发
 
-	yaourt -S charles mysql-workbench postman redis-desktop-manager haroopad
+	yaourt -S charles mysql-workbench postman-bin redis-desktop-manager haroopad
 
 > 破解 `charles`
 
@@ -143,6 +143,23 @@ http://idea.lanyus.com/
 #### sublime text
 
 [Sublime Text 日常配置](https://oceandlnu.github.io/2017/01/18/Sublime%20Text%20%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/)
+
+#### wechat-dev-tool
+
+在 `～/.local/share/applications/`` 目录下创建desktop文件(nano xxx.desktop)
+
+wechat-dev-tool
+```
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=wechat-dev-tool
+Icon=/home/ocean/develop/wechat-dev-tool/app/images/icon.png
+Exec="/home/ocean/develop/wechat-dev-tool/nw" %f
+Comment=The Drive to Develop
+Categories=Development;IDE;
+Terminal=false
+```
 
 ### 安装WPS
 
