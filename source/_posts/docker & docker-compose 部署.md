@@ -44,6 +44,22 @@ sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-c
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
+### 替换国内源
+
+> 编辑`/etc/docker/daemon.json`如果不存在则创建。如果文件为空，添加以下内容。
+
+[参考链接](http://guide.daocloud.io/dcs/daocloud-9153151.html)
+
+```
+{
+    "registry-mirrors": [
+        "http://0ed8bcb8.m.daocloud.io"
+    ],
+    "insecure-registries": []
+}
+```
+
+
 > 验证
 
     docker-compose --version
