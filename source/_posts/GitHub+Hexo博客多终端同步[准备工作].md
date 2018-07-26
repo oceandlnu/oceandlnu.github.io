@@ -44,9 +44,13 @@ Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境，可以在�
 
     wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
-安装node：
+安装node(最新LTS版本)：
 
-	nvm install node
+```
+export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
+nvm install --lts
+npm config set registry https://registry.npm.taobao.org
+```
 
 #### 官方安装
 

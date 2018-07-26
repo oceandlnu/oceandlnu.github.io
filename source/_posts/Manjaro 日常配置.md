@@ -339,16 +339,18 @@ Github：https://github.com/creationix/nvm
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | zsh
 #或者
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | zsh
+
+export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
 ```
 
-> 安装node
+> 安装node(LTS最新版本)
 
-	nvm install node
+	nvm install --lts
 
 > 安装hexo
 
 	#淘宝镜像加速
-	npm config set registry=https://registry.npm.taobao.org
+	npm config set registry https://registry.npm.taobao.org
 	npm install hexo-cli -g
 
 > 临时切换 bash

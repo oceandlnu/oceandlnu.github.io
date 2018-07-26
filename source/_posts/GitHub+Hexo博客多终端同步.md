@@ -59,9 +59,11 @@ git push origin hexo
 //将Github中hexo分支clone到本地
 git clone -b hexo git@github.com:oceandlnu/oceandlnu.github.io.git  
 //切换到刚刚clone的文件夹内
-cd  oceandlnu.github.io
+cd oceandlnu.github.io
 //注意，这里一定要切换到刚刚clone的文件夹内执行，安装必要的所需组件，不用再hexo init
 npm install
+cd theme
+unzip next.zip
 //新建一个.md文件，并编辑完成自己的博客内容
 hexo new post "new blog name"
 //经测试每次只要更新source中的文件到Github中即可，因为只是新建了一篇新博客
