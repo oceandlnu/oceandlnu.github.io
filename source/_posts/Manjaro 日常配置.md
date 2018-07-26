@@ -19,13 +19,15 @@ copyright: true
 
 > 列出可用中国镜像站列表：
 
-	sudo pacman-mirrors -i -c China -m rank
+```bash
+sudo pacman-mirrors -i -c China -m rank
+```
 
 勾选 `https://mirrors.tuna.tsinghua.edu.cn/manjaro/ `，然后 OK -> 确定 。
 
 > `Arch Linux CN` 软件源
 
-```
+```bash
 sudo nano /etc/pacman.conf
 #在文件末尾添加以下两行
 [archlinuxcn]
@@ -34,23 +36,31 @@ Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
 
 > 更新缓存
 
-	sudo pacman -Syy
+```bash
+sudo pacman -Syy
+```
 
 > 安装 `archlinuxcn-keyring` 包导入 GPG key
 
-	sudo pacman -S archlinuxcn-keyring
+```bash
+sudo pacman -S archlinuxcn-keyring
+```
 
 > 安装更新
 
-	sudo pacman -Syyu
+```bash
+sudo pacman -Syyu
+```
 
 > 安装 yaourt
 
-	sudo pacman -S yaourt
+```bash
+sudo pacman -S yaourt
+```
 
 > `AUR` 软件源
 
-```
+```bash
 sudo nano /etc/yaourtrc
 # 去掉 # AURURL 的注释，修改为
 AURURL="https://aur.tuna.tsinghua.edu.cn"
@@ -60,19 +70,25 @@ AURURL="https://aur.tuna.tsinghua.edu.cn"
 
 ### 常用软件
 
-	sudo pacman -S chromium filezilla screenfetch netease-cloud-music obs-studio
+```bash
+sudo pacman -S chromium filezilla screenfetch netease-cloud-music obs-studio
+```
 
 > `chromiun`安装 `flash`
 
-	yaourt -S pepper-flash
+```bash
+yaourt -S pepper-flash
+```
 
 > 微信、TIM
 
-	yaourt -S deepin-wechat deepin.com.qq.office
+```bash
+yaourt -S deepin-wechat deepin.com.qq.office
+```
 
 > git配置
 
-```
+```bash
 ssh-keygen -t rsa -C "ocean"
 git config --global user.name "oceandlnu"
 git config --global user.email "oceandlnu@gmail.com"
@@ -80,37 +96,43 @@ git config --global user.email "oceandlnu@gmail.com"
 
 > 删除孤立软件包(慎用)
 
-	sudo pacman -Rs $(pacman -Qtdq)
+```bash
+sudo pacman -Rs $(pacman -Qtdq)
+```
 
-有需要可以自行去 `软件包管理器(添加/删除软件)` 或者[AUR](https://aur.archlinux.org/)查找软件。
++ 有需要可以自行去 `软件包管理器(添加/删除软件)` 或者[AUR](https://aur.archlinux.org/)查找软件。
 
 ### 自由截图快捷键设置
 
-> 菜单 -> 设置 -> 键盘 -> 应用程序快捷键 -> 添加 -> 命令 `xfce4-screenshooter -r` 点击确定，接下来会提示设置快捷键，我设置为 `ctrl+alt+A`
++ 菜单 -> 设置 -> 键盘 -> 应用程序快捷键 -> 添加 -> 命令 `xfce4-screenshooter -r` 点击确定，接下来会提示设置快捷键，我设置为 `ctrl+alt+A`
 
 ### 安装深度截图
 
-	yaourt -S deepin-screenshot
+```bash
+yaourt -S deepin-screenshot
+```
 
 ### 移动设备挂载
 
-> 系统默认已安装 `udiskie`，如果没有执行下面命令安装 `sudo pacman -S udiskie`
++ 系统默认已安装 `udiskie`，如果没有执行下面命令安装 `sudo pacman -S udiskie`
 
-> 菜单 -> 设置 -> 可移动驱动器和介质 -> 选择 `存储器` -> 勾选 `热插拔时挂载可移动驱动器` `插入后挂载可移动介质`(或执行`usidkie -2` 命令设置为开机启动)
++ 菜单 -> 设置 -> 可移动驱动器和介质 -> 选择 `存储器` -> 勾选 `热插拔时挂载可移动驱动器` `插入后挂载可移动介质`(或执行`usidkie -2` 命令设置为开机启动)
 
 ### 日常开发
 
-	yaourt -S charles mysql-workbench postman-bin redis-desktop-manager haroopad
-
-> 破解 `charles`
-
+```bash
+yaourt -S charles mysql-workbench postman-bin redis-desktop-manager haroopad
 ```
+
++ 破解 `charles`
+
+```bash
 sudo mv charles.jar /usr/share/java/charles
 ```
 
-> 如果 `redis-desktop-manager`打开失败
++ 如果 `redis-desktop-manager`打开失败
 
-```
+```bash
 yaourt -R redis-desktop-manager
 yaourt -S redis-desktop-manager-bin
 yaourt -R redis-desktop-manager-bin
@@ -121,7 +143,7 @@ yaourt -S redis-desktop-manager
 
 下载地址：http://www.jetbrains.com/
 
-```
+```bash
 sudo nano /etc/hosts
 #添加下面一行
 0.0.0.0 account.jetbrains.com
@@ -129,7 +151,7 @@ sudo nano /etc/hosts
 
 解压安装包进入bin目录
 
-```
+```bash
 ./phpstorm.sh &
 ```
 
@@ -149,7 +171,8 @@ http://idea.lanyus.com/
 在 `～/.local/share/applications/`` 目录下创建desktop文件(nano xxx.desktop)
 
 wechat-dev-tool
-```
+
+```bash
 [Desktop Entry]
 Version=1.0
 Type=Application
@@ -163,15 +186,19 @@ Terminal=false
 
 ### 安装WPS
 
-	yaourt -S wps-office ttf-wps-fonts
+```bash
+yaourt -S wps-office ttf-wps-fonts
+```
 
 ### 安装搜狗拼音
 
-	yaourt -S fcitx-im fcitx-configtool fcitx-sogoupinyin
-
-> 创建 `.xprofile` 文件，添加以下语句，否则只能在一部分窗口下输入。
-
+```bash
+yaourt -S fcitx-im fcitx-configtool fcitx-sogoupinyin
 ```
+
++ 创建 `.xprofile` 文件，添加以下语句，否则只能在一部分窗口下输入。
+
+```bash
 nano ~/.xprofile
 #添加以下语句
 export GTK_IM_MODULE=fcitx
@@ -181,7 +208,7 @@ export XMODIFIERS=@im=fcitx
 
 ### SSR Client安装配置脚本
 
-```
+```bash
 cd ~/develop
 # 下载
 curl https://raw.githubusercontent.com/the0demiurge/CharlesScripts/master/charles/bin/ssr -o "ssr"
@@ -220,7 +247,7 @@ ssr uninstall
 
 > 系统默认已经安装 `pip`，重新安装执行`yaourt -S python-pip`
 
-```
+```bash
 sudo pip install genpac
 # 在当前目录(比如：/home/ocean/develop)下生成autoproxy.pac
 genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" --pac-precise --output="autoproxy.pac"
@@ -228,7 +255,7 @@ genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" --pac-precise --output="
 
 > 设置全局代理，在`environment`文件里添加 `auto_proxy/AUTO_PROXY`
 
-```
+```bash
 sudo nano /etc/environment
 #添加下面任意一行
 auto_proxy="file:///home/ocean/develop/autoproxy.pac"
@@ -273,69 +300,79 @@ AUTO_PROXY="file:///home/ocean/develop/autoproxy.pac"
 
 ### 终端代理
 
-	yaourt -S proxychains-ng
-
-> 编辑`proxychains.conf`文件，将`socks4 127.0.0.1 9095`修改为`socks5 127.0.0.1 1080`
-
+```bash
+yaourt -S proxychains-ng
 ```
+
++ 编辑`proxychains.conf`文件，将`socks4 127.0.0.1 9095`修改为`socks5 127.0.0.1 1080`
+
+```bash
 sudo nano /etc/proxychains.conf
 #找到最后一行，修改为
 socks5 127.0.0.1 1080
 ```
 
-> 使用：
++ 使用：
 
-	proxychains yourcommand
+```bash
+proxychains yourcommand
+```
 
-> 例如：
++ eg：
 
-	proxychains curl www.google.com
+```bash
+proxychains curl www.google.com
+```
 
 ### 安装 VirtualBox
 
-> 查看当前的内核版本， `uname -r` ，比如输出了 `4.14.44-1-MANJARO` 内核版本为 `414`
++ 查看当前的内核版本， `uname -r` ，比如输出了 `4.14.44-1-MANJARO` 内核版本为 `414`
 
-```
+```bash
 yaourt -S virtualbox linux414-virtualbox-host-modules virtualbox-ext-oracle
 ```
 
-> `[kernel version]-virtualbox-host-modules`  根据内核版本选择，假如我的内核版本为 `3.7.4-1-MANJARO`，则安装 `linux37-virtualbox-host-modules`
++ `[kernel version]-virtualbox-host-modules`  根据内核版本选择，假如我的内核版本为 `3.7.4-1-MANJARO`，则安装 `linux37-virtualbox-host-modules`
 
-> 添加当前用户到vboxusers，如果不需要使用USB外设，可以不执行此操作。
++ 添加当前用户到vboxusers，如果不需要使用USB外设，可以不执行此操作。
 
+```bash
 	sudo gpasswd -a [username] vboxusers
+```
 
-> 例如
++ eg
 
-	sudo gpasswd -a ocean vboxusers
+```bash
+sudo gpasswd -a ocean vboxusers
+```
 
 重新启动系统或执行 `sudo vboxreload` ，[参考链接](https://wiki.manjaro.org/index.php?title=Virtualbox)
 
 ### 安装oh-my-zsh、powerline
 
-> Manjaro 自带zsh，`zsh --version` 查看，如果没有安装 执行 `yaourt -S zsh`
++ Manjaro 自带zsh，`zsh --version` 查看，如果没有安装 执行 `yaourt -S zsh`
 
 oh-my-zsh：http://ohmyz.sh/
 
-```
+```bash
 #安装 oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 #安装powerline及字体
 yaourt -S powerline powerline-fonts
 ```
 
-> 编辑 `nano .zshrc` 在最后添加
++ 编辑 `nano .zshrc` 在最后添加
 
-```
+```bash
 powerline-daemon -q
 . /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
 ```
 
-> 安装 nvm(安装完成后需要重启终端)
++ 安装 nvm(安装完成后需要重启终端)
 
 Github：https://github.com/creationix/nvm
 
-```
+```bash
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | zsh
 #或者
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | zsh
@@ -343,42 +380,54 @@ wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh |
 export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
 ```
 
-> 安装node(LTS最新版本)
++ 安装node(最新LTS版本)
 
-	nvm install --lts
-
-> 安装hexo
-
-	#淘宝镜像加速
-	npm config set registry https://registry.npm.taobao.org
-	npm install hexo-cli -g
-
-> 临时切换 bash
-
-	bash
-
-> 临时切换 zsh
-
-	zsh
-
-> 修改 bash 为默认 shell
-
-	chsh -s /bin/bash
-
-> 修改 zsh 为默认 shell
-
-	chsh -s /bin/zsh
-
-> 免密登录
-
+```bash
+nvm install --lts
 ```
+
++ 安装hexo
+
+```bash
+#淘宝镜像加速
+npm config set registry https://registry.npm.taobao.org
+npm install hexo-cli -g
+```
+
++ 临时切换 bash
+
+```bash
+bash
+```
+
++ 临时切换 zsh
+
+```bash
+zsh
+```
+
++ 修改 bash 为默认 shell
+
+```bash
+chsh -s /bin/bash
+```
+
++ 修改 zsh 为默认 shell
+
+```bash
+chsh -s /bin/zsh
+```
+
++ 免密登录
+
+```bash
 cat ~/.ssh/id_rsa.pub
 #将公钥追加到远程服务器的 ~/.ssh/authorized_keys
 ```
 
-> 保持ssh连接(客户端配置)
++ 保持ssh连接(客户端配置)
 
-```
+```bash
 sudo nano /etc/ssh/ssh_config
 #添加下面两行
 ServerAliveInterval 120
