@@ -27,7 +27,7 @@ password:
 
 在利用Github+Hexo搭建自己的博客时，新建了一个Hexo的文件夹，并进行相关的配置，这部分主要是将这些配置的文件托管到Github项目的分支上，其中只托管部分用于多终端的同步的文件：
 
-__注意：themes文件夹里面的主题是不会add的，所以可以先将主题文件压缩（如我的是next.zip），然后add，之后同步到本地之后再解压，目前还没有找到别的办法__
+__注意：themes文件夹里面的主题是不会add的，所以可以先将主题文件压缩（如我的是next.tar.gz），然后add，之后同步到本地之后再解压，目前还没有找到别的办法__
 
 ```bash
 //初始化本地仓库
@@ -63,7 +63,7 @@ cd oceandlnu.github.io
 //注意，这里一定要切换到刚刚clone的文件夹内执行，安装必要的所需组件，不用再hexo init
 npm install
 cd theme
-unzip next.zip
+tar zxvf next.tar.gz
 //新建一个.md文件，并编辑完成自己的博客内容
 hexo new post "new blog name"
 //经测试每次只要更新source中的文件到Github中即可，因为只是新建了一篇新博客
@@ -73,11 +73,9 @@ git commit -m "XX"
 git push origin hexo
 ```
 
-__注意，这里先将themes文件夹里面的主题压缩包（例如我的是next.zip）解压，不然直接hexo g -d页面为空白__
-
-
-```
-hexo g -d   //push更新完分支之后将自己写的博客对接到自己搭的博客网站上，同时同步了Github中的master
+```bash
+hexo g -d   
+#push更新完分支之后将自己写的博客对接到自己搭的博客网站上，同时同步了Github中的master
 ```
 
 4.不同终端间愉快地玩耍
@@ -93,10 +91,7 @@ git commit -m "XX"
 git push origin hexo
 ```
 
-__注意，这里先将themes文件夹里面的主题压缩包（例如我的是next.zip）解压，不然直接hexo g -d页面为空白__
-
-
-```
+```bash
 hexo g -d
 ```
 

@@ -21,13 +21,17 @@ copyright: true
 
 ### [Apache]
 
-1.启用rewrite模块
+1.启用 `rewrite` 模块
 
-2.sudo a2enmod rewrite 或者 sudo ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
-
-3.编辑配置文件/etc/apache2/apache2.conf，找到自己web根目录对应的位置
-
+```bash
+sudo a2enmod rewrite
+#或者
+sudo ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
 ```
+
+2.编辑配置文件 `/etc/apache2/apache2.conf`，找到自己web根目录对应的位置
+
+```php
 <Directory /var/www/>
 Options Indexes FollowSymLinks
 AllowOverride None
@@ -35,13 +39,13 @@ Require all granted
 </Directory>
 ```
 
-4.将AllowOverride None 改为AllowOverride All
+3.将 `AllowOverride None` 改为 `AllowOverride All`
 
-5.重启服务sudo service apache2 restart
+4.重启服务 `sudo service apache2 restart`
 
-6.把下面的内容保存为.htaccess文件放到应用入口文件的同级目录下(默认已创建，如果没有自己创建)
+5.把下面的内容保存为 `.htaccess` 文件放到应用入口文件的同级目录下(默认已创建，如果没有自己创建)
 
-```
+```php
 <IfModule mod_rewrite.c>
 Options +FollowSymlinks -Multiviews
 RewriteEngine on
@@ -56,8 +60,9 @@ RewriteRule ^(.*)$ index.php?/$1 [QSA,PT,L]
 
 在Nginx低版本中，是不支持PATHINFO的，但是可以通过在Nginx中配置转发规则实现，
 
-编辑文件/etc/nginx/sites-available/default：
-```
+编辑文件 `/etc/nginx/sites-available/default`：
+
+```php
  server { // …..省略部分代码
    root /var/www/html;
    //找到这个模块，然后填入下面的配置
@@ -72,26 +77,26 @@ RewriteRule ^(.*)$ index.php?/$1 [QSA,PT,L]
 
 其实内部是转发到了ThinkPHP提供的兼容URL，利用这种方式，可以解决其他不支持PATHINFO的WEB服务器环境。
 
-如果你的应用安装在二级目录，Nginx的伪静态方法设置如下，其中/tp5/public/是所在的目录名称。
-```
+如果你的应用安装在二级目录，Nginx的伪静态方法设置如下，其中 `/tp5/public/` 是所在的目录名称。
+```php
 location /tp5/public/ {
     if (!-e $request_filename){
         rewrite  ^/tp5/public/(.*)$  /tp5/public/index.php?s=/$1  last;
     }
 }
 ```
-原来的访问URL：
+原来的访问URL： `http://serverName/index.php/模块/控制器/操作/[参数名/参数值...]`
 
-    http://serverName/index.php/模块/控制器/操作/[参数名/参数值...]
+设置后，我们可以采用下面的方式访问： `http://serverName/模块/控制器/操作/[参数名/参数值...]`
 
-设置后，我们可以采用下面的方式访问：
+如果你没有修改服务器的权限，可以在 `index.php` 入口文件做修改，这不是正确的做法，并且不一定成功，视服务器而定，只是在框架执行前补全 `PATH_INFO` 参数
 
-    http://serverName/模块/控制器/操作/[参数名/参数值...]
-
-如果你没有修改服务器的权限，可以在index.php入口文件做修改，这不是正确的做法，并且不一定成功，视服务器而定，只是在框架执行前补全PATH_INFO参数
-
-	$_SERVER['PATH_INFO'] = $_SERVER['REQUEST_URI' ];
+```php
+$_SERVER['PATH_INFO'] = $_SERVER['REQUEST_URI' ];
+```
 
 最后重启服务器
 
-    sudo service nginx restart
+```bash
+sudo service nginx restart
+```

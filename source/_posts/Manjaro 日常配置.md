@@ -49,6 +49,7 @@ sudo pacman -S archlinuxcn-keyring
 > 安装更新
 
 ```bash
+sudo pacman -R thunar-archive-plugin
 sudo pacman -Syyu
 ```
 
@@ -168,7 +169,7 @@ http://idea.lanyus.com/
 
 #### wechat-dev-tool
 
-在 `～/.local/share/applications/`` 目录下创建desktop文件(nano xxx.desktop)
+在 `～/.local/share/applications/` 目录下创建desktop文件(nano xxx.desktop)
 
 wechat-dev-tool
 

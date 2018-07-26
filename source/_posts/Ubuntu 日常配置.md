@@ -19,42 +19,49 @@ copyright: true
 
 更新源并且升级软件
 
-```
+```bash
 sudo apt update
 sudo apt upgrade
 ```
 
 #### 安装vim、chromium、filezilla
 
-    sudo apt install git vim chromium-browser filezilla -y
-    #GIMP图像处理，Kdenlive视频处理，p7zip支持rar压缩
-    sudo apt install gimp kdenlive p7zip-full -y
+```bash
+sudo apt install git vim chromium-browser filezilla -y
+#GIMP图像处理，Kdenlive视频处理，p7zip支持rar压缩
+sudo apt install gimp kdenlive p7zip-full -y
+```
 
 #### 安装nvm
 
-Github：https://github.com/creationix/nvm
+[nvm](https://github.com/creationix/nvm)
+[n](https://github.com/tj/n)
+
++ ps:类似的工具也有n命令，n 命令是作为一个 node 的模块而存在，而 nvm 是一个独立于 node/npm 的外部 shell 脚本， 因此 n 命令相比 nvm 更加局限。由于 npm 安装的模块路径均为 /usr/local/lib/node_modules ， 当使用 n 切换不同的 node 版本时，实际上会共用全局的 node/npm 目录。所以还是推荐使用nvm。
 
 通过curl:
 
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-    
+```bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+```
+
 通过wget:
 
-    wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+```bash
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+```
 
 > 安装完成后请重新打开终端
 
-安装最新稳定版node（自带npm）：
+安装node（LTS）：
 
-    nvm install node
-    #淘宝镜像加速
-    npm config set registry=https://registry.npm.taobao.org
-    npm install hexo-cli -g
-
-> Ps:
-类似的工具也有n命令，n 命令是作为一个 node 的模块而存在，而 nvm 是一个独立于 node/npm 的外部 shell 脚本， 因此 n 命令相比 nvm 更加局限。由于 npm 安装的模块路径均为 /usr/local/lib/node_modules ， 当使用 n 切换不同的 node 版本时，实际上会共用全局的 node/npm 目录。所以还是推荐使用nvm。
-
-github地址：https://github.com/tj/n
+```bash
+export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
+nvm install --lts
+#淘宝镜像加速
+npm config set registry https://registry.npm.taobao.org
+npm install hexo-cli -g
+```
 
 #### 安装搜狗输入法
 
@@ -76,7 +83,7 @@ github地址：https://github.com/tj/n
 
 钉钉
 
-```
+```bash
 #!/usr/bin/env xdg-open
 [Desktop Entry]
 Version=1.0
@@ -90,7 +97,7 @@ StartupWMClass=im.dingtalk.com
 
 微信
 
-```
+```bash
 #!/usr/bin/env xdg-open
 [Desktop Entry]
 Version=1.0
@@ -111,7 +118,7 @@ StartupWMClass=wx.qq.com
 创建App快捷方式：
 
 charles
-```
+```bash
 [Desktop Entry]
 Version=1.0
 Type=Application
@@ -124,7 +131,7 @@ Terminal=false
 ```
 
 postman
-```
+```bash
 [Desktop Entry]
 Version=1.0
 Type=Application
@@ -137,7 +144,7 @@ Terminal=false
 ```
 
 pycharm
-```
+```bash
 [Desktop Entry]
 Version=1.0
 Type=Application
@@ -150,7 +157,7 @@ Terminal=false
 ```
 
 wechat-dev-tool
-```
+```bash
 [Desktop Entry]
 Version=1.0
 Type=Application
@@ -168,9 +175,11 @@ Terminal=false
 
 下载解压
 
-    cd Postman/
-    sudo apt install libgconf-2-4 -y
-    ./Postman &
+```bash
+cd Postman/
+sudo apt install libgconf-2-4 -y
+./Postman &
+```
 
 #### 安装Workbench
 
@@ -184,7 +193,9 @@ VMware下载地址：https://www.vmware.com/cn/products/workstation-pro/workstat
 
 安装Vmware:
 
-    sudo ./VMware-Workstation-Full-14.1.1-7528167.x86_64.bundle
+```bash
+sudo ./VMware-Workstation-Full-14.1.1-7528167.x86_64.bundle
+```
 
 #### PHPStorm Pycharm
 
@@ -192,14 +203,18 @@ VMware下载地址：https://www.vmware.com/cn/products/workstation-pro/workstat
 
 解压进入bin目录，启动
 
-    ./phpstorm.sh &
-    ./pycharm.sh &
+```bash
+./phpstorm.sh &
+./pycharm.sh &
+```
 
 > 激活
 
 修改hosts文件，添加下面一行
 
-    0.0.0.0 account.jetbrains.com
+```bash
+0.0.0.0 account.jetbrains.com
+```
 
 获取激活码，注册码激活：
 
@@ -214,7 +229,7 @@ http://idea.lanyus.com/
 
 ##### SSR 客户端安装配置脚本(推荐)
 
-```
+```bash
 # 下载
 curl https://raw.githubusercontent.com/the0demiurge/CharlesScripts/master/charles/bin/ssr -o "ssr"
 # 或者
@@ -254,7 +269,7 @@ ssr uninstall
 
 > [genpac](https://github.com/JinnLynn/genpac)
 
-```
+```bash
 # 安装pip
 sudo apt install python-pip -y
 # 安装genpac
@@ -271,13 +286,13 @@ genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" --pac-precise --output="
 
 > 方案一：将`~/.local/bin`添加到系统路径
 
-```
+```bash
 sudo ln -s ~/.local/bin/genpac /usr/bin/genpac
 ```
 
 > 方案二：卸载重新使用sudo安装genpac
 
-```
+```bash
 pip uninstall genpac
 sudo pip install genpac
 sudo pip install --upgrade genpac
@@ -287,7 +302,7 @@ sudo pip install --upgrade genpac
 
 > [pac_get](https://github.com/ToyoDAdoubi/doubi/blob/master/pac_get.sh)
 
-```
+```bash
 # 下载脚本到当前目录
 curl https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/pac_get.sh -o "pac_get"
 # 或者

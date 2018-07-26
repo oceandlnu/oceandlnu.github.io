@@ -28,19 +28,21 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
 出现错误的主要原因是github中的README.md文件不在本地代码目录中
 
-可以通过如下命令进行代码合并【注：pull=fetch+merge]
+可以通过如下命令进行代码合并[注：pull=fetch+merge]
 
-	$ git pull --rebase origin master
+```bash
+git pull --rebase origin master
+```
 
-执行上面代码后可以看到本地代码库中多了README.md文件
+执行上面代码后可以看到本地代码库中多了 `README.md` 文件
 
-此时再执行语句 git push -u origin master即可完成代码上传到github
+此时再执行语句 `git push -u origin master` 即可完成代码上传到 `github`
 
 ### 错误：Git Push Error: insufficient permission for adding an object to repository database
 
-> 进入项目 `根目录/.git/objects` ，yourname 替换为你的用户名，yourgroup 替换为你的用户所属组
+> 进入项目 `根目录/.git/objects` ，`yourname` 替换为你的用户名， `yourgroup` 替换为你的用户所属组
 
-```
+```bash
 cd .git/objects
 sudo chown -R yourname:yourgroup *
 ```

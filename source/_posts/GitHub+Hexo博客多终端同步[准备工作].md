@@ -24,8 +24,10 @@ password:
 为什么要搭建 git 环境？ - 因为需要把本地的网页和文章等提交到 GitHub 上。
 Git 是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。
 
-	sudo apt install git
-	git --version
+```bash
+sudo apt install git
+git --version
+```
 
 出现版本号则说明 Git 环境配置成功，第一步完成！！！
 
@@ -38,15 +40,19 @@ Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境，可以在�
 
 通过curl:
 
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-    
+```bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+```
+
 通过wget:
 
-    wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+```bash
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+```
 
 安装node(最新LTS版本)：
 
-```
+```bash
 export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
 nvm install --lts
 npm config set registry https://registry.npm.taobao.org
@@ -56,7 +62,7 @@ npm config set registry https://registry.npm.taobao.org
 
 Node.js 官网：https://nodejs.org/en/ 下载安装包 LTS，根据官方说明文档安装
 
-```
+```bash
 node -v
 npm -v
 ```
@@ -71,13 +77,17 @@ Hexo 是一个快速、简洁且高效的博客框架，使用 Markdown（或其
 
 使用 npm 安装 Hexo：在命令行中输入
 
-	npm install hexo-cli -g
+```bash
+npm install hexo-cli -g
+```
 
 然后你将会看到下图，可能你会看到一个WARN，但是不用担心，这不会影响你的正常使用。
 
 查看Hexo的版本
 
-	hexo -v
+```bash
+hexo -v
+```
 
 到此搭建 Hexo 博客的相关环境配置已经完成，下面开始讲解 Hexo 的相关操作
 
@@ -99,8 +109,9 @@ Github注册：https://github.com/
 
 注意：yourname 必须是你的用户名。
 
-	yourname/yourname.github.io
-
+```bash
+yourname/yourname.github.io
+```
 
 访问 yourname.github.io，如果可以正常访问，那么 Github 的配置已经结束了。
 
@@ -108,14 +119,13 @@ Github注册：https://github.com/
 
 ```bash
 hexo init oceandlnu.github.io
-
 cd oceandlnu.github.io
-
 npm install
 ```
 
 新建完成后，指定文件夹的目录如下：
 
+```json
 .
 ├── .deploy         #需要部署的文件
 ├── node_modules    #Hexo插件
@@ -127,6 +137,7 @@ npm install
 ├── themes          #主题
 ├── \_config.yml     #全局配置文件
 └── package.json    #npm 依赖等
+```
 
 运行本地 Hexo 服务
 ```bash
@@ -136,21 +147,21 @@ hexo s
 # 如果报错，执行
 hexo generate
 ```
-您的网站会在 http://localhost:4000 下启动。如果 http://localhost:4000 能够正常访问，则说明 Hexo 本地博客已经搭建起来了，只是本地哦，别人看不到的。
+
+您的网站会在 `http://localhost:4000` 下启动。如果 `http://localhost:4000` 能够正常访问，则说明 Hexo 本地博客已经搭建起来了，只是本地哦，别人看不到的。
 
 __注意：如果 http://localhost:4000 不能访问，那有可能是端口被占用了，上面的命令加上端口号就行了，如下：__
 
-	#5000是你想改成的端口号，不加的话，默认是4000
-	hexo s -p 5000
-
+```bash
+#5000是你想改成的端口号，不加的话，默认是4000
+hexo s -p 5000
+```
 
 ### 关联 Hexo 与 GitHub Pages
 
 我们如何让本地git项目与远程的github建立联系呢？用 SSH keys
 
-检查是否已生成密钥
-
-	cd ~/.ssh，ls如果有3个文件，则密钥已经生成，id_rsa.pub就是公钥
+检查是否已生成密钥， `cd ~/.ssh`，`ls` 如果有3个文件，则密钥已经生成，`id_rsa.pub` 就是公钥
 
 ```bash
 YANG@DESKTOP-VLST063 MINGW64 /d/hexo/oceandlnu.github.io (master|REBASE 1/2)
@@ -161,19 +172,21 @@ id_rsa  id_rsa.pub  known_hosts
 ```
 生成SSH keys，输入你自己的邮箱地址
 
-	ssh-keygen -t rsa -C "136494666@qq.com"
+```bash
+ssh-keygen -t rsa -C "ocean"
+```
 
 在回车中会提示你输入一个密码，这个密码会在你提交项目时使用，如果为空的话提交项目时则不用输入，我们按回车不设置密码。
 
 添加 SSH Key 到 GitHub
 
-打开 C:\Users\你的用户名\\.ssh\id_rsa.pub，此文件里面内容为刚才生成的密钥，准确的复制这个文件的内容，粘贴到 https://github.com/settings/keys 的 new SSH key 中
+打开 `~/.ssh/id_rsa.pub`，此文件里面内容为刚才生成的密钥，准确的复制这个文件的内容，粘贴到 https://github.com/settings/keys 的 `new SSH key` 中
 
-测试
+测试，输入下面的命令，看看设置是否成功，git@github.com的部分不要修改：
 
-可以输入下面的命令，看看设置是否成功，git@github.com的部分不要修改：
-
-	ssh -T git@github.com
+```bash
+ssh -T git@github.com
+```
 
 如果是下面的反馈：
 ```
@@ -183,16 +196,20 @@ Are you sure you want to continue connecting (yes/no)?
 ```
 不要紧张，输入yes就好，然后会看到：
 
-	Hi oceandlnu! You've successfully authenticated, but GitHub does not provide shell access.
+```bash
+Hi oceandlnu! You've successfully authenticated, but GitHub does not provide shell access.
+```
 
 配置Git个人信息
 
 现在你已经可以通过 SSH 链接到 GitHub 了，还有一些个人信息需要完善的。 
 Git 会根据用户的名字和邮箱来记录提交。GitHub 也是用这些信息来做权限的处理，输入下面的代码进行个人信息的设置，把名称和邮箱替换成你自己的。
+
 ```bash
 git config --global user.name "oceandlnu"
 git config --global user.email "136494666@qq.com"
 ```
+
 配置 Deployment
 
 在_config.yml文件中，找到Deployment，然后按照如下修改，用户名改成你的：
@@ -207,6 +224,7 @@ deploy:
   branch: master
 ```
 本地文件提交到 GitHub Pages
+
 ```bash
 // 删除旧的 public 文件
 hexo clean
@@ -221,6 +239,7 @@ hexo deploye
 或者
 hexo d
 ```
+
 在浏览器中输入 https://oceandlnu.github.io （用户名改成你的）看到了 Hexo 与 GitHub Pages 已经成功关联了。
 
 注意1：若上面操作失败，则需要提前安装一个扩展：
@@ -228,12 +247,14 @@ hexo d
 	npm install hexo-deployer-git --save
 
 注意2：如果在执行 hexo d 后,出现 error deployer not found:github 的错误（如下），则是因为没有设置好 public key 所致，重新详细设置即可。
-```
+
+```bash
 Permission denied (publickey). 
 fatal: Could not read from remote repository. 
 Please make sure you have the correct access rights 
 and the repository exists.
 ```
+
 注意3：怎么避免 .md 文件被解析？
 
 请查看[Hexo 怎么避免 .md 文件被解析？](https://oceandlnu.github.io/2017/02/10/Hexo%20%E6%80%8E%E4%B9%88%E9%81%BF%E5%85%8D%20.md%20%E6%96%87%E4%BB%B6%E8%A2%AB%E8%A7%A3%E6%9E%90%EF%BC%9F/)
@@ -291,6 +312,7 @@ __注意：CNAME文件在下次 hexo deploy的时候就消失了，需要重新�
 注意1：每次生成的 CNAME 都是 yoursite.com 怎么解决？
 
 修改 _config.yml
+
 ```bash
 url: http://www.xxxxxx.com
 root: /
