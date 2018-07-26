@@ -133,7 +133,7 @@
 <meta property="og:description" content="GitHub+Hexo博客多终端同步">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://oceandlnu.github.io/uploads/2017-04-05/1.png">
-<meta property="og:updated_time" content="2018-07-26T05:11:26.900Z">
+<meta property="og:updated_time" content="2018-07-26T10:18:56.401Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GitHub+Hexo博客多终端同步">
 <meta name="twitter:description" content="GitHub+Hexo博客多终端同步">
@@ -470,21 +470,19 @@
 <p>配置好这些，就可以捋起袖子大干一场了！</p>
 <p>2.在其中一个终端操作，push本地文件夹Hexo中的必要文件到yourname.github.io的hexo分支上</p>
 <p>在利用Github+Hexo搭建自己的博客时，新建了一个Hexo的文件夹，并进行相关的配置，这部分主要是将这些配置的文件托管到Github项目的分支上，其中只托管部分用于多终端的同步的文件：</p>
-<p><strong>注意：themes文件夹里面的主题是不会add的，所以可以先将主题文件压缩（如我的是next.zip），然后add，之后同步到本地之后再解压，目前还没有找到别的办法</strong></p>
+<p><strong>注意：themes文件夹里面的主题是不会add的，所以可以先将主题文件压缩（如我的是next.tar.gz），然后add，之后同步到本地之后再解压，目前还没有找到别的办法</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//初始化本地仓库</span><br><span class="line">git init</span><br><span class="line">//将目录下的所有文件添加到本地仓库</span><br><span class="line">git add . </span><br><span class="line">git commit -m <span class="string">"Blog Source Hexo"</span></span><br><span class="line">//新建hexo分支</span><br><span class="line">git branch hexo</span><br><span class="line">//切换到hexo分支上</span><br><span class="line">git checkout hexo</span><br><span class="line">//将本地与Github项目对接</span><br><span class="line">git remote add origin git@github.com:oceandlnu/oceandlnu.github.io.git</span><br><span class="line">//push到Github项目的hexo分支上</span><br><span class="line">git push origin hexo</span><br></pre></td></tr></table></figure>
 <p>完成之后的效果图为：</p>
 <p><img src="/uploads/2017-04-05/1.png" alt=""></p>
 <p>这样你的github项目中就会多出一个Hexo分支，这个就是用于多终端同步关键的部分。</p>
 <p>3.另一终端完成clone和push更新</p>
 <p>此时在另一终端更新博客，只需要将Github的hexo分支clone下来，进行初次的相关配置，详细配置点击<a href="https://oceandlnu.github.io/2017/03/06/GitHub+Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%90%8C%E6%AD%A5[%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C]/">GitHub+Hexo博客多终端同步[准备工作]</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//将Github中hexo分支<span class="built_in">clone</span>到本地</span><br><span class="line">git <span class="built_in">clone</span> -b hexo git@github.com:oceandlnu/oceandlnu.github.io.git  </span><br><span class="line">//切换到刚刚<span class="built_in">clone</span>的文件夹内</span><br><span class="line"><span class="built_in">cd</span> oceandlnu.github.io</span><br><span class="line">//注意，这里一定要切换到刚刚<span class="built_in">clone</span>的文件夹内执行，安装必要的所需组件，不用再hexo init</span><br><span class="line">npm install</span><br><span class="line"><span class="built_in">cd</span> theme</span><br><span class="line">unzip next.zip</span><br><span class="line">//新建一个.md文件，并编辑完成自己的博客内容</span><br><span class="line">hexo new post <span class="string">"new blog name"</span></span><br><span class="line">//经测试每次只要更新<span class="built_in">source</span>中的文件到Github中即可，因为只是新建了一篇新博客</span><br><span class="line">git add <span class="built_in">source</span></span><br><span class="line">git commit -m <span class="string">"XX"</span></span><br><span class="line">//推送到远程仓库，更新hexo分支</span><br><span class="line">git push origin hexo</span><br></pre></td></tr></table></figure>
-<p><strong>注意，这里先将themes文件夹里面的主题压缩包（例如我的是next.zip）解压，不然直接hexo g -d页面为空白</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d   //push更新完分支之后将自己写的博客对接到自己搭的博客网站上，同时同步了Github中的master</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//将Github中hexo分支<span class="built_in">clone</span>到本地</span><br><span class="line">git <span class="built_in">clone</span> -b hexo git@github.com:oceandlnu/oceandlnu.github.io.git  </span><br><span class="line">//切换到刚刚<span class="built_in">clone</span>的文件夹内</span><br><span class="line"><span class="built_in">cd</span> oceandlnu.github.io</span><br><span class="line">//注意，这里一定要切换到刚刚<span class="built_in">clone</span>的文件夹内执行，安装必要的所需组件，不用再hexo init</span><br><span class="line">npm install</span><br><span class="line"><span class="built_in">cd</span> theme</span><br><span class="line">tar zxvf next.tar.gz</span><br><span class="line">//新建一个.md文件，并编辑完成自己的博客内容</span><br><span class="line">hexo new post <span class="string">"new blog name"</span></span><br><span class="line">//经测试每次只要更新<span class="built_in">source</span>中的文件到Github中即可，因为只是新建了一篇新博客</span><br><span class="line">git add <span class="built_in">source</span></span><br><span class="line">git commit -m <span class="string">"XX"</span></span><br><span class="line">//推送到远程仓库，更新hexo分支</span><br><span class="line">git push origin hexo</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d   </span><br><span class="line"><span class="comment">#push更新完分支之后将自己写的博客对接到自己搭的博客网站上，同时同步了Github中的master</span></span><br></pre></td></tr></table></figure>
 <p>4.不同终端间愉快地玩耍</p>
 <p>在不同的终端已经做完配置，就可以愉快的分享自己更新的博客，进入自己相应的文件夹</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//先pull完成本地与远端的融合</span><br><span class="line">git pull origin hexo</span><br><span class="line">hexo new post <span class="string">" new blog name"</span></span><br><span class="line">git add <span class="built_in">source</span></span><br><span class="line">git commit -m <span class="string">"XX"</span></span><br><span class="line">git push origin hexo</span><br></pre></td></tr></table></figure>
-<p><strong>注意，这里先将themes文件夹里面的主题压缩包（例如我的是next.zip）解压，不然直接hexo g -d页面为空白</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
 <p>关于Github不熟悉的强烈推荐张哥的Github系列教程<a href="http://stormzhang.com/2017/01/20/learn-github-from-zero-pdf/" target="_blank" rel="noopener">我的书籍出版了</a></p>
 <p>另外你可能会遇到一些其他的坑，在这里我没有遇到，大家可以参考一篇博文<a href="https://righere.github.io/2016/10/10/install-hexo/" target="_blank" rel="noopener">搭建hexo博客并简单的实现多终端同步</a></p>
 <p>对于于博文的图片托管问题感兴趣的可以我写的参考<a href="http://blog.csdn.net/monkey_lzl/article/details/57480599" target="_blank" rel="noopener">如何利用Github在Markdown中优雅的插入图片</a></p>
@@ -829,7 +827,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共25.0k字</span>
+  <span class="post-count">博客全站共24.9k字</span>
 </div>
 
 

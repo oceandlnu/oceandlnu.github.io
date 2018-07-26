@@ -132,7 +132,7 @@
 <meta property="og:site_name" content="Ocean&#39;s Blogs">
 <meta property="og:description" content="Git 常见问题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-26T05:11:26.897Z">
+<meta property="og:updated_time" content="2018-07-26T10:15:30.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 常见问题">
 <meta name="twitter:description" content="Git 常见问题">
@@ -466,14 +466,14 @@
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin master</span><br><span class="line">To github.com:oceandlnu/oceandlnu.github.io.git</span><br><span class="line"> ! [rejected]        master -&gt; master (fetch first)</span><br><span class="line">error: failed to push some refs to <span class="string">'git@github.com:oceandlnu/oceandlnu.github.io.git'</span></span><br><span class="line">hint: Updates were rejected because the remote contains work that you <span class="keyword">do</span></span><br><span class="line">hint: not have locally. This is usually caused by another repository pushing</span><br><span class="line">hint: to the same ref. You may want to first integrate the remote changes</span><br><span class="line">hint: (e.g., <span class="string">'git pull ...'</span>) before pushing again.</span><br><span class="line">hint: See the <span class="string">'Note about fast-forwards'</span> <span class="keyword">in</span> <span class="string">'git push --help'</span> <span class="keyword">for</span> details.</span><br></pre></td></tr></table></figure>
 <p>出现错误的主要原因是github中的README.md文件不在本地代码目录中</p>
-<p>可以通过如下命令进行代码合并【注：pull=fetch+merge]</p>
-<pre><code>$ git pull --rebase origin master
-</code></pre><p>执行上面代码后可以看到本地代码库中多了README.md文件</p>
-<p>此时再执行语句 git push -u origin master即可完成代码上传到github</p>
+<p>可以通过如下命令进行代码合并[注：pull=fetch+merge]</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull --rebase origin master</span><br></pre></td></tr></table></figure>
+<p>执行上面代码后可以看到本地代码库中多了 <code>README.md</code> 文件</p>
+<p>此时再执行语句 <code>git push -u origin master</code> 即可完成代码上传到 <code>github</code></p>
 <h3 id="错误：Git-Push-Error-insufficient-permission-for-adding-an-object-to-repository-database"><a href="#错误：Git-Push-Error-insufficient-permission-for-adding-an-object-to-repository-database" class="headerlink" title="错误：Git Push Error: insufficient permission for adding an object to repository database"></a>错误：Git Push Error: insufficient permission for adding an object to repository database</h3><blockquote>
-<p>进入项目 <code>根目录/.git/objects</code> ，yourname 替换为你的用户名，yourgroup 替换为你的用户所属组</p>
+<p>进入项目 <code>根目录/.git/objects</code> ，<code>yourname</code> 替换为你的用户名， <code>yourgroup</code> 替换为你的用户所属组</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd .git/objects</span><br><span class="line">sudo chown -R yourname:yourgroup *</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> .git/objects</span><br><span class="line">sudo chown -R yourname:yourgroup *</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -835,7 +835,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共25.0k字</span>
+  <span class="post-count">博客全站共24.9k字</span>
 </div>
 
 
