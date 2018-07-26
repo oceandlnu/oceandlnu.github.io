@@ -133,6 +133,8 @@ npm install
 hexo server
 或者
 hexo s
+# 如果报错，执行
+hexo generate
 ```
 您的网站会在 http://localhost:4000 下启动。如果 http://localhost:4000 能够正常访问，则说明 Hexo 本地博客已经搭建起来了，只是本地哦，别人看不到的。
 
