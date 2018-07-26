@@ -17,7 +17,7 @@ copyright: true
 
 >* vim /usr/local/nginx/conf/vhost/xxx.conf 添加三行，如下
 
-```
+```c
 server {
   listen 8000;
   server_name alitong.com;
@@ -59,13 +59,14 @@ server {
 }
 ```
 
->* 重启nginx，解决
+> + 重启nginx，解决
 
-	service nginx restart
-
->* 如果上面操作之后还不行 vim /usr/local/php/etc/php.ini
-
+```c
+service nginx restart
 ```
+> + 如果上面操作之后还不行 `vim /usr/local/php/etc/php.ini`
+
+```c
 #yyp复制一行备份
 cgi.fix_pathinfo=1
 ;cgi.fix_pathinfo=0
