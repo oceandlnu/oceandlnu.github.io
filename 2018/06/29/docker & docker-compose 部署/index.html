@@ -132,7 +132,7 @@
 <meta property="og:site_name" content="Ocean&#39;s Blogs">
 <meta property="og:description" content="docker &amp; docker-compose 部署">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-26T05:25:59.913Z">
+<meta property="og:updated_time" content="2018-07-30T06:56:04.276Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker &amp; docker-compose 部署">
 <meta name="twitter:description" content="docker &amp; docker-compose 部署">
@@ -492,11 +492,11 @@
 <blockquote>
 <p>删除所有容器</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker container prune</span><br><span class="line">docker-compose down</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker-compose down</span><br><span class="line">docker container prune</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>删除所有镜像</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker image rm $(docker image ls -q)</span><br><span class="line">docker rmi $(docker images -q)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker rmi $(docker images -q)</span><br><span class="line">docker image rm $(docker image ls -q)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>进入工作目录</p>
 </blockquote>
