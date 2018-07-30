@@ -14,9 +14,9 @@ copyright: true
 
 > * 安装 Composer
 
-```
-# wget https://dl.laravel-china.org/composer.phar -O /usr/local/bin/composer
-# chmod a+x /usr/local/bin/composer
+```bash
+wget https://dl.laravel-china.org/composer.phar -O /usr/local/bin/composer
+chmod a+x /usr/local/bin/composer
 ```
 
 > * Composer 镜像加速
@@ -24,41 +24,35 @@ copyright: true
 
 > * 一、全局配置
 
-```
-//推荐
-# composer config -g repo.packagist composer https://packagist.laravel-china.org
-//备用
-# composer config -g repo.packagist composer https://packagist.phpcomposer.com
+```bash
+composer config -g repo.packagist composer https://packagist.laravel-china.org
 ```
 
 > * 二、局部配置(仅限当前工程使用镜像，去掉 -g 即可)
 
-```
-//推荐
+```bash
 composer config repo.packagist composer https://packagist.laravel-china.org
-//备用
-composer config repo.packagist composer https://packagist.phpcomposer.com
 ```
 > * 全局配置信息(查看[repositories.packagist.org.url]表示当前镜像地址)
 
-```
+```bash
 composer config -gl
 ```
 
 > * 取消镜像
 
-```
+```bash
 composer config -g --unset repos.packagist
 ```
 
 > * 查看当前版本
 
-```
+```bash
 composer -v
 ```
 
-> * 升级版本
+> * 升级 `composer` 版本
 
-```
+```bash
 composer selfupdate
 ```

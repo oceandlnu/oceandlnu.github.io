@@ -32,34 +32,37 @@ sudo apt install git vim chromium-browser filezilla -y
 sudo apt install gimp kdenlive p7zip-full -y
 ```
 
-#### 安装nvm
+#### 安装nvm(安装完成后需要重启终端)
 
 [nvm](https://github.com/creationix/nvm)
 [n](https://github.com/tj/n)
 
-+ ps:类似的工具也有n命令，n 命令是作为一个 node 的模块而存在，而 nvm 是一个独立于 node/npm 的外部 shell 脚本， 因此 n 命令相比 nvm 更加局限。由于 npm 安装的模块路径均为 /usr/local/lib/node_modules ， 当使用 n 切换不同的 node 版本时，实际上会共用全局的 node/npm 目录。所以还是推荐使用nvm。
-
-通过curl:
-
 ```bash
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-```
-
-通过wget:
-
-```bash
+# 或者
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+# 更换 nvm 淘宝源
+export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
 ```
 
-> 安装完成后请重新打开终端
-
-安装node（LTS）：
++ 安装 node
 
 ```bash
-export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
+# 最新 lts 版本
 nvm install --lts
-#淘宝镜像加速
+# 更换 npm 淘宝源
 npm config set registry https://registry.npm.taobao.org
+# 查看当前源
+npm config get registry
+# 补充(yarn安装，查看源，更换源)
+npm install -g yarn
+yarn config get registry
+yarn config set registry https://registry.npm.taobao.org
+```
+
++ 安装hexo
+
+```bash
 npm install hexo-cli -g
 ```
 

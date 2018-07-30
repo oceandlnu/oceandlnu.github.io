@@ -23,70 +23,79 @@ node 命令在 /usr/local/bin/node ，npm 命令在全局 node_modules 目录中
 
 安装 nvm 之后最好先删除下已安装的 node 和全局 node 模块：
 
+```bash
+#查看已经安装在全局的模块，以便删除这些全局模块后再按照不同的 node 版本重新进行全局安装
+npm ls -g --depth=0
+#删除全局 node_modules 目录
+sudo rm -rf /usr/local/lib/node_modules
+#删除 node
+sudo rm /usr/local/bin/node
+#删除全局 node 模块注册的软链
+cd /usr/local/bin && ls -l | grep "../lib/node_modules/" | awk '{print $9}'| xargs rm
 ```
-npm ls -g --depth=0 #查看已经安装在全局的模块，以便删除这些全局模块后再按照不同的 node 版本重新进行全局安装
 
-sudo rm -rf /usr/local/lib/node_modules #删除全局 node_modules 目录
-sudo rm /usr/local/bin/node #删除 node
-cd  /usr/local/bin && ls -l | grep "../lib/node_modules/" | awk '{print $9}'| xargs rm #删除全局 node 模块注册的软链
+#### 安装 nvm(安装完成后需要重启终端)
+
+Github：https://github.com/creationix/nvm
+
+```bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | zsh
+# 或者
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | zsh
+# 更换 nvm 淘宝源
+export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
 ```
 
-#### 安装 nvm
++ 安装 node
 
-通过curl:
-
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-    
-通过wget:
-
-    wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-
-> 安装完成后请重新打开终端
-
-执行下面语句安装最新稳定版node（自带npm）：
-
-    nvm install node
+```bash
+# 最新 lts 版本
+nvm install --lts
+# 更换 npm 淘宝源
+npm config set registry https://registry.npm.taobao.org
+# 查看当前源
+npm config get registry
+# 补充(yarn安装，查看源，更换源)
+npm install -g yarn
+yarn config get registry
+yarn config set registry https://registry.npm.taobao.org
+```
 
 #### 安装切换各版本 node/npm
 
-```
-nvm install node
-
-nvm install 4.2.2
+```bash
+# 最新 LTS 版本
+nvm install --lts
+#安装 8.11.3 版本
+nvm install 8.11.3
 #安装 4.2.2 版本
-
-nvm install 0.12.7
-#安装 0.12.7 版本
-
+nvm install 4.2.2
 # 特别说明：以下模块安装仅供演示说明，并非必须安装模块
 
-nvm use 0
-#切换至 0.12.7 版本
-
+#切换至 8.11.3 版本
+nvm use 8
+#安装 mz-fis 模块至全局目录，安装完成的路径是 /Users/<你的用户名>/.nvm/versions/node/v8.11.3/lib/mz-fis
 npm install -g mz-fis
-#安装 mz-fis 模块至全局目录，安装完成的路径是 /Users/<你的用户名>/.nvm/versions/node/v0.12.7/lib/mz-fis
-
-nvm use 4
 #切换至 4.2.2 版本
-
-npm install -g react-native-cli
+nvm use 4
 #安装 react-native-cli 模块至全局目录，安装完成的路径是 /Users/<你的用户名>/.nvm/versions/node/v4.2.2/lib/react-native-cli
-
-nvm alias default 0.12.7
-#设置默认 node 版本为 0.12.7
+npm install -g react-native-cli
+#设置默认 node 版本为 8.11.3
+nvm alias default 8.11.3
 ```
 
-使用nvm --help查看是否安装成功。
+使用 `nvm --help` 查看是否安装成功。
 
-使用nvm ls查看已经安装的版本。
+使用 `nvm ls` 查看已经安装的版本。
 
-使用nvm ls-remote查看所有远端版本。
+使用 `nvm ls-remote` 查看所有远端版本。
 
-使用nvm install安装某个版本，如nvm install v5.3.0。
+使用 `nvm install` 安装某个版本，如 `nvm install v8.11.3` 。
 
-使用nvm use切换到某个版本，如nvm use v5.3.0使用5.3.0，nvm use system使用系统版本。
+使用 `nvm use` 切换到某个版本，如 `nvm use v8.11.3` 使用 `8.11.3` ， `nvm use system` 使用系统版本。
 
 #### 使用 .nvmrc 文件配置项目所使用的 node 版本
+
 如果你的默认 node 版本（通过 nvm alias 命令设置的）与项目所需的版本不同，则可在项目根目录或其任意父级目录中创建 .nvmrc 文件，在文件中指定使用的 node 版本号，例如：
 
 ```

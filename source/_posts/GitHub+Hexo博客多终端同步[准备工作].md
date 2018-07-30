@@ -36,26 +36,29 @@ git --version
 为什么要搭建 node.js 环境？ - 因为 Hexo 博客系统是基于 Node.js 编写的
 Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境，可以在非浏览器环境下，解释运行 JS 代码。
 
-#### nvm 安装
-
-通过curl:
+#### nvm 安装(安装完成后需要重启终端)
 
 ```bash
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-```
-
-通过wget:
-
-```bash
-wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-```
-
-安装node(最新LTS版本)：
-
-```bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | zsh
+# 或者
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | zsh
+# 更换 nvm 淘宝源
 export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
+```
+
++ 安装 node
+
+```bash
+# 最新 lts 版本
 nvm install --lts
+# 更换 npm 淘宝源
 npm config set registry https://registry.npm.taobao.org
+# 查看当前源
+npm config get registry
+# 补充(yarn安装，查看源，更换源)
+npm install -g yarn
+yarn config get registry
+yarn config set registry https://registry.npm.taobao.org
 ```
 
 #### 官方安装
