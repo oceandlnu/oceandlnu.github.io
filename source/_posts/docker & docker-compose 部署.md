@@ -82,15 +82,15 @@ docker-compose stop
 > 删除所有容器
 
 ```bash
-docker container prune
 docker-compose down
+docker container prune
 ```
 
 > 删除所有镜像
 
 ```bash
-docker image rm $(docker image ls -q)
 docker rmi $(docker images -q)
+docker image rm $(docker image ls -q)
 ```
 
 > 进入工作目录
