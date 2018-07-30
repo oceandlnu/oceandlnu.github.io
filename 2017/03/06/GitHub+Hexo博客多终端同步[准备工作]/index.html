@@ -132,7 +132,7 @@
 <meta property="og:site_name" content="Ocean&#39;s Blogs">
 <meta property="og:description" content="GitHub+Hexo博客多终端同步[准备工作]">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-26T10:23:18.391Z">
+<meta property="og:updated_time" content="2018-07-30T03:47:47.432Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GitHub+Hexo博客多终端同步[准备工作]">
 <meta name="twitter:description" content="GitHub+Hexo博客多终端同步[准备工作]">
@@ -473,12 +473,11 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install git</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
 <p>出现版本号则说明 Git 环境配置成功，第一步完成！！！</p>
 <h3 id="搭建-Node-js-环境"><a href="#搭建-Node-js-环境" class="headerlink" title="搭建 Node.js 环境"></a>搭建 Node.js 环境</h3><p>为什么要搭建 node.js 环境？ - 因为 Hexo 博客系统是基于 Node.js 编写的<br>Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境，可以在非浏览器环境下，解释运行 JS 代码。</p>
-<h4 id="nvm-安装"><a href="#nvm-安装" class="headerlink" title="nvm 安装"></a>nvm 安装</h4><p>通过curl:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</span><br></pre></td></tr></table></figure>
-<p>通过wget:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</span><br></pre></td></tr></table></figure>
-<p>安装node(最新LTS版本)：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node</span><br><span class="line">nvm install --lts</span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<h4 id="nvm-安装-安装完成后需要重启终端"><a href="#nvm-安装-安装完成后需要重启终端" class="headerlink" title="nvm 安装(安装完成后需要重启终端)"></a>nvm 安装(安装完成后需要重启终端)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | zsh</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | zsh</span><br><span class="line"><span class="comment"># 更换 nvm 淘宝源</span></span><br><span class="line"><span class="built_in">export</span> NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装 node</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 最新 lts 版本</span></span><br><span class="line">nvm install --lts</span><br><span class="line"><span class="comment"># 更换 npm 淘宝源</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br><span class="line"><span class="comment"># 查看当前源</span></span><br><span class="line">npm config get registry</span><br><span class="line"><span class="comment"># 补充(yarn安装，查看源，更换源)</span></span><br><span class="line">npm install -g yarn</span><br><span class="line">yarn config get registry</span><br><span class="line">yarn config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
 <h4 id="官方安装"><a href="#官方安装" class="headerlink" title="官方安装"></a>官方安装</h4><p>Node.js 官网：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a> 下载安装包 LTS，根据官方说明文档安装</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
 <p>出现版本号则说明 Node.js 环境配置成功，第二步完成！！！</p>
@@ -885,7 +884,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建-Git-环境"><span class="nav-number">1.</span> <span class="nav-text">搭建 Git 环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建-Node-js-环境"><span class="nav-number">2.</span> <span class="nav-text">搭建 Node.js 环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#nvm-安装"><span class="nav-number">2.1.</span> <span class="nav-text">nvm 安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#官方安装"><span class="nav-number">2.2.</span> <span class="nav-text">官方安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装配置-Hexo"><span class="nav-number">3.</span> <span class="nav-text">安装配置 Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub-注册和配置"><span class="nav-number">4.</span> <span class="nav-text">GitHub 注册和配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关联-Hexo-与-GitHub-Pages"><span class="nav-number">5.</span> <span class="nav-text">关联 Hexo 与 GitHub Pages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub-Pages-地址解析到个人域名"><span class="nav-number">6.</span> <span class="nav-text">GitHub Pages 地址解析到个人域名</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建-Git-环境"><span class="nav-number">1.</span> <span class="nav-text">搭建 Git 环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建-Node-js-环境"><span class="nav-number">2.</span> <span class="nav-text">搭建 Node.js 环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#nvm-安装-安装完成后需要重启终端"><span class="nav-number">2.1.</span> <span class="nav-text">nvm 安装(安装完成后需要重启终端)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#官方安装"><span class="nav-number">2.2.</span> <span class="nav-text">官方安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装配置-Hexo"><span class="nav-number">3.</span> <span class="nav-text">安装配置 Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub-注册和配置"><span class="nav-number">4.</span> <span class="nav-text">GitHub 注册和配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关联-Hexo-与-GitHub-Pages"><span class="nav-number">5.</span> <span class="nav-text">关联 Hexo 与 GitHub Pages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub-Pages-地址解析到个人域名"><span class="nav-number">6.</span> <span class="nav-text">GitHub Pages 地址解析到个人域名</span></a></li></ol></div>
             
 
           </div>
@@ -926,7 +925,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共24.9k字</span>
+  <span class="post-count">博客全站共25.0k字</span>
 </div>
 
 

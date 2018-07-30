@@ -132,7 +132,7 @@
 <meta property="og:site_name" content="Ocean&#39;s Blogs">
 <meta property="og:description" content="Manjaro 日常配置">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-26T09:53:40.644Z">
+<meta property="og:updated_time" content="2018-07-30T03:43:50.119Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Manjaro 日常配置">
 <meta name="twitter:description" content="Manjaro 日常配置">
@@ -676,27 +676,27 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gpasswd -a ocean vboxusers</span><br></pre></td></tr></table></figure>
 <p>重新启动系统或执行 <code>sudo vboxreload</code> ，<a href="https://wiki.manjaro.org/index.php?title=Virtualbox" target="_blank" rel="noopener">参考链接</a></p>
 <h3 id="安装oh-my-zsh、powerline"><a href="#安装oh-my-zsh、powerline" class="headerlink" title="安装oh-my-zsh、powerline"></a>安装oh-my-zsh、powerline</h3><ul>
-<li>Manjaro 自带zsh，<code>zsh --version</code> 查看，如果没有安装 执行 <code>yaourt -S zsh</code></li>
+<li>Manjaro 自带 <code>zsh</code> ， <code>zsh --version</code> 查看，如果没有安装 执行 <code>yaourt -S zsh</code></li>
 </ul>
 <p>oh-my-zsh：<a href="http://ohmyz.sh/" target="_blank" rel="noopener">http://ohmyz.sh/</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装 oh-my-zsh</span></span><br><span class="line">sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>"</span></span><br><span class="line"><span class="comment">#安装powerline及字体</span></span><br><span class="line">yaourt -S powerline powerline-fonts</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 oh-my-zsh</span></span><br><span class="line">sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>"</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>编辑 <code>nano .zshrc</code> 在最后添加</li>
+<li><code>zsh</code> 主题配置(非必须)</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">powerline-daemon -q</span><br><span class="line">. /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装powerline及字体</span></span><br><span class="line">yaourt -S powerline powerline-fonts</span><br><span class="line"><span class="comment"># 编辑 `nano .zshrc` 在最后添加</span></span><br><span class="line">powerline-daemon -q</span><br><span class="line">. /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh</span><br></pre></td></tr></table></figure>
 <ul>
 <li>安装 nvm(安装完成后需要重启终端)</li>
 </ul>
 <p>Github：<a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">https://github.com/creationix/nvm</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | zsh</span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | zsh</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | zsh</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | zsh</span><br><span class="line"><span class="comment"># 更换 nvm 淘宝源</span></span><br><span class="line"><span class="built_in">export</span> NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node</span><br></pre></td></tr></table></figure>
 <ul>
-<li>安装node(最新LTS版本)</li>
+<li>安装 node</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install --lts</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 最新 lts 版本</span></span><br><span class="line">nvm install --lts</span><br><span class="line"><span class="comment"># 更换 npm 淘宝源</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br><span class="line"><span class="comment"># 查看当前源</span></span><br><span class="line">npm config get registry</span><br><span class="line"><span class="comment"># 补充(yarn安装，查看源，更换源)</span></span><br><span class="line">npm install -g yarn</span><br><span class="line">yarn config get registry</span><br><span class="line">yarn config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
 <ul>
 <li>安装hexo</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#淘宝镜像加速</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
 <ul>
 <li>临时切换 bash</li>
 </ul>
@@ -1086,7 +1086,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共24.9k字</span>
+  <span class="post-count">博客全站共25.0k字</span>
 </div>
 
 
