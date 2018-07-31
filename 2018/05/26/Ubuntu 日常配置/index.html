@@ -134,7 +134,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://oceandlnu.github.io/uploads/2017-09-25/dd.png">
 <meta property="og:image" content="https://oceandlnu.github.io/uploads/2017-09-25/wx.png">
-<meta property="og:updated_time" content="2018-07-30T03:43:38.499Z">
+<meta property="og:updated_time" content="2018-07-31T03:01:13.511Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu 日常配置">
 <meta name="twitter:description" content="Ubuntu 日常配置">
@@ -469,7 +469,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure>
 <h4 id="安装vim、chromium、filezilla"><a href="#安装vim、chromium、filezilla" class="headerlink" title="安装vim、chromium、filezilla"></a>安装vim、chromium、filezilla</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install git vim chromium-browser filezilla -y</span><br><span class="line"><span class="comment">#GIMP图像处理，Kdenlive视频处理，p7zip支持rar压缩</span></span><br><span class="line">sudo apt install gimp kdenlive p7zip-full -y</span><br></pre></td></tr></table></figure>
 <h4 id="安装nvm-安装完成后需要重启终端"><a href="#安装nvm-安装完成后需要重启终端" class="headerlink" title="安装nvm(安装完成后需要重启终端)"></a>安装nvm(安装完成后需要重启终端)</h4><p><a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">nvm</a><br><a href="https://github.com/tj/n" target="_blank" rel="noopener">n</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</span><br><span class="line"><span class="comment"># 更换 nvm 淘宝源</span></span><br><span class="line"><span class="built_in">export</span> NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</span><br><span class="line"><span class="comment"># 更换 nvm 淘宝源</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node"</span> &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure>
 <ul>
 <li>安装 node</li>
 </ul>
