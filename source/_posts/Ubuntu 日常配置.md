@@ -42,7 +42,7 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | 
 # 或者
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 # 更换 nvm 淘宝源
-export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
+echo "export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node" >> ~/.bashrc
 ```
 
 + 安装 node

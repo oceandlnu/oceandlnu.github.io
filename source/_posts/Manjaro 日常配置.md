@@ -379,7 +379,7 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | 
 # 或者
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | zsh
 # 更换 nvm 淘宝源
-export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
+echo "export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node" >> ~/.zshrc
 ```
 
 + 安装 node
