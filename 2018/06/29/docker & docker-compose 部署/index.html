@@ -132,7 +132,7 @@
 <meta property="og:site_name" content="Ocean&#39;s Blogs">
 <meta property="og:description" content="docker &amp; docker-compose 部署">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-01T07:52:26.967Z">
+<meta property="og:updated_time" content="2018-08-01T08:16:53.347Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker &amp; docker-compose 部署">
 <meta name="twitter:description" content="docker &amp; docker-compose 部署">
@@ -485,12 +485,12 @@
 <p>验证</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose --version</span><br></pre></td></tr></table></figure>
-<h3 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h3><blockquote>
-<p>停止所有正在运行的容器</p>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><blockquote>
+<p>关闭所有容器（停止所有服务）</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose stop</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>删除所有已停止运行的容器</p>
+<p>删除所有容器</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker-compose down</span><br><span class="line">docker container prune</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -500,13 +500,13 @@
 <blockquote>
 <p>进入 <code>workspace</code> 容器</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以laradock身份登录 workspace 容器，如果省略 --user=laradock，则以root身份登录</span></span><br><span class="line">docker-compose <span class="built_in">exec</span> --user=laradock workspace bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以laradock身份登录 workspace 容器，如果省略 --user=laradock，则以root身份登录</span></span><br><span class="line">docker-compose <span class="built_in">exec</span> --user=laradock workspace bash</span><br><span class="line"><span class="comment"># root身份登录</span></span><br><span class="line">docker-compose <span class="built_in">exec</span> workspace bash</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>进入 <code>mysql</code> 容器连接 <code>mysql</code></p>
+<p>远程连接 <code>mysql</code> 并执行 <code>mysql</code> 命令行模式</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose <span class="built_in">exec</span> mysql mysql -uroot -proot</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>进入 <code>redis</code> 容器连接 <code>redis</code>，默认端口为 <code>6379</code>，如果你更改了端口请在后面加上 <code>-p [端口号]</code></p>
+<p>远程连接 <code>redis</code> 并进入 <code>redis</code> 命令行模式，默认端口为 <code>6379</code>，如果你更改了端口请在后面加上 <code>-p [端口号]</code></p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose <span class="built_in">exec</span> redis redis-cli -h redis</span><br></pre></td></tr></table></figure>
 <ul>
@@ -842,7 +842,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-安装"><span class="nav-number">1.</span> <span class="nav-text">docker 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-compose-安装"><span class="nav-number">2.</span> <span class="nav-text">docker-compose 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#替换国内源"><span class="nav-number">3.</span> <span class="nav-text">替换国内源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本命令"><span class="nav-number">4.</span> <span class="nav-text">基本命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-安装"><span class="nav-number">1.</span> <span class="nav-text">docker 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-compose-安装"><span class="nav-number">2.</span> <span class="nav-text">docker-compose 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#替换国内源"><span class="nav-number">3.</span> <span class="nav-text">替换国内源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令"><span class="nav-number">4.</span> <span class="nav-text">常用命令</span></a></li></ol></div>
             
 
           </div>
