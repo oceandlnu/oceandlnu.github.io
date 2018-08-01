@@ -132,7 +132,7 @@
 <meta property="og:site_name" content="Ocean&#39;s Blogs">
 <meta property="og:description" content="docker &amp; docker-compose 部署">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-30T06:56:04.276Z">
+<meta property="og:updated_time" content="2018-08-01T07:52:26.967Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker &amp; docker-compose 部署">
 <meta name="twitter:description" content="docker &amp; docker-compose 部署">
@@ -486,11 +486,11 @@
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose --version</span><br></pre></td></tr></table></figure>
 <h3 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h3><blockquote>
-<p>关闭所有容器（停止所有服务）</p>
+<p>停止所有正在运行的容器</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose stop</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>删除所有容器</p>
+<p>删除所有已停止运行的容器</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker-compose down</span><br><span class="line">docker container prune</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -498,15 +498,15 @@
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker rmi $(docker images -q)</span><br><span class="line">docker image rm $(docker image ls -q)</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>进入工作目录</p>
+<p>进入 <code>workspace</code> 容器</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose <span class="built_in">exec</span> workspace bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以laradock身份登录 workspace 容器，如果省略 --user=laradock，则以root身份登录</span></span><br><span class="line">docker-compose <span class="built_in">exec</span> --user=laradock workspace bash</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>远程连接mysql并执行mysql命令行模式</p>
+<p>进入 <code>mysql</code> 容器连接 <code>mysql</code></p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose <span class="built_in">exec</span> mysql mysql -u[用户名] -p[密码]</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose <span class="built_in">exec</span> mysql mysql -uroot -proot</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>远程连接 <code>redis</code> 并进入 <code>redis</code> 命令行模式，这条命令是默认端口为 6379，如果你更改了端口请在后面加上 -p [端口号]</p>
+<p>进入 <code>redis</code> 容器连接 <code>redis</code>，默认端口为 <code>6379</code>，如果你更改了端口请在后面加上 <code>-p [端口号]</code></p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose <span class="built_in">exec</span> redis redis-cli -h redis</span><br></pre></td></tr></table></figure>
 <ul>
