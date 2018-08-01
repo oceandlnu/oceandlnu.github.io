@@ -73,13 +73,13 @@ docker-compose --version
 
 ### 基本命令
 
-> 关闭所有容器（停止所有服务）
+> 停止所有正在运行的容器
 
 ```bash
 docker-compose stop
 ```
 
-> 删除所有容器
+> 删除所有已停止运行的容器
 
 ```bash
 docker-compose down
@@ -93,19 +93,20 @@ docker rmi $(docker images -q)
 docker image rm $(docker image ls -q)
 ```
 
-> 进入工作目录
+> 进入 `workspace` 容器
 
 ```bash
-docker-compose exec workspace bash
+# 以laradock身份登录 workspace 容器，如果省略 --user=laradock，则以root身份登录
+docker-compose exec --user=laradock workspace bash
 ```
 
-> 远程连接mysql并执行mysql命令行模式
+> 进入 `mysql` 容器连接 `mysql`
 
 ```bash
-docker-compose exec mysql mysql -u[用户名] -p[密码]
+docker-compose exec mysql mysql -uroot -proot
 ```
 
-> 远程连接 `redis` 并进入 `redis` 命令行模式，这条命令是默认端口为 6379，如果你更改了端口请在后面加上 -p [端口号]
+> 进入 `redis` 容器连接 `redis`，默认端口为 `6379`，如果你更改了端口请在后面加上 `-p [端口号]`
 
 ```bash
 docker-compose exec redis redis-cli -h redis
