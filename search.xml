@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[MySQL 主从复制(Master-Slave)]]></title>
+    <url>%2F2018%2F07%2F20%2FMySQL%20%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6(Master-Slave)%2F</url>
+    <content type="text"><![CDATA[MySQL数据库自身提供的主从复制功能可以方便的实现数据的多处自动备份，实现数据库的拓展。多个数据备份不仅可以加强数据的安全性，通过实现读写分离还能进一步提升数据库的负载性能。 下图描述了一个多个数据库间主从复制与读写分离的模型(来源网络) 在一主多从的数据库体系中，多个从服务器采用异步的方式更新主数据库的变化，业务服务器在执行写或者相关修改数据库的操作是在主服务器上进行的，读操作则是在各从服务器上进行。如果配置了多个从服务器或者多个主服务器又涉及到相应的负载均衡问题，关于负载均衡具体的技术细节还没有研究过，今天就先简单的实现一主一从的主从复制功能。 Mysql主从复制的实现原理图大致如下(来源网络)： MySQL之间数据复制的基础是二进制日志文件（binary log file）。一台MySQL数据库一旦启用二进制日志后，其作为master，它的数据库中所有操作都会以“事件”的方式记录在二进制日志中，其他数据库作为slave通过一个I/O线程与主服务器保持通信，并监控master的二进制日志文件的变化，如果发现master二进制日志文件发生变化，则会把变化复制到自己的中继日志中，然后slave的一个SQL线程会把相关的“事件”执行到自己的数据库中，以此实现从数据库和主数据库的一致性，也就实现了主从复制。 实现MySQL主从复制需要进行的配置： 主服务器： 开启二进制日志 配置唯一的server-id 获得master二进制日志文件名及位置 创建一个用于slave和master通信的用户账号 从服务器： 配置唯一的server-id 使用master分配的用户账号读取master二进制日志 启用slave服务 具体实现过程如下准备工作：1.主从数据库版本最好一致(MySQL 5.7)2.主从数据库内数据保持一致 主数据库：182.92.172.80 从数据库：123.57.44.85 主数据库master修改：1.修改mysql配置 找到主数据库的配置文件my.cnf(或者my.ini)，我的在 /etc/mysql/my.cnf ,在[mysqld]部分插入如下两行： 1234#开启二进制日志[mysqld]log-bin=mysql-bin #设置server-idserver-id=1 2.重启mysql，创建用于同步的用户账号 1mysql -hlocalhost -uname -ppassword 创建用户并授权：用户rel1，密码slavepass 123456#创建用户mysql&gt; CREATE USER 'repl'@'123.57.44.85' IDENTIFIED BY 'slavepass';#分配权限mysql&gt; GRANT REPLICATION SLAVE ON *.* TO 'repl'@'123.57.44.85';#刷新权限mysql&gt; flush privileges; 3.查看master状态，记录二进制文件名(mysql-bin.000003)和位置(73)： 123456mysql&gt; SHOW MASTER STATUS;+------------------+----------+--------------+------------------+|File | Position | Binlog_Do_DB | Binlog_Ignore_DB |+------------------+----------+--------------+------------------+|mysql-bin.000003 | 73 | test | manual,mysql |+------------------+----------+--------------+------------------+ 从服务器slave修改：1.修改mysql配置 同样找到my.cnf配置文件，添加server-id 123[mysqld]#设置server-id，必须唯一server-id=2 2.重启mysql，打开mysql会话，执行同步SQL语句(需要主服务器主机名，登陆凭据，二进制文件的名称和位置)： 123456mysql&gt; CHANGE MASTER TO -&gt; MASTER_HOST=&apos;182.92.172.80&apos;, -&gt; MASTER_USER=&apos;rep1&apos;, -&gt; MASTER_PASSWORD=&apos;slavepass&apos;, -&gt; MASTER_LOG_FILE=&apos;mysql-bin.000003&apos;, -&gt; MASTER_LOG_POS=73; 3.启动slave同步进程： 1mysql&gt; start slave; 4.查看slave状态： 1234567891011121314151617mysql&gt; show slave status\G; *************************** 1. row *************************** Slave_IO_State: Waiting for master to send event Master_Host: 182.92.172.80 Master_User: rep1 Master_Port: 3306 Connect_Retry: 60 Master_Log_File: mysql-bin.000013 Read_Master_Log_Pos: 11662 Relay_Log_File: mysqld-relay-bin.000022 Relay_Log_Pos: 11765 Relay_Master_Log_File: mysql-bin.000013 Slave_IO_Running: Yes Slave_SQL_Running: Yes Replicate_Do_DB: Replicate_Ignore_DB: ... 当 Slave_IO_Running 和 Slave_SQL_Running 都为YES的时候就表示主从同步设置成功了。接下来就可以进行一些验证了，比如在主master数据库的test数据库的一张表中插入一条数据，在slave的test库的相同数据表中查看是否有新增的数据即可验证主从复制功能是否有效，还可以关闭slave（mysql&gt;stop slave;）,然后再修改master，看slave是否也相应修改（停止slave后，master的修改不会同步到slave），就可以完成主从复制功能的验证了。 还可以用到的其他相关参数： master开启二进制日志后默认记录所有库所有表的操作，可以通过配置来指定只记录指定的数据库甚至指定的表的操作，具体在mysql配置文件的 [mysqld] 可添加修改如下选项： 1234567# 不同步哪些数据库 binlog-ignore-db = mysql binlog-ignore-db = test binlog-ignore-db = information_schema # 只同步哪些数据库，除此之外，其他不同步 binlog-do-db = game]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Redis 配置说明]]></title>
+    <url>%2F2018%2F07%2F07%2FRedis%20%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E%2F</url>
+    <content type="text"><![CDATA[Redis 配置文件 redis.conf (find / -name &quot;redis.conf&quot;) Redis 默认不是以守护进程的方式运行，可以通过该配置项修改，使用 yes 启用守护进程 1daemonize no 当 Redis 以守护进程方式运行时，Redis 默认会把 pid 写入 /var/run/redis.pid 文件，可以通过 pidfile 指定 1pidfile /var/run/redis.pid 指定 Redis 监听端口，默认端口为 6379，作者在自己的一篇博文中解释了为什么选用 6379 作为默认端口，因为 6379 在手机按键上对应 MERZ，而 MERZ 取自意大利歌女 Alessia Merz 的名字 1port 6379 绑定的主机地址，注释改行表示允许远程连接(建议开发环境注释，生产环境恢复) 1bind 127.0.0.1 5.当客户端闲置多长时间后关闭连接，如果指定为 0，表示关闭该功能 1timeout 300 指定日志记录级别，Redis总共支持四个级别：debug、verbose、notice、warning，默认为 verbose 1loglevel verbose 日志记录方式，默认为标准输出，如果配置Redis为守护进程方式运行，而这里又配置为日志记录方式为标准输出，则日志将会发送给 /dev/null 1logfile stdout 设置数据库的数量，默认数据库为 0，可以使用 SELECT &lt;dbid&gt; 命令在连接上指定数据库 id 1databases 16 指定在多长时间内，有多少次更新操作，就将数据同步到数据文件，可以多个条件配合 123456# save &lt;seconds&gt; &lt;changes&gt;# Redis默认配置文件中提供了三个条件save 900 1save 300 10save 60 10000# 分别表示900秒（15分钟）内有1个更改，300秒（5分钟）内有10个更改以及60秒内有10000个更改。 指定存储至本地数据库时是否压缩数据，默认为yes，Redis采用LZF压缩，如果为了节省CPU时间，可以关闭该选项，但会导致数据库文件变的巨大 1rdbcompression yes 指定本地数据库文件名，默认值为dump.rdb 1dbfilename dump.rdb 指定本地数据库存放目录 1dir ./ 设置当本机为slav服务时，设置master服务的IP地址及端口，在Redis启动时，它会自动从master进行数据同步 1slaveof &lt;masterip&gt; &lt;masterport&gt; 当master服务设置了密码保护时，slav服务连接master的密码 1masterauth &lt;master-password&gt; 设置Redis连接密码，如果配置了连接密码，客户端在连接Redis时需要通过AUTH 命令提供密码，默认关闭 1requirepass ocean 设置同一时间最大客户端连接数，默认无限制，Redis可以同时打开的客户端连接数为Redis进程可以打开的最大文件描述符数，如果设置 maxclients 0，表示不作限制。当客户端连接数到达限制时，Redis会关闭新的连接并向客户端返回max number of clients reached错误信息 1maxclients 128 指定Redis最大内存限制，Redis在启动时会把数据加载到内存中，达到最大内存后，Redis会先尝试清除已到期或即将到期的Key，当此方法处理 后，仍然到达最大内存设置，将无法再进行写入操作，但仍然可以进行读取操作。Redis新的vm机制，会把Key存放内存，Value会存放在swap区 1maxmemory &lt;bytes&gt; 指定是否在每次更新操作后进行日志记录，Redis在默认情况下是异步的把数据写入磁盘，如果不开启，可能会在断电时导致一段时间内的数据丢失。因为 redis本身同步数据文件是按上面save条件来同步的，所以有的数据会在一段时间内只存在于内存中。默认为no 1appendonly no 指定更新日志文件名，默认为appendonly.aof 1appendfilename appendonly.aof 指定更新日志条件 123456# 共有3个可选值： # no：表示等操作系统进行数据缓存同步到磁盘（快） # always：表示每次更新操作后手动调用fsync()将数据写到磁盘（慢，安全） # everysec：表示每秒同步一次（折衷，默认值）appendfsync everysec 指定是否启用虚拟内存机制，默认值为no，简单的介绍一下，VM机制将数据分页存放，由Redis将访问量较少的页即冷数据swap到磁盘上，访问多的页面由磁盘自动换出到内存中 1vm-enabled no 虚拟内存文件路径，默认值为 /tmp/redis.swap，不可多个Redis实例共享 1vm-swap-file /tmp/redis.swap 将所有大于vm-max-memory的数据存入虚拟内存,无论vm-max-memory设置多小,所有索引数据都是内存存储的(Redis的索引数据 就是keys),也就是说,当vm-max-memory设置为0的时候,其实是所有value都存在于磁盘。默认值为0 1vm-max-memory 0 Redis swap文件分成了很多的page，一个对象可以保存在多个page上面，但一个page上不能被多个对象共享，vm-page-size是要根据存储的 数据大小来设定的，作者建议如果存储很多小对象，page大小最好设置为32或者64bytes；如果存储很大大对象，则可以使用更大的page，如果不确定，就使用默认值 1vm-page-size 32 设置swap文件中的page数量，由于页表（一种表示页面空闲或使用的bitmap）是在放在内存中的，，在磁盘上每8个pages将消耗1byte的内存。 1vm-pages 134217728 设置访问swap文件的线程数,最好不要超过机器的核数,如果设置为0,那么所有对swap文件的操作都是串行的，可能会造成比较长时间的延迟。默认值为4 1vm-max-threads 4 设置在向客户端应答时，是否把较小的包合并为一个包发送，默认为开启 1glueoutputbuf yes 指定在超过一定的数量或者最大的元素超过某一临界值时，采用一种特殊的哈希算法 12hash-max-zipmap-entries 64hash-max-zipmap-value 512 指定是否激活重置哈希，默认为开启（后面在介绍Redis的哈希算法时具体介绍） 1activerehashing yes 指定包含其它的配置文件，可以在同一主机上多个Redis实例之间使用同一份配置文件，而同时各个实例又拥有自己的特定配置文件 1include /path/to/local.conf]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[docker & docker-compose 部署]]></title>
     <url>%2F2018%2F06%2F29%2Fdocker%20%26%20docker-compose%20%E9%83%A8%E7%BD%B2%2F</url>
     <content type="text"><![CDATA[docker 安装进入 下载地址 选择最新的包下载 12tar xzvf docker-18.03.1-ce.tgzsudo cp docker/* /usr/bin/ 启动 1sudo dockerd &amp; 验证是否安装成功 12docker -vdocker info 为当前用户增加执行权限 12sudo groupadd dockersudo usermod -aG docker $USER docker-compose 安装1234#如果shell是zsh，切换到bash安装bashsudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-composesudo chmod +x /usr/local/bin/docker-compose 替换国内源 编辑 sudo nano /etc/docker/daemon.json 如果不存在则创建。如果文件为空，添加以下内容。 参考链接 123456&#123; "registry-mirrors": [ "http://0ed8bcb8.m.daocloud.io" ], "insecure-registries": []&#125; 验证 1docker-compose --version 基本命令 关闭所有容器（停止所有服务） 1docker-compose stop 删除所有容器 12docker-compose downdocker container prune 删除所有镜像 12docker rmi $(docker images -q)docker image rm $(docker image ls -q) 进入工作目录 1docker-compose exec workspace bash 远程连接mysql并执行mysql命令行模式 1docker-compose exec mysql mysql -u[用户名] -p[密码] 远程连接 redis 并进入 redis 命令行模式，这条命令是默认端口为 6379，如果你更改了端口请在后面加上 -p [端口号] 1docker-compose exec redis redis-cli -h redis laradock 设置代理 参考资料： https://docs.docker.com/install/linux/docker-ce/binaries/ https://docs.docker.com/install/linux/linux-postinstall/ https://docs.docker.com/compose/install/#install-compose https://github.com/yeasy/docker_practice/blob/master/SUMMARY.md]]></content>
@@ -103,18 +127,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[MySQL Access denied for user 'root'@'localhost' 解决方法]]></title>
-    <url>%2F2018%2F04%2F10%2FMySQL%20Access%20denied%20for%20user%20'root'%40'localhost'%20%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%2F</url>
-    <content type="text"><![CDATA[执行 mysql -uroot -ppassword 出现如下错误 ERROR 1045 (28000): Access denied for user &apos;root&apos;@&apos;localhost&apos; 解决方法 停止mysql 123# service mysql stop//or# /usr/local/mysql/support-files/mysql.server stop 安全模式启动 123//找到mysqld_safe所在位置# find /usr/local/mysql -name &quot;mysqld_safe&quot;# mysqld_safe --skip-grant-tables --skip-networking &amp; 安全模式进入mysql 123# mysql -u root//password替换为你要修改的密码mysql&gt; UPDATE mysql.user SET PASSWORD=PASSWORD(&apos;password&apos;) WHERE USER=&apos;root&apos;; 启动mysql，问题解决 123# service mysql start//or# /usr/local/mysql/support-files/mysql.server start]]></content>
-      <categories>
-        <category>MySQL</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>MySQL</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Apache/Nginx重写URL配置]]></title>
     <url>%2F2018%2F04%2F10%2FApache%26Nginx%E9%87%8D%E5%86%99URL%E9%85%8D%E7%BD%AE%2F</url>
     <content type="text"><![CDATA[作者系统是Ubuntu，CentOS及其他linux发行版请自行变更 PHP框架是ThinkPHP5.0，官方文档说的有些模糊，所以自行补充了一下 有错误欢迎随时指出 可以通过URL重写隐藏应用的入口文件index.php,下面是相关服务器的配置参考： [Apache]1.启用 rewrite 模块 123sudo a2enmod rewrite#或者sudo ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load 2.编辑配置文件 /etc/apache2/apache2.conf，找到自己web根目录对应的位置 12345&lt;Directory /var/www/&gt;Options Indexes FollowSymLinksAllowOverride NoneRequire all granted&lt;/Directory&gt; 3.将 AllowOverride None 改为 AllowOverride All 4.重启服务 sudo service apache2 restart 5.把下面的内容保存为 .htaccess 文件放到应用入口文件的同级目录下(默认已创建，如果没有自己创建) 12345678&lt;IfModule mod_rewrite.c&gt;Options +FollowSymlinks -MultiviewsRewriteEngine onRewriteCond %&#123;REQUEST_FILENAME&#125; !-dRewriteCond %&#123;REQUEST_FILENAME&#125; !-fRewriteRule ^(.*)$ index.php?/$1 [QSA,PT,L]&lt;/IfModule&gt; [Nginx]在Nginx低版本中，是不支持PATHINFO的，但是可以通过在Nginx中配置转发规则实现， 编辑文件 /etc/nginx/sites-available/default： 12345678910server &#123; // …..省略部分代码 root /var/www/html; //找到这个模块，然后填入下面的配置&#125; location / &#123; // …..省略部分代码 if (!-e $request_filename) &#123; rewrite ^(.*)$ /index.php?s=/$1 last; break; &#125;&#125; 其实内部是转发到了ThinkPHP提供的兼容URL，利用这种方式，可以解决其他不支持PATHINFO的WEB服务器环境。 如果你的应用安装在二级目录，Nginx的伪静态方法设置如下，其中 /tp5/public/ 是所在的目录名称。12345location /tp5/public/ &#123; if (!-e $request_filename)&#123; rewrite ^/tp5/public/(.*)$ /tp5/public/index.php?s=/$1 last; &#125;&#125; 原来的访问URL： http://serverName/index.php/模块/控制器/操作/[参数名/参数值...] 设置后，我们可以采用下面的方式访问： http://serverName/模块/控制器/操作/[参数名/参数值...] 如果你没有修改服务器的权限，可以在 index.php 入口文件做修改，这不是正确的做法，并且不一定成功，视服务器而定，只是在框架执行前补全 PATH_INFO 参数 1$_SERVER['PATH_INFO'] = $_SERVER['REQUEST_URI' ]; 最后重启服务器 1sudo service nginx restart]]></content>
@@ -126,6 +138,18 @@
         <tag>Linux</tag>
         <tag>Apache</tag>
         <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[MySQL Access denied for user 'root'@'localhost' 解决方法]]></title>
+    <url>%2F2018%2F04%2F10%2FMySQL%20Access%20denied%20for%20user%20'root'%40'localhost'%20%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[执行 mysql -uroot -ppassword 出现如下错误 ERROR 1045 (28000): Access denied for user &apos;root&apos;@&apos;localhost&apos; 解决方法 停止mysql 123# service mysql stop//or# /usr/local/mysql/support-files/mysql.server stop 安全模式启动 123//找到mysqld_safe所在位置# find /usr/local/mysql -name &quot;mysqld_safe&quot;# mysqld_safe --skip-grant-tables --skip-networking &amp; 安全模式进入mysql 123# mysql -u root//password替换为你要修改的密码mysql&gt; UPDATE mysql.user SET PASSWORD=PASSWORD(&apos;password&apos;) WHERE USER=&apos;root&apos;; 启动mysql，问题解决 123# service mysql start//or# /usr/local/mysql/support-files/mysql.server start]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>MySQL</tag>
       </tags>
   </entry>
   <entry>

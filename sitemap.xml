@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://oceandlnu.github.io/2018/07/20/MySQL%20%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6(Master-Slave)/</loc>
+    
+    <lastmod>2018-08-01T03:50:28.587Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://oceandlnu.github.io/2018/07/07/Redis%20%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E/</loc>
+    
+    <lastmod>2018-08-01T02:07:27.621Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://oceandlnu.github.io/2018/05/26/Ubuntu%20%E6%97%A5%E5%B8%B8%E9%85%8D%E7%BD%AE/</loc>
     
     <lastmod>2018-07-31T03:01:13.511Z</lastmod>
@@ -79,20 +93,6 @@
   </url>
   
   <url>
-    <loc>https://oceandlnu.github.io/2016/06/05/GitHub%E5%85%A5%E9%97%A8%E5%88%B0%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE/</loc>
-    
-    <lastmod>2018-07-26T05:11:26.900Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://oceandlnu.github.io/2018/04/10/MySQL%20Access%20denied%20for%20user%20'root'@'localhost'%20%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</loc>
-    
-    <lastmod>2018-07-26T05:11:26.900Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://oceandlnu.github.io/2016/07/05/Markdown%E7%AE%80%E6%98%8E%E8%AF%AD%E6%B3%95/</loc>
     
     <lastmod>2018-07-26T05:11:26.900Z</lastmod>
@@ -114,14 +114,14 @@
   </url>
   
   <url>
-    <loc>https://oceandlnu.github.io/2017/02/10/Hexo%20%E6%80%8E%E4%B9%88%E9%81%BF%E5%85%8D%20.md%20%E6%96%87%E4%BB%B6%E8%A2%AB%E8%A7%A3%E6%9E%90%EF%BC%9F/</loc>
+    <loc>https://oceandlnu.github.io/2018/04/15/PHPStorm%20%E4%BF%AE%E6%94%B9%E8%87%AA%E5%8A%A8%E4%BF%9D%E5%AD%98%E4%B8%BACtrl+S/</loc>
     
     <lastmod>2018-07-26T05:11:26.900Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://oceandlnu.github.io/2017/09/28/PHPStorm%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/</loc>
+    <loc>https://oceandlnu.github.io/2017/02/10/Hexo%20%E6%80%8E%E4%B9%88%E9%81%BF%E5%85%8D%20.md%20%E6%96%87%E4%BB%B6%E8%A2%AB%E8%A7%A3%E6%9E%90%EF%BC%9F/</loc>
     
     <lastmod>2018-07-26T05:11:26.900Z</lastmod>
     
@@ -212,6 +212,20 @@
   </url>
   
   <url>
+    <loc>https://oceandlnu.github.io/2016/06/05/GitHub%E5%85%A5%E9%97%A8%E5%88%B0%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE/</loc>
+    
+    <lastmod>2018-07-26T05:11:26.900Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://oceandlnu.github.io/2018/04/10/MySQL%20Access%20denied%20for%20user%20'root'@'localhost'%20%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</loc>
+    
+    <lastmod>2018-07-26T05:11:26.900Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://oceandlnu.github.io/about/index.html</loc>
     
     <lastmod>2018-07-26T05:11:26.900Z</lastmod>
@@ -226,7 +240,7 @@
   </url>
   
   <url>
-    <loc>https://oceandlnu.github.io/2018/04/15/PHPStorm%20%E4%BF%AE%E6%94%B9%E8%87%AA%E5%8A%A8%E4%BF%9D%E5%AD%98%E4%B8%BACtrl+S/</loc>
+    <loc>https://oceandlnu.github.io/2017/09/28/PHPStorm%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/</loc>
     
     <lastmod>2018-07-26T05:11:26.900Z</lastmod>
     
