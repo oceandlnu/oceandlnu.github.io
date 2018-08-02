@@ -27,9 +27,21 @@
   <entry>
     <title><![CDATA[docker & docker-compose 部署]]></title>
     <url>%2F2018%2F06%2F29%2Fdocker%20%26%20docker-compose%20%E9%83%A8%E7%BD%B2%2F</url>
-    <content type="text"><![CDATA[docker 安装进入 下载地址 选择最新的包下载 12tar xzvf docker-18.03.1-ce.tgzsudo cp docker/* /usr/bin/ 启动 1sudo dockerd &amp; 验证是否安装成功 12docker -vdocker info 为当前用户增加执行权限 12sudo groupadd dockersudo usermod -aG docker $USER docker-compose 安装1234#如果shell是zsh，切换到bash安装bashsudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-composesudo chmod +x /usr/local/bin/docker-compose 替换国内源 编辑 sudo nano /etc/docker/daemon.json 如果不存在则创建。如果文件为空，添加以下内容。 参考链接 123456&#123; "registry-mirrors": [ "http://0ed8bcb8.m.daocloud.io" ], "insecure-registries": []&#125; 验证 1docker-compose --version 常用命令 关闭所有容器（停止所有服务） 1docker-compose stop 删除所有容器 12docker-compose downdocker container prune 删除所有镜像 12docker rmi $(docker images -q)docker image rm $(docker image ls -q) 进入 workspace 容器 1234# 以laradock身份登录 workspace 容器，如果省略 --user=laradock，则以root身份登录docker-compose exec --user=laradock workspace bash# root身份登录docker-compose exec workspace bash 远程连接 mysql 并执行 mysql 命令行模式 1docker-compose exec mysql mysql -uroot -proot 远程连接 redis 并进入 redis 命令行模式，默认端口为 6379，如果你更改了端口请在后面加上 -p [端口号] 1docker-compose exec redis redis-cli -h redis laradock 设置代理 参考资料： https://docs.docker.com/install/linux/docker-ce/binaries/ https://docs.docker.com/install/linux/linux-postinstall/ https://docs.docker.com/compose/install/#install-compose https://github.com/yeasy/docker_practice/blob/master/SUMMARY.md]]></content>
+    <content type="text"><![CDATA[docker 安装进入 下载地址 选择最新的包下载 12tar xzvf docker-18.03.1-ce.tgzsudo cp docker/* /usr/bin/ 启动 1sudo dockerd &amp; 验证是否安装成功 12docker -vdocker info 为当前用户增加执行权限 12sudo groupadd dockersudo usermod -aG docker $USER docker-compose 安装1234#如果shell是zsh，切换到bash安装bashsudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-composesudo chmod +x /usr/local/bin/docker-compose 配置 Docker 加速器 Linux 12# 该脚本可以将 --registry-mirror 加入到你的 Docker 配置文件 /etc/docker/daemon.json 中。适用于 Ubuntu14.04、Debian、CentOS6 、CentOS7、Fedora、Arch Linux、openSUSE Leap 42.1，其他版本可能有细微不同。curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://0ed8bcb8.m.daocloud.io 其他 Linux 发行版 编辑 sudo nano /etc/docker/daemon.json 如果不存在则创建。如果文件为空，添加以下内容。 参考链接 123456&#123; "registry-mirrors": [ "http://0ed8bcb8.m.daocloud.io" ], "insecure-registries": []&#125; MacOS 12# Docker For Mac，右键点击桌面顶栏的 docker 图标，选择 Preferences ，在 Daemon 标签（Docker 17.03 之前版本为 Advanced 标签）下的 Registry mirrors 列表中加入下面的镜像地址(点击 Apply &amp; Restart 按钮使设置生效。):http://0ed8bcb8.m.daocloud.io 验证 1docker-compose --version 常用命令 关闭所有容器（停止所有服务） 1docker-compose stop 删除所有容器 12docker-compose downdocker container prune 删除所有镜像 12docker rmi $(docker images -q)docker image rm $(docker image ls -q) 进入 workspace 容器 1234# 以laradock身份登录 workspace 容器，如果省略 --user=laradock，则以root身份登录docker-compose exec --user=laradock workspace bash# root身份登录docker-compose exec workspace bash 远程连接 mysql 并执行 mysql 命令行模式 1docker-compose exec mysql mysql -uroot -proot 远程连接 redis 并进入 redis 命令行模式，默认端口为 6379，如果你更改了端口请在后面加上 -p [端口号] 1docker-compose exec redis redis-cli -h redis laradock 设置代理 参考资料： https://docs.docker.com/install/linux/docker-ce/binaries/ https://docs.docker.com/install/linux/linux-postinstall/ https://docs.docker.com/compose/install/#install-compose https://github.com/yeasy/docker_practice/blob/master/SUMMARY.md]]></content>
       <categories>
         <category>配置</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PHPStorm 在 laradock 下进行 Xdebug 断点调试]]></title>
+    <url>%2F2018%2F06%2F26%2FPHPStorm%20%E5%9C%A8%20laradock%20%E4%B8%8B%E8%BF%9B%E8%A1%8C%20Xdebug%20%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95%2F</url>
+    <content type="text"><![CDATA[laradock 配置 编辑 laradock/.env 文件 12WORKSPACE_INSTALL_XDEBUG=truePHP_FPM_INSTALL_XDEBUG=true 重新构建容器 123docker-compose build workspace php-fpm# 启动docker-compose up -d nginx mysql redis PHPStorm 配置 打开 PHPStorm， File -&gt; Settings 进入 Languages &amp; Frameworks -&gt; PHP -&gt; Servers。新建一个 Servers，如下图 Name 填写内容必须和 laradock/.env 文件 serverName 一致，默认为 laradock Host 为 server 对应的 Host 地址；Port 不用修改；Debugger 选择 Xdebug 设置目录映射(Use path mappings)，本地目录 -&gt; 远程目录 1234### Remote Interpreter ##################################### Choose a Remote Interpreter entry matching name. Default is `laradock`PHP_IDE_CONFIG=serverName=laradock 设置断点，点击电话按钮启动监听就可以进行断点调试了]]></content>
+      <categories>
+        <category>Xdebug</category>
       </categories>
       <tags>
         <tag>linux</tag>
@@ -70,8 +82,8 @@
       <tags>
         <tag>Linux</tag>
         <tag>Nginx</tag>
-        <tag>MySQL</tag>
         <tag>PHP</tag>
+        <tag>MySQL</tag>
       </tags>
   </entry>
   <entry>
@@ -102,18 +114,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[VirtualBox CentOS7 Mini 安装增强工具]]></title>
-    <url>%2F2018%2F04%2F12%2FVirtualBox%20CentOS7%20Mini%20%E5%AE%89%E8%A3%85%E5%A2%9E%E5%BC%BA%E5%B7%A5%E5%85%B7%2F</url>
-    <content type="text"><![CDATA[安装增强工具 安装相关依赖 12# yum install vim gcc kernel kernel-devel bzip2 -y# reboot 点击虚拟机菜单栏 =&gt; 设备 =&gt; 安装增强功能 123# mount /dev/cdrom /mnt# cd /mnt# ./VBoxLinuxAdditions.run 打开 VirtualBox 界面，选择对应的虚拟系统进行”设置”，选中设置窗口中的最后一项”共享文件夹”，再选中”固定分配”，右键单击并确定共享文件夹的路径，下面的复选框一个都不用勾选，最后”确定”。启动虚拟系统，进入系统以后，执行以下命令来挂载共享文件夹：mount -t vboxsf share /share，其中 share 为共享文件夹的名字，/share 表示当前挂载到 share 目录下，如果没有share目录请自行创建 mkdir /share。如果需要取消挂载，可以直接使用命令：umount -f /share。 实现开机自动挂载 1.适用于CentOS7/6 123# vim ~/.bashrc// 在最后添加一行# mount -t vboxsf share /share 2.只适用于CentOS6 123# vim /etc/rc.d/rc.local// 在文件的最后面加上挂载命令# mount -t vboxsf share /share VirtualBox Win7虚拟机无法识别U盘问题解决方法1.首先需要一个USB用户组，可以用vboxusers这个在安装VirtualBox的时候产生的用户组，把你使用的这个用户加到vboxusers组中，确保该用户是否有权限去读写usbfs这个文件系统 1234$ cat /etc/group | grep vboxusersvboxusers:x:127:$ whoamiocean 2.把ocean用户加到vboxusers组中，后面的ocean就是你自己的用户名 1$ sudo adduser ocean vboxusers 3.重启电脑，启动Virtualbox，确认在virtualbox管理器中，USB设备的enable usb controler 、enable usb2.0 controler打勾。Win7启动后，右击右下角USB设备符号，在Setting中，选择USB Massage相关的选项，就会自动安装驱动，驱动安装成功后，win7下成功挂载U盘。 注意：U盘插入宿主机usb接口必须是usb2.0，如果为3.0虚拟机无法识别]]></content>
-      <categories>
-        <category>VirtualBox</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>VirtualBox</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[PHP解析post请求发送的json数据]]></title>
     <url>%2F2018%2F04%2F12%2FPHP%E8%A7%A3%E6%9E%90post%E8%AF%B7%E6%B1%82%E5%8F%91%E9%80%81%E7%9A%84json%E6%95%B0%E6%8D%AE%2F</url>
     <content type="text"><![CDATA[前端请求json数据 1234&#123; cat_id:6, "live_cat":"is_hot"&#125; 后台解析json数据转换为数组 1234567891011&lt;?phpfunction receive_json_to_array()&#123; $json = file_get_contents('php://input'); //加true转换为数组，不加转换为对象 $arr = json_decode($json, true); return $arr;&#125;$arr = receive_json_to_array();echo $arr['cat_id']; //输出 6echo $arr['live_cat']; //输出 is_hot]]></content>
@@ -124,6 +124,18 @@
         <tag>Linux</tag>
         <tag>PHP</tag>
         <tag>json</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[VirtualBox CentOS7 Mini 安装增强工具]]></title>
+    <url>%2F2018%2F04%2F12%2FVirtualBox%20CentOS7%20Mini%20%E5%AE%89%E8%A3%85%E5%A2%9E%E5%BC%BA%E5%B7%A5%E5%85%B7%2F</url>
+    <content type="text"><![CDATA[安装增强工具 安装相关依赖 12# yum install vim gcc kernel kernel-devel bzip2 -y# reboot 点击虚拟机菜单栏 =&gt; 设备 =&gt; 安装增强功能 123# mount /dev/cdrom /mnt# cd /mnt# ./VBoxLinuxAdditions.run 打开 VirtualBox 界面，选择对应的虚拟系统进行”设置”，选中设置窗口中的最后一项”共享文件夹”，再选中”固定分配”，右键单击并确定共享文件夹的路径，下面的复选框一个都不用勾选，最后”确定”。启动虚拟系统，进入系统以后，执行以下命令来挂载共享文件夹：mount -t vboxsf share /share，其中 share 为共享文件夹的名字，/share 表示当前挂载到 share 目录下，如果没有share目录请自行创建 mkdir /share。如果需要取消挂载，可以直接使用命令：umount -f /share。 实现开机自动挂载 1.适用于CentOS7/6 123# vim ~/.bashrc// 在最后添加一行# mount -t vboxsf share /share 2.只适用于CentOS6 123# vim /etc/rc.d/rc.local// 在文件的最后面加上挂载命令# mount -t vboxsf share /share VirtualBox Win7虚拟机无法识别U盘问题解决方法1.首先需要一个USB用户组，可以用vboxusers这个在安装VirtualBox的时候产生的用户组，把你使用的这个用户加到vboxusers组中，确保该用户是否有权限去读写usbfs这个文件系统 1234$ cat /etc/group | grep vboxusersvboxusers:x:127:$ whoamiocean 2.把ocean用户加到vboxusers组中，后面的ocean就是你自己的用户名 1$ sudo adduser ocean vboxusers 3.重启电脑，启动Virtualbox，确认在virtualbox管理器中，USB设备的enable usb controler 、enable usb2.0 controler打勾。Win7启动后，右击右下角USB设备符号，在Setting中，选择USB Massage相关的选项，就会自动安装驱动，驱动安装成功后，win7下成功挂载U盘。 注意：U盘插入宿主机usb接口必须是usb2.0，如果为3.0虚拟机无法识别]]></content>
+      <categories>
+        <category>VirtualBox</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>VirtualBox</tag>
       </tags>
   </entry>
   <entry>
@@ -266,8 +278,8 @@
         <category>基本操作</category>
       </categories>
       <tags>
-        <tag>Git</tag>
         <tag>GitHub</tag>
+        <tag>Git</tag>
         <tag>Hexo</tag>
       </tags>
   </entry>
@@ -303,8 +315,8 @@
         <category>基本操作</category>
       </categories>
       <tags>
-        <tag>Git</tag>
         <tag>GitHub</tag>
+        <tag>Git</tag>
         <tag>Hexo</tag>
       </tags>
   </entry>
@@ -340,8 +352,8 @@
       <tags>
         <tag>Linux</tag>
         <tag>Nginx</tag>
-        <tag>MySQL</tag>
         <tag>PHP</tag>
+        <tag>MySQL</tag>
       </tags>
   </entry>
   <entry>
@@ -376,8 +388,8 @@
         <category>基本操作</category>
       </categories>
       <tags>
-        <tag>Git</tag>
         <tag>GitHub</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -388,8 +400,8 @@
         <category>基本操作</category>
       </categories>
       <tags>
-        <tag>Git</tag>
         <tag>GitHub</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
 </search>
