@@ -32,9 +32,13 @@ docker-compose up -d nginx mysql redis
 
 > 打开 `PHPStorm`， `File -> Settings` 进入 `Languages & Frameworks -> PHP -> Servers`。新建一个 `Servers`，如下图
 
++ `Name` 填写内容必须和 `laradock/.env` 文件 `serverName` 一致，默认为 `laradock`
+
++ `Host` 为 `server` 对应的 `Host` 地址；`Port` 不用修改；`Debugger` 选择 `Xdebug`
+
++ 设置目录映射(`Use path mappings`)，`本地目录` -> `远程目录`
+
 ```bash
-Name 填写 laradock，必须和 laradock/.env 文件里面 serverName 一致，如果你修改了，改为你设置的 serverName
-注意目录映射别忘记设置，主机代码对应 server 的映射位置(/var/www/xxx)
 ### Remote Interpreter ####################################
 
 # Choose a Remote Interpreter entry matching name. Default is `laradock`
