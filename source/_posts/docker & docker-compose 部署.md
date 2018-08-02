@@ -49,7 +49,16 @@ sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-c
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
-### 替换国内源
+### 配置 `Docker` 加速器
+
++ Linux
+
+```bash
+# 该脚本可以将 --registry-mirror 加入到你的 Docker 配置文件 /etc/docker/daemon.json 中。适用于 Ubuntu14.04、Debian、CentOS6 、CentOS7、Fedora、Arch Linux、openSUSE Leap 42.1，其他版本可能有细微不同。
+curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://0ed8bcb8.m.daocloud.io
+```
+
++ 其他 `Linux` 发行版
 
 > 编辑 `sudo nano /etc/docker/daemon.json` 如果不存在则创建。如果文件为空，添加以下内容。
 
@@ -64,6 +73,12 @@ sudo chmod +x /usr/local/bin/docker-compose
 }
 ```
 
++ MacOS
+
+```bash
+# Docker For Mac，右键点击桌面顶栏的 docker 图标，选择 Preferences ，在 Daemon 标签（Docker 17.03 之前版本为 Advanced 标签）下的 Registry mirrors 列表中加入下面的镜像地址(点击 Apply & Restart 按钮使设置生效。):
+http://0ed8bcb8.m.daocloud.io
+```
 
 > 验证
 
